@@ -19,7 +19,7 @@ public class DataInitializationService {
     public DataInitializationService(){
         Gson gson = new Gson();
         
-        try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("/books.json"))){
+        try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
             books = gson.fromJson(reader, new TypeToken<List<Books>>() {}.getType());
         } catch (IOException e){
             e.printStackTrace();
