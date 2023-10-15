@@ -1,5 +1,7 @@
 package com.cbfacademy.apiassessment;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 @SpringBootApplication
 @RestController
@@ -30,11 +35,26 @@ public class App {
 
 	@GetMapping("/all")
     public ResponseEntity<List<Books>> getAllBooks(){
-        List<Books> books = booksService.getAllBooks();
-        return ResponseEntity.ok(books);
-    }
+		try{
+			Gson gson = new Gson();
+            java.lang.reflect.Type bookType = new TypeToken<List<Books>>() {}.getType();
 
+            InputStream inputStream = getClass().getResourceAsStream("/books.json");
+            InputStreamReader reader = new InputStreamReader(inputStream);
+
+            List<Books> books = gson.fromJson(reader, bookType);
+
+			return ResponseEntity.ok(books);
+		// } catch (IOException e){
+		// 	return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		// }
+    } finally {
+		System.out.println("this code runs");
+	}
 }
+}
+
+
 
 
 
