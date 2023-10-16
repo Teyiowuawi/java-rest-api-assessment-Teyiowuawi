@@ -37,7 +37,6 @@ public class App {
 	public ResponseEntity<List<Books>> getAllBooks(){
 		List<Books> books = booksService.getAllBooks();
 		return ResponseEntity.ok(books);
-		//does not return a list of all books in json file, returns an empty array
 	}
 }
 
