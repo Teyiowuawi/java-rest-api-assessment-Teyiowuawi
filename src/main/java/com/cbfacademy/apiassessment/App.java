@@ -33,26 +33,32 @@ public class App {
 		return String.format("Hello %s", name);
 	}
 
-	@GetMapping("/all")
-    public ResponseEntity<List<Books>> getAllBooks(){
-		try{
-			Gson gson = new Gson();
-            java.lang.reflect.Type bookType = new TypeToken<List<Books>>() {}.getType();
-
-            InputStream inputStream = getClass().getResourceAsStream("/books.json");
-            InputStreamReader reader = new InputStreamReader(inputStream);
-
-            List<Books> books = gson.fromJson(reader, bookType);
-
-			return ResponseEntity.ok(books);
-		// } catch (IOException e){
-		// 	return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-		// }
-    } finally {
-		System.out.println("this code runs");
+	@GetMapping("all")
+	public ResponseEntity<List<Books>> getAllBooks(){
+		List<Books> books = booksService.getAllBooks();
+		return ResponseEntity.ok(books);
+		//does not return a list of all books in json file, returns an empty array
 	}
 }
-}
+
+	// @GetMapping("/all")
+    // public ResponseEntity<List<Books>> getAllBooks(){
+	// 	try{
+	// 		Gson gson = new Gson();
+    //         java.lang.reflect.Type bookType = new TypeToken<List<Books>>() {}.getType();
+
+    //         InputStream inputStream = getClass().getResourceAsStream("/resources/books.json");
+    //         InputStreamReader reader = new InputStreamReader(inputStream);
+
+    //         List<Books> books = gson.fromJson(reader, bookType);
+
+	// 		return ResponseEntity.ok(books);
+	// 	// } catch (IOException e){
+	// 	// 	return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	// 	// }
+    // } finally {
+	// 	System.out.println("this code runs");
+	// }
 
 
 

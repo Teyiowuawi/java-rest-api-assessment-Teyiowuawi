@@ -29,4 +29,6 @@ public class DataInitializationService {
     public List<Books> getBooks(){
         return books;
     }
+    // purpose of this data initalization service? 
+    // injecting into my app but for what reason?
 }
