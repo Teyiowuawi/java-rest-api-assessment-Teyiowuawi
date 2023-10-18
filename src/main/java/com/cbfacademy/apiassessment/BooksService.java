@@ -41,10 +41,3 @@ public class BooksService {
         }
     }
 }               
-                
-        // example code from rest-api-exercise
-        // @GetMapping(value = "/{id}", produces = "application/json")
-        // public ResponseEntity<IOU> getIOUByID(@PathVariable UUID id){
-        //     for (IOU iou : ious){
-        //      if  (iou.getId().equals(id)){
-        //         return ResponseEntity.ok(iou);

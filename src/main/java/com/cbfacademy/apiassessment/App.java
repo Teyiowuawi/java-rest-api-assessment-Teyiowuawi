@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,7 +61,15 @@ public class App {
 					}
 					return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 			}
-	}
+
+	// @PostMapping("/addBook")
+	// // how shuld post mapping look
+	// public ResponseEntity<List<Books>> getAllBooksNew(){
+	// 	List<Books> books = booksService.getAllBooks();
+	// 	books.add();
+	// 	return ResponseEntity.ok(books);
+	// }
+	// }
 
 //question 
 // 	@GetMapping("/all")
