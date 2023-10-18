@@ -26,4 +26,25 @@ public class BooksService {
         }
         return books;
     }
-}
+
+    public void getBookById(long id){
+        Gson gson = new Gson();
+        
+        try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
+            books = gson.fromJson(reader, new TypeToken<List<Books>>() {}.getType());
+            for (Books book : books){
+                if (book.getId().equals(id)){
+                    System.out.println(book);
+                }}}
+                catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+}               
+                
+        // example code from rest-api-exercise
+        // @GetMapping(value = "/{id}", produces = "application/json")
+        // public ResponseEntity<IOU> getIOUByID(@PathVariable UUID id){
+        //     for (IOU iou : ious){
+        //      if  (iou.getId().equals(id)){
+        //         return ResponseEntity.ok(iou);
