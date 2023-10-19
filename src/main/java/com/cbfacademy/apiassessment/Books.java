@@ -2,17 +2,17 @@ package com.cbfacademy.apiassessment;
 
 public class Books {
 
-    private Long id;
+    private int id;
     private String title; 
     private String author;
 
-    public Books(Long id, String title, String author){
+    public Books(int id, String title, String author){
         this.id = id; 
         this.title = title;
         this.author = author; 
     }
 
-        public Long getId() {
+        public int getId() {
         return id;
     }
 
@@ -24,7 +24,7 @@ public class Books {
         return author;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
