@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,7 +52,7 @@ public class App {
 	}
 
 	@GetMapping(value = "books/{id}", produces = "application/json")
-	public ResponseEntity<Books> getBookById(@PathVariable int id){
+	public ResponseEntity<Books> getBookById(@PathVariable Long id){
 			Gson gson = new Gson();
 			
 			try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
@@ -66,7 +67,7 @@ public class App {
 			}
 
 	@DeleteMapping(value = "books/{id}", produces = "application/json")
-	public ResponseEntity<List<Books>> deleteBookById(@PathVariable int id){
+	public ResponseEntity<List<Books>> deleteBookById(@PathVariable Long id){
 		Gson gson = new Gson();
 			
 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
@@ -81,33 +82,41 @@ public class App {
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);			
 	}
 
-	@PostMapping
+	@PostMapping("books")
 	public ResponseEntity<List<Books>> addBook(@RequestBody Books book){
 		Gson gson = new Gson();
 			
 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
 			books = gson.fromJson(reader, new TypeToken<List<Books>>() {}.getType());
 			for (Books exisitingBooks : books){
-				if (book.getId() != exisitingBooks.getId()){
-					books.add(book);
-					return ResponseEntity.ok(books);
-				}}} catch (IOException e)
-					{e.printStackTrace();
+				if (exisitingBooks.getId().equals(book.getId()) ){
+					return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(null);
 				}
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+				}} catch (IOException e){
+					e.printStackTrace();
+				}
+				books.add(book);
+				return ResponseEntity.status(HttpStatus.CREATED).body(books);
 			} 
-			
+			// ^ need to sort out aspect where book ID must not match the id's of other books
+			//remember to find appropriate responses for HTTP requests and also appropriate exception handling
+
+	// @PutMapping("books/{id}")
+	// public ResponseEntity<List<Books>> updateBook(@PathVariable Long id, @RequestBody Books updatedBook){
+	// 	Gson gson = new Gson();
+
+	// 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
+	// 		books = gson.fromJson(reader, new TypeToken<List<Books>>() {}.getType());
+	// 		return ResponseEntity.ok(books);
+	// 			} catch (IOException e)
+	// 				{e.printStackTrace();
+	// 			}
+	// 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);			
+	// 		}
+		// come back to this put request to figure out the code 
 	}
 
-	
-	// @PostMapping("/add")
-	// public ResponseEntity<List<Books>> getAllBooksNew(@RequestBody Books book){
 
-	// 		List<Books> books = booksService.getAllBooks();
-	// 		books.add(book);
-	// 			return ResponseEntity.ok(books);
-	// 		}
-	// 	}
 
 
 
