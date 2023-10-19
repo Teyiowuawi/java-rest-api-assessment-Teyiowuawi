@@ -27,3 +27,18 @@ public class BooksService {
         return books;
     }
 }
+    // public void getBookById(int id){
+    //     Gson gson = new Gson();
+        
+    //     try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
+    //         books = gson.fromJson(reader, new TypeToken<List<Books>>() {}.getType());
+    //         for (Books book : books){
+    //             if (book.getId() == id){
+    //                 System.out.println(book);
+    //             }}}
+    //             catch (IOException e){
+    //         e.printStackTrace();
+    //     }
+
+    	// question 
+		// to make code more modular, should I have the simple CRUD operations in the BookService?         
