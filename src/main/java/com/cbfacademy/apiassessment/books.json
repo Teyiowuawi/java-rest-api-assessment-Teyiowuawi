@@ -1,16 +1,41 @@
 [ {
-    "id": 1,
-    "title": "Lion, Witch and The Wardrobe",
-    "author": "John Cena"
+    "companyName": "Endeavour Mining PLC" ,
+    "tickerSymbol": "EDV.L",
+    "industry": "Mining",
+    "stock price": "https://finance.yahoo.com/quote/EDV.L",
+    "marketCapitalization": 4333000000,
+    "priceToEquityRatio": , - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 23.09
 },
 {
-    "id": 2,
-    "title": "Coloured Love",
-    "author": "Akwasi Frimpong"
+    "companyName": "ConvaTec Group PLC" ,
+    "tickerSymbol": "CTEC.L",
+    "industry": "Medical devices",
+    "stock price": "https://finance.yahoo.com/quote/CTEC.L",
+    "marketCapitalization": 455000000,
+    "priceToEquityRatio": 67.67, - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 16.6
 },
 {
-    "id": 3,
-    "title": "Cinderella",
-    "author": "Lucy Yao"
+    "companyName": "BAE Systems PLC" ,
+    "tickerSymbol": "BA.L",
+    "industry": "Aerospace, Arms industry, Information Security",
+    "stock price": "https://finance.yahoo.com/quote/BA.L",
+    "marketCapitalization": 455000000,
+    "priceToEquityRatio": 16.85, - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 16.6
+}, 
+{
+    "companyName": "Unite Group PLC" ,
+    "tickerSymbol": "UTG.L",
+    "industry": "Aerospace, Arms industry, Information Security",
+    "stock price": "https://finance.yahoo.com/quote/UTG.L",
+    "marketCapitalization": 398400000,
+    "priceToEquityRatio": 26.50, - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 15.5 
 }
 ]
