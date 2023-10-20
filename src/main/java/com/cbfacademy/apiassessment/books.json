@@ -1,7 +1,7 @@
 [ {
-    "companyName": "Endeavour Mining PLC" ,
+    "companyName": "Endeavour Mining PLC",
     "tickerSymbol": "EDV.L",
-    "industry": "Mining",
+    "sector": "Precious Metals and Mining",
     "stock price": "https://finance.yahoo.com/quote/EDV.L",
     "marketCapitalization": 4333000000,
     "priceToEquityRatio": , - might have to look for another one
@@ -9,33 +9,177 @@
     "esgRiskRating": 23.09
 },
 {
-    "companyName": "ConvaTec Group PLC" ,
+    "companyName": "ConvaTec Group PLC",
     "tickerSymbol": "CTEC.L",
-    "industry": "Medical devices",
+    "sector": "Medical Equipment and Services",
     "stock price": "https://finance.yahoo.com/quote/CTEC.L",
-    "marketCapitalization": 455000000,
+    "marketCapitalization": 4554000000,
     "priceToEquityRatio": 67.67, - might have to look for another one
     "debtToEquityRatio": , - need to find, 
-    "esgRiskRating": 16.6
+    "esgRiskRating": 16.60
 },
 {
-    "companyName": "BAE Systems PLC" ,
+    "companyName": "BAE Systems PLC",
     "tickerSymbol": "BA.L",
-    "industry": "Aerospace, Arms industry, Information Security",
+    "sector": "Aerospace and Defense",
     "stock price": "https://finance.yahoo.com/quote/BA.L",
-    "marketCapitalization": 455000000,
+    "marketCapitalization": 32770000000,
     "priceToEquityRatio": 16.85, - might have to look for another one
     "debtToEquityRatio": , - need to find, 
-    "esgRiskRating": 16.6
+    "esgRiskRating": 31.60
 }, 
 {
-    "companyName": "Unite Group PLC" ,
+    "companyName": "Unite Group PLC",
     "tickerSymbol": "UTG.L",
-    "industry": "Aerospace, Arms industry, Information Security",
+    "sector": "Real Estate",
     "stock price": "https://finance.yahoo.com/quote/UTG.L",
-    "marketCapitalization": 398400000,
-    "priceToEquityRatio": 26.50, - might have to look for another one
+    "marketCapitalization": 3984000000,
+    "priceToEquityRatio":26.50 , - might have to look for another one
     "debtToEquityRatio": , - need to find, 
-    "esgRiskRating": 15.5 
-}
+    "esgRiskRating": 15.50 
+},
+{
+    "companyName": "Hargreaves Lansdown PLC",
+    "tickerSymbol": "HL.L",
+    "sector": "Investment Banking and Brokerage Services",
+    "stock price": "https://finance.yahoo.com/quote/HL.L",
+    "marketCapitalization": 3709000000,
+    "priceToEquityRatio": 10.29, - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 19.60 
+},
+{
+    "companyName": "Fresnillo PLC",
+    "tickerSymbol": "FRES.L",
+    "sector": "Precious Metals and Mining",
+    "stock price": "https://finance.yahoo.com/quote/FRES.L",
+    "marketCapitalization": 4100000000,
+    "priceToEquityRatio": 22.06, - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 30.20
+}, 
+{
+    "companyName": "Mondi PLC",
+    "tickerSymbol": "MNDI.L",
+    "sector": "General Insutrials",
+    "stock price": "https://finance.yahoo.com/quote/MNDI.L",
+    "marketCapitalization": 6317000000,
+    "priceToEquityRatio": 9.09, - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 13.30
+},
+{
+    "companyName": "United Utilities Group PLC",
+    "tickerSymbol": "UU.L",
+    "sector": "Gas, Water and Multi-utilities",
+    "stock price": "https://finance.yahoo.com/quote/UU.L",
+    "marketCapitalization": 6989000000,
+    "priceToEquityRatio": 34.17, - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 11.50
+},
+{
+    "companyName": "Gsk PLC",
+    "tickerSymbol": "GSK.L",
+    "sector": "Pharmaceuticals and Biotechnology",
+    "stock price": "https://finance.yahoo.com/quote/GSK.L",
+    "marketCapitalization": 61552000000,
+    "priceToEquityRatio": 11.51, - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 16.70
+},
+{
+    "companyName": "Frasers Group PLC",
+    "tickerSymbol": "FRAS.L",
+    "sector": "Retailers",
+    "stock price": "https://finance.yahoo.com/quote/FRAS.L",
+    "marketCapitalization": 3677000000,
+    "priceToEquityRatio": 7.97, - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 19.50
+}, 
+{
+    "companyName": "Haleon PLC",
+    "tickerSymbol": "HLN.L",
+    "sector": "Pharmaceuticals and Biotechnology",
+    "stock price": "https://finance.yahoo.com/quote/HLN.L",
+    "marketCapitalization": 31594000000,
+    "priceToEquityRatio": 25.84, - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": - answer this
+}, 
+{
+    "companyName": "Burberry Group PLC",
+    "tickerSymbol": "BRBY.L",
+    "sector": "Personal Goods",
+    "stock price": "https://finance.yahoo.com/quote/BRBY.L",
+    "marketCapitalization": 6508000000,
+    "priceToEquityRatio": 13.82, - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 9.50 - answer this
+},
+{
+    "companyName": "Experian PLC",
+    "tickerSymbol": "EXPN.L",
+    "sector": "Industrial Support Services",
+    "stock price": "https://finance.yahoo.com/quote/EXPN.L",
+    "marketCapitalization": 25454000000,
+    "priceToEquityRatio": 38.29, - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 11.80 - answer this
+}, 
+{
+    "companyName": "Dechra Pharmaceuticals PLC",
+    "tickerSymbol": "DPH.L",
+    "sector": "Pharmaceuticals and Biotechnology",
+    "stock price": "https://finance.yahoo.com/quote/DPH.L",
+    "marketCapitalization": 4312000000,
+    "priceToEquityRatio": , - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 19.10 - answer this
+},
+{
+    "companyName": "Land Securities Group PLC",
+    "tickerSymbol": "LAND.L",
+    "sector": "Real Estate",
+    "stock price": "https://finance.yahoo.com/quote/LAND.L",
+    "marketCapitalization": 4310000000,
+    "priceToEquityRatio": , - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 9.2  - answer this
+}, 
+{
+    "companyName": "Centrica PLC",
+    "tickerSymbol": "CNA.L",
+    "sector": "Gas, Water and Multi-utilities",
+    "stock price": "https://finance.yahoo.com/quote/CNA.L",
+    "marketCapitalization": 8620000000,
+    "priceToEquityRatio": 2.15, - might have to look for another one
+    "debtToEquityRatio": , - need to find, 
+    "esgRiskRating": 24.5   - answer this
+},
+{
+    "companyName": "Unilever PLC",
+    "tickerSymbol": "ULVR.L",
+    "sector": "Personal Care, Drug and Grocery Stores",
+    "stock price": "https://finance.yahoo.com/quote/ULVR.L",
+    "marketCapitalization": 99834000000,
+    "priceToEquityRatio": 14.10, - might have to look for another one
+    "debtToEquityRatio": , - need to find,
+    "esgRiskRating": 23.2
+},
+{
+    "companyName": "London Stock Exchage Group",
+    "tickerSymbol": "LSEG.L",
+    "sector": "Financial and Credit Services",
+    "stock price": "https://finance.yahoo.com/quote/LSEG.L",
+    "marketCapitalization": 44888000000 ,
+    "priceToEquityRatio": 68.00, - might have to look for another one
+    "debtToEquityRatio": , - need to find,
+    "esgRiskRating": 18.6
+},
+
+
+
+
 ]
