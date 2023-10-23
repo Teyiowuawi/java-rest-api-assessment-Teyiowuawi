@@ -1,10 +1,9 @@
 package com.cbfacademy.apiassessment;
 
-<<<<<<< HEAD
 import java.math.BigInteger;
 import java.net.URL;
 
-public class Ftse100 {
+public class Ftse100Company {
     private String companyName;
     private String tickerSymbol; 
     private String sector;
@@ -15,7 +14,7 @@ public class Ftse100 {
     private double debtToEquityRatio;
     private double esgRiskRating;
 
-  public Ftse100(String companyName, String tickerSymbol, String sector,URL stockPrice, BigInteger marketCapitalization, double priceToEquityRatio, double priceToBookRatio, double debtToEquityRatio, double esgRiskRating){
+  public Ftse100Company(String companyName, String tickerSymbol, String sector,URL stockPrice, BigInteger marketCapitalization, double priceToEquityRatio, double priceToBookRatio, double debtToEquityRatio, double esgRiskRating){
         this.companyName = companyName;
         this.tickerSymbol = tickerSymbol;
         this.stockPrice = stockPrice;
@@ -59,11 +58,9 @@ public class Ftse100 {
     }
 
 
-
     public URL getStockPrice() {
         return stockPrice;
     }
-
 
 
     public void setStockPrice(URL stockPrice) {
@@ -76,8 +73,6 @@ public class Ftse100 {
     }
 
 
-
-
     public void setMarketCapitalization(BigInteger marketCapitalization) {
         this.marketCapitalization = marketCapitalization;
     }
@@ -88,7 +83,6 @@ public class Ftse100 {
     }
 
 
-
     public void setPriceToEquityRatio(double priceToEquityRatio) {
         this.priceToEquityRatio = priceToEquityRatio;
     }
@@ -97,7 +91,6 @@ public class Ftse100 {
     public double getPriceToBookRatio() {
         return priceToBookRatio;
     }
-
 
 
     public void setPriceToBookRatio(double priceToBookRatio) {
@@ -126,41 +119,4 @@ public class Ftse100 {
         this.esgRiskRating = esgRiskRating;
     }
 
-=======
-public class Books {
-
-    private Long id;
-    private String title; 
-    private String author;
-
-    public Books(Long id, String title, String author){
-        this.id = id; 
-        this.title = title;
-        this.author = author; 
-    }
-
-        public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
->>>>>>> ftse100DataModel
 }
