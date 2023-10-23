@@ -3,18 +3,19 @@ package com.cbfacademy.apiassessment;
 import java.math.BigInteger;
 import java.net.URL;
 
-public class Ftse100Company {
+public class Ftse100 {
     private String companyName;
     private String tickerSymbol; 
     private String sector;
     private URL stockPrice;
+    //URL for stock price doesnt display when request is made in postman - instead its null
     private BigInteger marketCapitalization;
     private double priceToEquityRatio;
     private double priceToBookRatio;
     private double debtToEquityRatio;
     private double esgRiskRating;
 
-  public Ftse100Company(String companyName, String tickerSymbol, String sector,URL stockPrice, BigInteger marketCapitalization, double priceToEquityRatio, double priceToBookRatio, double debtToEquityRatio, double esgRiskRating){
+  public Ftse100(String companyName, String tickerSymbol, String sector,URL stockPrice, BigInteger marketCapitalization, double priceToEquityRatio, double priceToBookRatio, double debtToEquityRatio, double esgRiskRating){
         this.companyName = companyName;
         this.tickerSymbol = tickerSymbol;
         this.stockPrice = stockPrice;
