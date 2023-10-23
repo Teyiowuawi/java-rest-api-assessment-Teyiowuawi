@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 @Service
-public class BooksService {
+public class Ftse100Service implements Ftse100BasicCrud {
 
     private List<Books> books = new ArrayList<>();
 

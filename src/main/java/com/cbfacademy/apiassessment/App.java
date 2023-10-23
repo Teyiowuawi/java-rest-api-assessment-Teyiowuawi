@@ -35,69 +35,70 @@ public class App {
 
 
 	@Autowired
-	private BooksService booksService;
+	private Ftse100Service ftse100Service;
 
-	 private List<Books> books = new ArrayList<>();
+	 private List<Ftse100> companies = new ArrayList<>();
 
 	@GetMapping("/greeting")
 	public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
 		return String.format("Hello %s", name);
 	}
 
-	@GetMapping("/books")
-	public ResponseEntity<List<Books>> getAllBooks(){
-		List<Books> books = booksService.getAllBooks();
-		return ResponseEntity.ok(books);
+	@GetMapping("/companies")
+	public ResponseEntity<List<Ftse100>> getAllBooks(){
+		companies = ftse100Service.getAllCompanies();
+		return ResponseEntity.ok(companies);
 		//print f - defining the format i would like to use for the loop!
 	}
 
-	@GetMapping(value = "books/{id}", produces = "application/json")
-	public ResponseEntity<Books> getBookById(@PathVariable Long id){
-			Gson gson = new Gson();
+	// @GetMapping(value = "books/{id}", produces = "application/json")
+	// public ResponseEntity<Books> getBookById(@PathVariable Long id){
+	// 		Gson gson = new Gson();
 			
-			try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
-				books = gson.fromJson(reader, new TypeToken<List<Books>>() {}.getType());
-				for (Books book : books){
-					if (book.getId() == id){
-						return ResponseEntity.ok(book);
-					}}} catch (IOException e) {
-						e.printStackTrace();
-					}
-					return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-			}
+	// 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
+	// 			books = gson.fromJson(reader, new TypeToken<List<Books>>() {}.getType());
+	// 			for (Books book : books){
+	// 				if (book.getId() == id){
+	// 					return ResponseEntity.ok(book);
+	// 				}}} catch (IOException e) {
+	// 					e.printStackTrace();
+	// 				}
+	// 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+	// 		}
 
-	@DeleteMapping(value = "books/{id}", produces = "application/json")
-	public ResponseEntity<List<Books>> deleteBookById(@PathVariable Long id){
-		Gson gson = new Gson();
+	// @DeleteMapping(value = "books/{id}", produces = "application/json")
+	// public ResponseEntity<List<Books>> deleteBookById(@PathVariable Long id){
+	// 	Gson gson = new Gson();
 			
-		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
-			books = gson.fromJson(reader, new TypeToken<List<Books>>() {}.getType());
-			for (Books book : books){
-				if (book.getId() == id){
-					books.remove(book);
-					return ResponseEntity.ok(books);
-				}}} catch (IOException e)
-					{e.printStackTrace();
-				}
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);			
-	}
+	// 	try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
+	// 		books = gson.fromJson(reader, new TypeToken<List<Books>>() {}.getType());
+	// 		for (Books book : books){
+	// 			if (book.getId() == id){
+	// 				books.remove(book);
+	// 				return ResponseEntity.ok(books);
+	// 			}}} catch (IOException e)
+	// 				{e.printStackTrace();
+	// 			}
+	// 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);			
+	// }
 
-	@PostMapping("books")
-	public ResponseEntity<List<Books>> addBook(@RequestBody Books book){
-		Gson gson = new Gson();
+	// @PostMapping("books")
+	// public ResponseEntity<List<Books>> addBook(@RequestBody Books book){
+	// 	Gson gson = new Gson();
 			
-		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
-			books = gson.fromJson(reader, new TypeToken<List<Books>>() {}.getType());
-			for (Books exisitingBooks : books){
-				if (exisitingBooks.getId().equals(book.getId()) ){
-					return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(null);
-				}
-				}} catch (IOException e){
-					e.printStackTrace();
-				}
-				books.add(book);
-				return ResponseEntity.status(HttpStatus.CREATED).body(books);
-			} 
+	// 	try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
+	// 		books = gson.fromJson(reader, new TypeToken<List<Books>>() {}.getType());
+	// 		for (Books exisitingBooks : books){
+	// 			if (exisitingBooks.getId().equals(book.getId()) ){
+	// 				return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(null);
+	// 			}
+	// 			}} catch (IOException e){
+	// 				e.printStackTrace();
+	// 			}
+	// 			books.add(book);
+	// 			return ResponseEntity.status(HttpStatus.CREATED).body(books);
+	// 		} 
+
 			// ^ need to sort out aspect where book ID must not match the id's of other books
 			//remember to find appropriate responses for HTTP requests and also appropriate exception handling
 
