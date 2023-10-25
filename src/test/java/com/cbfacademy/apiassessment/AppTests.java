@@ -63,7 +63,7 @@ class AppTests {
 		assertNotNull(responseIOUs);
 		assertTrue(companies.size() <= responseIOUs.length);
 		//remember to add asserts + error and exception handling - an exception should be throw if some of the fields are empty etc
-		// test passes but how do I call my getAllFtse100 companies method whilst still adhering to the rules of TDD (repeatble and isolated) 
+		// test passes but how do I call my getAllFtse100 companies method and usewhilst still adhering to the rules of TDD (repeatble and isolated) 
 
 	}
 
@@ -73,77 +73,11 @@ class AppTests {
 		ResponseEntity<Ftse100> response = restTemplate.postForEntity("/companies", company, Ftse100.class);
 
 
-		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals(HttpStatus.CREATED, response.getStatusCode());
 		assertNotNull(response.getBody());
 		assertNotNull(response.getBody().getTickerSymbol());
 	}
 }
-
-
-// 	@Test
-// 	public void testGetIOUById() {
-// 		IOU iou = new IOU("John", "Alice", new BigDecimal("100.00"), getInstant(0));
-// 		ResponseEntity<IOU> createResponse = restTemplate.postForEntity("/ious/", iou, IOU.class);
-
-// 		IOU createdIOU = createResponse.getBody();
-// 		ResponseEntity<IOU> response = restTemplate.getForEntity("/ious/" + createdIOU.getId(), IOU.class);
-
-// 		assertEquals(HttpStatus.OK, response.getStatusCode());
-// 		assertNotNull(response.getBody());
-// 		assertEquals(createdIOU.getId(), response.getBody().getId());
-// 	}
-
-// 	@Test
-// 	public void testUpdateIOU() {
-// 		IOU iou = new IOU("John", "Alice", new BigDecimal("100.00"), getInstant(0));
-// 		ResponseEntity<IOU> createResponse = restTemplate.postForEntity("/ious/", iou, IOU.class);
-
-// 		IOU createdIOU = createResponse.getBody();
-// 		createdIOU.setLender("UpdatedLender");
-
-// 		restTemplate.put("/ious/" + createdIOU.getId(), createdIOU);
-// 		ResponseEntity<IOU> response = restTemplate.getForEntity("/ious/" + createdIOU.getId(), IOU.class);
-
-// 		assertEquals(HttpStatus.OK, response.getStatusCode());
-// 		assertNotNull(response.getBody());
-// 		assertEquals("UpdatedLender", response.getBody().getLender());
-// 	}
-
-// 	@Test
-// 	public void testDeleteIOU() {
-// 		IOU iou = new IOU("John", "Alice", new BigDecimal("100.00"), getInstant(0));
-// 		ResponseEntity<IOU> createResponse = restTemplate.postForEntity("/ious/", iou, IOU.class);
-
-// 		IOU createdIOU = createResponse.getBody();
-// 		restTemplate.delete("/ious/" + createdIOU.getId());
-
-// 		ResponseEntity<IOU> response = restTemplate.getForEntity("/ious/" + createdIOU.getId(), IOU.class);
-
-// 		assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-// 	}
-
-// 	private Instant getInstant(int hoursToSubtract) {
-// 		// Get the current date and time in the system's default time zone
-// 		ZoneId systemTimeZone = ZoneId.systemDefault();
-// 		ZonedDateTime currentDateTime = ZonedDateTime.now(systemTimeZone);
-
-// 		// Subtract the specified number of hours using Duration
-// 		Duration duration = Duration.ofHours(hoursToSubtract);
-// 		ZonedDateTime resultDateTime = currentDateTime.minus(duration);
-
-// 		// Convert to Instant
-// 		Instant instant = resultDateTime.toInstant();
-
-// 		return instant;
-// 	}
-// }
-
-
-
-
-// 	}
-
-
 
 // 	// @Test
 // 	// @DisplayName("get specific FTSE 100 company")
