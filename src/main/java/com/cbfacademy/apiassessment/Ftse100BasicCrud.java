@@ -10,6 +10,8 @@ public interface Ftse100BasicCrud {
     
     ResponseEntity<List<Ftse100>> getAllFtse100Companies();
 
+    ResponseEntity<Ftse100> getFtse100CompanyByTickerSymbol(String tickerSymbol);
+
     ResponseEntity<Ftse100> updateFtse100Company(String tickerSymbol);
 
     ResponseEntity<List<Ftse100>> deleteFtse100Company(String tickerSymbol);

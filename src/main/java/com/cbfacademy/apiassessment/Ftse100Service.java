@@ -51,6 +51,21 @@ public class Ftse100Service implements Ftse100BasicCrud {
     }
 
     @Override
+    public ResponseEntity<Ftse100> getFtse100CompanyByTickerSymbol(String tickerSymbol){
+        Gson gson = new Gson();
+			
+        try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
+            companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+            for (Ftse100 company : companies){
+                if (company.getTickerSymbol().equals(tickerSymbol)){
+                    return ResponseEntity.ok(company);
+                }}} catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    }
+
+    @Override
     public ResponseEntity<Ftse100> updateFtse100Company(String tickerSymbol) {
         // figure out this method implementation
         throw new UnsupportedOperationException("Unimplemented method 'updateFtse100Company'");

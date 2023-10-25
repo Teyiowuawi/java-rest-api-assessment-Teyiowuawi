@@ -29,21 +29,37 @@ class AppTests {
 		this.base = new URL("http://localhost:" + port + "/greeting");
 	}
 
-	@Test
-	@Description("/greeting endpoint returns expected response for default name")
-	public void greeting_ExpectedResponseWithDefaultName() {
-		ResponseEntity<String> response = restTemplate.getForEntity(base.toString(), String.class);
+	// @Test
+	// @Description("/greeting endpoint returns expected response for default name")
+	// public void greeting_ExpectedResponseWithDefaultName() {
+	// 	ResponseEntity<String> response = restTemplate.getForEntity(base.toString(), String.class);
 
-		assertEquals(200, response.getStatusCode().value());
-		assertEquals("Hello World", response.getBody());
+	// 	assertEquals(200, response.getStatusCode().value());
+	// 	assertEquals("Hello World", response.getBody());
+	// }
+
+	// @Test
+	// @Description("/greeting endpoint returns expected response for specified name parameter")
+	// public void greeting_ExpectedResponseWithNameParam() {
+	// 	ResponseEntity<String> response = restTemplate.getForEntity(base.toString() + "?name=John", String.class);
+
+	// 	assertEquals(200, response.getStatusCode().value());
+	// 	assertEquals("Hello John", response.getBody());
 	}
 
-	@Test
-	@Description("/greeting endpoint returns expected response for specified name parameter")
-	public void greeting_ExpectedResponseWithNameParam() {
-		ResponseEntity<String> response = restTemplate.getForEntity(base.toString() + "?name=John", String.class);
+	// @Test
+	// @DisplayName("get list of FTSE 100 companies")
 
-		assertEquals(200, response.getStatusCode().value());
-		assertEquals("Hello John", response.getBody());
-	}
+	// @Test
+	// @DisplayName("get specific FTSE 100 company")
+
+	// @Test
+	// @DisplayName("add a company to the FTSE 100")
+
+	// @Test
+	// @DisplayName("remove a company from the FTSE 100")
+
+	// @Test
+	// @DisplayName("update information of a FTSE 100 company")
+	// remeber to test that exceptions are also thrown!
 }

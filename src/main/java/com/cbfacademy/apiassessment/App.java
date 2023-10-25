@@ -60,20 +60,10 @@ public class App {
 
 
 
-	// @GetMapping(value = "books/{id}", produces = "application/json")
-	// public ResponseEntity<Books> getBookById(@PathVariable Long id){
-	// 		Gson gson = new Gson();
-			
-	// 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
-	// 			books = gson.fromJson(reader, new TypeToken<List<Books>>() {}.getType());
-	// 			for (Books book : books){
-	// 				if (book.getId() == id){
-	// 					return ResponseEntity.ok(book);
-	// 				}}} catch (IOException e) {
-	// 					e.printStackTrace();
-	// 				}
-	// 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-	// 		}
+	@GetMapping(value = "companies/{tickerSymbol}", produces = "application/json")
+	public ResponseEntity<Ftse100> getFtse100CompanyByTickerSymbol(@PathVariable String tickerSymbol){
+		return ftse100Service.getFtse100CompanyByTickerSymbol(tickerSymbol);
+			}
 
 
 	// @PutMapping("books/{id}")
