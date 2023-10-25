@@ -1,8 +1,6 @@
 package com.cbfacademy.apiassessment;
 
 import java.math.BigInteger;
-import java.net.URL;
-import java.text.StringCharacterIterator;
 
 public class Ftse100 {
     private String companyName;

@@ -37,8 +37,6 @@ public class App {
 	@Autowired
 	private Ftse100Service ftse100Service;
 
-	//  private List<Ftse100> companies = new ArrayList<>();
-
 	@GetMapping("/companies")
 	public ResponseEntity<List<Ftse100>> getAllBooks(){
 		return ftse100Service.getAllFtse100Companies();
