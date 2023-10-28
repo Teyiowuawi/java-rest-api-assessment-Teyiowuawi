@@ -6,7 +6,7 @@ public class Ftse100 {
     private String companyName;
     private String tickerSymbol; 
     private String sector;
-    private String stockPrice;
+    private double stockPrice;
     // change stock price to double
     private BigInteger marketCapitalization;
     private double priceToEquityRatio;
@@ -14,7 +14,7 @@ public class Ftse100 {
     private double debtToEquityRatio;
     private double esgRiskRating;
 
-  public Ftse100(String companyName, String tickerSymbol, String sector,String stockPrice, BigInteger marketCapitalization, double priceToEquityRatio, double priceToBookRatio, double debtToEquityRatio, double esgRiskRating){
+  public Ftse100(String companyName, String tickerSymbol, String sector, double stockPrice, BigInteger marketCapitalization, double priceToEquityRatio, double priceToBookRatio, double debtToEquityRatio, double esgRiskRating){
         this.companyName = companyName;
         this.tickerSymbol = tickerSymbol;
         this.sector = sector;
@@ -61,12 +61,12 @@ public class Ftse100 {
     }
 
 
-    public String getStockPrice() {
+    public double getStockPrice() {
         return stockPrice;
     }
 
 
-    public void setStockPrice(String stockPrice) {
+    public void setStockPrice(double stockPrice) {
         this.stockPrice = stockPrice;
     }
 

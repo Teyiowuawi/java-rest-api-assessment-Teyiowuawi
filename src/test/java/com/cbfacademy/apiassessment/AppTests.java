@@ -37,6 +37,7 @@ class AppTests {
 	}
 
 	//use before all annotation to run this before each method (once)
+	// come back to my rest templates to ensure rest templates are functioning correctly after implementaiton of service
 
 	@Test
 	@DisplayName("/companies endpoint returns the list of FTSE 100 companies")
@@ -44,8 +45,8 @@ class AppTests {
 
 		List<Ftse100> companies = new ArrayList<>() {
 			{
-				add(new Ftse100("Mining PLC", "MG", "Mining and materials", "https://finance.yahoo.com/quote/MG.L", new BigInteger("2000000000"), 20.50, 30.50, 8.50, 20.50));
-				add(new Ftse100("HairSure PLC", "HSE", "Beauty and Haircare", "https://finance.yahoo.com/quote/HSE.L", new BigInteger("1842100000"), 2.50, 1.57, 38.67, 14.70));
+				add(new Ftse100("Mining PLC", "MG", "Mining and materials", 44.00, new BigInteger("2000000000"), 20.50, 30.50, 8.50, 20.50));
+				add(new Ftse100("HairSure PLC", "HSE", "Beauty and Haircare", 517.60, new BigInteger("1842100000"), 2.50, 1.57, 38.67, 14.70));
 	
 			}
 		};
@@ -67,7 +68,7 @@ class AppTests {
 
 	@Test
 	public void testCreateFtse100() {
-		Ftse100 company = new Ftse100("Manufacture Metal PLC", "MML", "General Industrial", "https://finance.yahoo.com/quote/MML.L", new BigInteger("3800000000"), 8.17, 3.57, 28.67, 44.20);
+		Ftse100 company = new Ftse100("Manufacture Metal PLC", "MML", "General Industrial", 24.50, new BigInteger("3800000000"), 8.17, 3.57, 28.67, 44.20);
 		ResponseEntity<Ftse100> response = restTemplate.postForEntity("/companies", company, Ftse100.class);
 
 
