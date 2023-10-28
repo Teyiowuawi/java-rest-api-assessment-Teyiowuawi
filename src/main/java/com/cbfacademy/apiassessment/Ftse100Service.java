@@ -18,6 +18,12 @@ public class Ftse100Service implements Ftse100BasicCrud {
 
     private List<Ftse100> companies = new ArrayList<>();
 
+    // reading of java file should/can be elsewhere in my application 
+    // then the basic methods can be implemented here 
+    // need to create a rest template also within my test file 
+    // when writing to json file - additional things must be written into it!
+    // could potentially add the commpanies list as a constructor within the service for use by the methods 
+
      @Override
     public ResponseEntity<Ftse100> addFtse100Company(Ftse100 newCompany) {
         Gson gson = new Gson();

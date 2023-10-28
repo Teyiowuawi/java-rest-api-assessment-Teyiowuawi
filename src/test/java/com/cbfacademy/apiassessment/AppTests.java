@@ -11,12 +11,8 @@ import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.URL;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +35,8 @@ class AppTests {
 	public void setUp() throws Exception {
 		this.base = new URL("http://localhost:" + port + "/companies");
 	}
+
+	//use before all annotation to run this before each method (once)
 
 	@Test
 	@DisplayName("/companies endpoint returns the list of FTSE 100 companies")
