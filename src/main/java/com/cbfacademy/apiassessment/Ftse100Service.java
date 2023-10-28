@@ -80,9 +80,21 @@ public class Ftse100Service implements Ftse100BasicCrud {
     }
 
     @Override
-    public ResponseEntity<Ftse100> updateFtse100Company(String tickerSymbol) {
-        // figure out this method implementation
-        throw new UnsupportedOperationException("Unimplemented method 'updateFtse100Company'");
+    public ResponseEntity<Ftse100> updateFtse100Company(String tickerSymbol, Ftse100 updatedCompany) {
+        
+        Gson gson = new Gson();
+			
+        try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
+            companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+            for (Ftse100 company : companies){
+                if (company.getTickerSymbol().toLowerCase().equals(tickerSymbol.toLowerCase())){
+                    int indexOfCompanyInFtse100List = companies.indexOf(company);
+                    companies.set(indexOfCompanyInFtse100List, updatedCompany);
+                    return ResponseEntity.ok(updatedCompany);
+                }}} catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }
 
     @Override
@@ -105,10 +117,8 @@ public class Ftse100Service implements Ftse100BasicCrud {
 
 
 }
-			// ^ need to sort out aspect where book ID must not match the id's of other books
+		
 			//remember to find appropriate responses for HTTP requests and also appropriate exception handling
-            // dry principle - need to stop repeating the reading of the json file!
+        
 
-    	// question 
-		// to make code more modular, should I have the simple CRUD operations in the BookService?   
-        // do i have to... i forgot what i wanted to ask here       
+      

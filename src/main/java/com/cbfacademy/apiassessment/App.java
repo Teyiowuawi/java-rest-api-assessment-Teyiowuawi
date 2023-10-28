@@ -26,7 +26,7 @@ import com.google.gson.reflect.TypeToken;
 
 @SpringBootApplication
 @RestController
-@RequestMapping
+@RequestMapping("companies")
 public class App {
 
 	public static void main(String[] args) {
@@ -37,47 +37,31 @@ public class App {
 	@Autowired
 	private Ftse100Service ftse100Service;
 
-	@GetMapping("/companies")
+	@GetMapping("/all")
 	public ResponseEntity<List<Ftse100>> getAllBooks(){
 		return ftse100Service.getAllFtse100Companies();
-		
-		
-		//print f - defining the format i would like to use for the loop!
 	}
 
+	@GetMapping(value = "/{tickerSymbol}", produces = "application/json")
+	public ResponseEntity<Ftse100> getFtse100CompanyByTickerSymbol(@PathVariable String tickerSymbol){
+		return ftse100Service.getFtse100CompanyByTickerSymbol(tickerSymbol);
+	}
 
-	@PostMapping("/companies")
+	@PostMapping("all")
 	public ResponseEntity<Ftse100> addFtse100Company(@RequestBody Ftse100 ftse100){
 		return ftse100Service.addFtse100Company(ftse100);
 			} 
 
-	@DeleteMapping(value = "companies/{tickerSymbol}", produces = "application/json")
+	@DeleteMapping(value = "/{tickerSymbol}", produces = "application/json")
 	public ResponseEntity<List<Ftse100>> deleteFtse100CompanyByTickerSymbol(@PathVariable String tickerSymbol){
 		return ftse100Service.deleteFtse100Company(tickerSymbol);
 	}
 
-
-
-	@GetMapping(value = "companies/{tickerSymbol}", produces = "application/json")
-	public ResponseEntity<Ftse100> getFtse100CompanyByTickerSymbol(@PathVariable String tickerSymbol){
-		return ftse100Service.getFtse100CompanyByTickerSymbol(tickerSymbol);
-			}
-
-
-	// @PutMapping("books/{id}")
-	// public ResponseEntity<List<Books>> updateBook(@PathVariable Long id, @RequestBody Books updatedBook){
-	// 	Gson gson = new Gson();
-
-	// 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("books.json"))){
-	// 		books = gson.fromJson(reader, new TypeToken<List<Books>>() {}.getType());
-	// 		return ResponseEntity.ok(books);
-	// 			} catch (IOException e)
-	// 				{e.printStackTrace();
-	// 			}
-	// 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);			
-	// 		}
-		// come back to this put request to figure out the code 
+	@PutMapping("/{tickerSymbol}")
+	public ResponseEntity<Ftse100> updateFtse100CompanyDetails(@PathVariable String tickerSymbol, @RequestBody Ftse100 ftse100){
+		return ftse100Service.updateFtse100Company(tickerSymbol, ftse100);
 	}
+}
 
 
 
