@@ -1,9 +1,7 @@
 package com.cbfacademy.apiassessment;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.ArrayList;
+
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 @SpringBootApplication
 @RestController
@@ -38,7 +34,7 @@ public class App {
 	private Ftse100Service ftse100Service;
 
 	@GetMapping("/all")
-	public ResponseEntity<List<Ftse100>> getAllBooks(){
+	public ResponseEntity<List<Ftse100>> getAllCompanies(){
 		return ftse100Service.getAllFtse100Companies();
 	}
 
@@ -67,10 +63,38 @@ public class App {
 		return ftse100Service.getStockAndPrice(tickerSymbol);
 	}
 
-	@GetMapping("/stockPrices")
-	public ResponseEntity<Double> getAllFtse100CompanyStockPrices(){
+	@GetMapping("/allStockPrices")
+	public ResponseEntity<String> getAllFtse100CompanyStockPrices(){
 		return ftse100Service.getAllStocksAndAllPrices();
 	}
+	// this response is currently only printing out the first company in the list and not the other 99? why?
+
+	@GetMapping("/marketCapitalization")
+	public ResponseEntity<BigInteger> getAllFtse100CompanyMarketCapitalization(){
+		return ftse100Service.getAllStocksAndMarketCapitalization();
+	}
+
+	@GetMapping("/priceToEquity")
+	public ResponseEntity<Double> getAllFtse100CompanyPriceToEquity(){
+		return ftse100Service.getAllStocksAndAllPriceToEquity();
+	}
+
+	@GetMapping("/priceToBook")
+	public ResponseEntity<Double> getAllFtse100CompanyPriceToBook(){
+		return ftse100Service.getAllStocksAndAllPriceToBook();
+	}
+
+	@GetMapping("/debtToEquity")
+	public ResponseEntity<Double> getAllFtse100CompanyDebtToEquity(){
+		return ftse100Service.getAllStocksAndAllDebtToEquity();
+	}
+
+	@GetMapping("/esg")
+	public ResponseEntity<Double> getAllFtse100CompanyEsgRatings(){
+		return ftse100Service.getAllStocksAndAllEsgRatings();
+	}
+
+
 
 	// @GetMapping(value = "/{sector}", produces = "application/json")
 	// public ResponseEntity <List<Ftse100>> getAllFtse100CompaniesInSector(@PathVariable String sector){

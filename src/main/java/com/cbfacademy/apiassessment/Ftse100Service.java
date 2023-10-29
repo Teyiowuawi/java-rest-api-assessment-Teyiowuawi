@@ -3,6 +3,7 @@ package com.cbfacademy.apiassessment;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -123,42 +124,96 @@ public class Ftse100Service implements Ftse100BasicCrud {
                     e.printStackTrace();
                 }
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-                // Ticker symbol does not exist. Please ensure you type in the ticker symbol of an existing company 
+                // Body message; Ticker symbol does not exist. Please ensure you type in the ticker symbol of an existing company 
                
     }
 
-       public  ResponseEntity<Double> getAllStocksAndAllPrices() {	
+       public  ResponseEntity<String> getAllStocksAndAllPrices() {	
 		Gson gson = new Gson();
 			
 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
 			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
-            companies.forEach((company) -> {
-                System.out.println(company.getStockPrice());
-            });
-			// for (Ftse100 company : companies){
-             } catch (IOException e){
+            for (Ftse100 company : companies) {
+                String companyTickerSymbolAndStockPrice = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getStockPrice();
+                return ResponseEntity.ok(companyTickerSymbolAndStockPrice);
+            }} catch (IOException e){
                 e.printStackTrace();
              }
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
+        // this response is currently only printing out the first company in the list and not the other 99?
 
-
-    // public ResponseEntity<List<Ftse100>> getCompaniesInSector(String sector){
-    //        Gson gson = new Gson();
+    public ResponseEntity<BigInteger> getAllStocksAndMarketCapitalization() {
+        Gson gson = new Gson();
 			
-	// 	try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
-	// 		companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
-	// 		for (Ftse100 company : companies){
-    //                 if (company.getSector().toLowerCase().equals(sector.toLowerCase())){
-    //                     return ResponseEntity.ok(companies);
-    //                 }
-    //             }
-    //         } catch (IOException e){
-    //             e.printStackTrace();
-    //         }
-    //         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-    // }
+		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
+			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+            for (Ftse100 company : companies) {
+                return ResponseEntity.ok(company.getMarketCapitalization());
+            }} catch (IOException e) {
+                e.printStackTrace();
+            }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        // this response is currently only printing out the first company in the list and not the other 99?
+
+        public ResponseEntity<Double> getAllStocksAndAllPriceToEquity() {
+        Gson gson = new Gson();
+			
+		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
+			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+            for (Ftse100 company : companies) {
+                return ResponseEntity.ok(company.getPriceToEquityRatio());
+            }} catch (IOException e) {
+                e.printStackTrace();
+            }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        // this response is currently only printing out the first company in the list and not the other 99?
+
+        public ResponseEntity<Double> getAllStocksAndAllPriceToBook() {
+        Gson gson = new Gson();
+			
+		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
+			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+            for (Ftse100 company : companies) {
+                return ResponseEntity.ok(company.getPriceToBookRatio());
+            }} catch (IOException e) {
+                e.printStackTrace();
+            }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }  
+        // this response is currently only printing out the first company in the list and not the other 99? 
+
+        public ResponseEntity<Double> getAllStocksAndAllDebtToEquity() {
+        Gson gson = new Gson();
+			
+		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
+			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+            for (Ftse100 company : companies) {
+                return ResponseEntity.ok(company.getDebtToEquityRatio());
+            }} catch (IOException e) {
+                e.printStackTrace();
+            }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }  
+        // this response is currently only printing out the first company in the list and not the other 99? 
+
+        public ResponseEntity<Double> getAllStocksAndAllEsgRatings() {
+        Gson gson = new Gson();
+			
+		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
+			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+            for (Ftse100 company : companies) {
+                return ResponseEntity.ok(company.getEsgRiskRating());
+            }} catch (IOException e) {
+                e.printStackTrace();
+            }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }  
+        // this response is currently only printing out the first company in the list and not the other 99? 
 }
+
 
 			//remember to find appropriate responses for HTTP requests and also appropriate exception handling
             // exception handling 
@@ -167,6 +222,11 @@ public class Ftse100Service implements Ftse100BasicCrud {
             // additiona requests for my end points 
             //writing back to my json file also when things are created???
             // rest template also 
+            // exception handling - incorrect argument placed inside the file also 
+            // look into exception handling and the different types of exception e.g. null, incorrect argument etc 
+            // look into appropriate HTTP response codes and also type up my bodies 
+            // organise the structure of my code 
+
         
 
       
