@@ -420,7 +420,7 @@
     "companyName": "Entain Plc",
     "tickerSymbol": "ENT",
     "sector": "Travel and Leisure",
-    "stock price": 914.80,
+    "stockPrice": 914.80,
     "marketCapitalization": 5965000000,
     "priceToEquityRatio": 185.95, 
     "priceToBookRatio": 2.06,
@@ -508,7 +508,7 @@
     "companyName": "3i Group Plc",
     "tickerSymbol": "III",
     "sector": "Investment Banking and Brokerage Services",
-    "stock price": 19680.00,
+    "stockPrice": 19680.00,
     "marketCapitalization": 19516000000,
     "priceToEquityRatio": 4.22, 
     "priceToBookRatio": 1.16,
@@ -824,7 +824,7 @@
     "esgRiskRating": 24.30
 },
 {
-    "companyName": " DCC Plc",
+    "companyName": "DCC Plc",
     "tickerSymbol": "DCC",
     "sector": "Industrial Support Services",
     "stockPrice": 4454.98,
@@ -915,7 +915,7 @@
     "companyName": "International Consolidated Airlines Group Plc",
     "tickerSymbol": "IAG",
     "sector": "Travel and Leisure",
-    "stock price": 142.05,
+    "stockPrice": 142.05,
     "marketCapitalization": 7095000000,
     "priceToEquityRatio": 4.31, 
     "priceToBookRatio": 3.76,
@@ -945,7 +945,7 @@
     "esgRiskRating": 21.80
 },
 {
-    "companyName": " JD Sports Fashion Plc",
+    "companyName": "JD Sports Fashion Plc",
     "tickerSymbol": "JD",
     "sector": "Retailers",
     "stockPrice": 126.10,

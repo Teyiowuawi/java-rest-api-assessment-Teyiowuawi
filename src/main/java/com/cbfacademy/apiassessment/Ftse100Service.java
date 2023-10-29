@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -110,33 +111,37 @@ public class Ftse100Service implements Ftse100BasicCrud {
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);			
     }
 
-    // public ResponseEntity<String> getStockAndPrice(String tickerSymbol) {
-    //     Gson gson = new Gson();
+    public ResponseEntity<String> getStockAndPrice(String tickerSymbol) {
+        Gson gson = new Gson();
 			
-	// 	try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
-	// 		companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
-	// 		for (Ftse100 company : companies){
-    //             if (company.getTickerSymbol().toUpperCase().equals(tickerSymbol.toUpperCase())){
-    //                ResponseEntity.ok(company.getCompanyName() + " (" + tickerSymbol + ")" + ": " + company.getStockPrice());
-    //             }}} catch (IOException e){
-    //                 e.printStackTrace();
-    //             }
-    //             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
+			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+			for (Ftse100 company : companies){
+                if (company.getTickerSymbol().toUpperCase().equals(tickerSymbol.toUpperCase())){
+                return ResponseEntity.ok(company.getCompanyName() + " (" + tickerSymbol + ")" + ": " + company.getStockPrice() + " GBX");
+                }}} catch (IOException e){
+                    e.printStackTrace();
+                }
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+                // Ticker symbol does not exist. Please ensure you type in the ticker symbol of an existing company 
                
-    // }
+    }
 
-    //    public ResponseEntity<String> getAllStocksAndAllPrices() {	
-	// 	Gson gson = new Gson();
+       public  ResponseEntity<Double> getAllStocksAndAllPrices() {	
+		Gson gson = new Gson();
 			
-	// 	try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
-	// 		companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
-	// 		for (Ftse100 company : companies){
-    //             return ResponseEntity.ok(company.getCompanyName() + " (" + company.getTickerSymbol() + ")" + ": " + company.getStockPrice());
-    //          }} catch (IOException e){
-    //             e.printStackTrace();
-    //          }
-    //          return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-    //     }
+		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
+			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+            companies.forEach((company) -> {
+                System.out.println(company.getStockPrice());
+            });
+			// for (Ftse100 company : companies){
+             } catch (IOException e){
+                e.printStackTrace();
+             }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
 
     // public ResponseEntity<List<Ftse100>> getCompaniesInSector(String sector){
     //        Gson gson = new Gson();
@@ -155,7 +160,6 @@ public class Ftse100Service implements Ftse100BasicCrud {
     // }
 }
 
-		
 			//remember to find appropriate responses for HTTP requests and also appropriate exception handling
             // exception handling 
             // error handling approriate bodies and status codes 

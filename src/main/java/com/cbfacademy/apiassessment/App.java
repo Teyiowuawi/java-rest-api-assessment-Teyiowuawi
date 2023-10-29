@@ -62,20 +62,20 @@ public class App {
 		return ftse100Service.updateFtse100Company(tickerSymbol, ftse100);
 	}
 
-	// @GetMapping(value = "/{tickerSymbol}/stockPrice", produces = "application/json")
-	// public ResponseEntity<String> getFtse100CompanyStockPrice(@PathVariable String tickerSymbol){
-	// 	return ftse100Service.getStockAndPrice(tickerSymbol);
-	// }
-
-	// @GetMapping("/stockPrices")
-	// public ResponseEntity<String> getAllFtse100CompanyStockPrices(){
-	// 	return ftse100Service.getAllStocksAndAllPrices();
-	// }
-
-	@GetMapping(value = "/{sector}", produces = "application/json")
-	public ResponseEntity <List<Ftse100>> getAllFtse100CompaniesInSector(@PathVariable String sector){
-		return ftse100Service.getCompaniesInSector(sector);
+	@GetMapping(value = "/{tickerSymbol}/stockPrice", produces = "application/json")
+	public ResponseEntity<String> getAFtse100CompanyStockPrice(@PathVariable String tickerSymbol){
+		return ftse100Service.getStockAndPrice(tickerSymbol);
 	}
+
+	@GetMapping("/stockPrices")
+	public ResponseEntity<Double> getAllFtse100CompanyStockPrices(){
+		return ftse100Service.getAllStocksAndAllPrices();
+	}
+
+	// @GetMapping(value = "/{sector}", produces = "application/json")
+	// public ResponseEntity <List<Ftse100>> getAllFtse100CompaniesInSector(@PathVariable String sector){
+	// 	return ftse100Service.getCompaniesInSector(sector);
+	// }
 
 	
 
