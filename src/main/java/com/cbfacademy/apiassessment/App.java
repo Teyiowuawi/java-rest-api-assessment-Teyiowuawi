@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -32,6 +30,11 @@ public class App {
 
 	@Autowired
 	private Ftse100Service ftse100Service;
+
+	@Autowired
+	private Ftse100AdditionalService ftse100AdditionalService;
+
+
 
 	@GetMapping("/all")
 	public ResponseEntity<List<Ftse100>> getAllCompanies(){
@@ -60,46 +63,50 @@ public class App {
 
 	@GetMapping(value = "/{tickerSymbol}/stockPrice", produces = "application/json")
 	public ResponseEntity<String> getAFtse100CompanyStockPrice(@PathVariable String tickerSymbol){
-		return ftse100Service.getStockAndPrice(tickerSymbol);
+		return ftse100AdditionalService.getStockAndPrice(tickerSymbol);
 	}
 
 	@GetMapping("/allStockPrices")
 	public ResponseEntity<String> getAllFtse100CompanyStockPrices(){
-		return ftse100Service.getAllStocksAndAllPrices();
+		return ftse100AdditionalService.getAllStocksAndAllPrices();
 	}
 	// this response is currently only printing out the first company in the list and not the other 99? why?
 
 	@GetMapping("/marketCapitalization")
 	public ResponseEntity<BigInteger> getAllFtse100CompanyMarketCapitalization(){
-		return ftse100Service.getAllStocksAndMarketCapitalization();
+		return ftse100AdditionalService.getAllStocksAndMarketCapitalization();
 	}
+
+	// this response is currently only printing out the first company in the list and not the other 99? why?
 
 	@GetMapping("/priceToEquity")
 	public ResponseEntity<Double> getAllFtse100CompanyPriceToEquity(){
-		return ftse100Service.getAllStocksAndAllPriceToEquity();
+		return ftse100AdditionalService.getAllStocksAndAllPriceToEquity();
 	}
+	// this response is currently only printing out the first company in the list and not the other 99? why?
 
 	@GetMapping("/priceToBook")
 	public ResponseEntity<Double> getAllFtse100CompanyPriceToBook(){
-		return ftse100Service.getAllStocksAndAllPriceToBook();
+		return ftse100AdditionalService.getAllStocksAndAllPriceToBook();
 	}
+	// this response is currently only printing out the first company in the list and not the other 99? why?
 
 	@GetMapping("/debtToEquity")
 	public ResponseEntity<Double> getAllFtse100CompanyDebtToEquity(){
-		return ftse100Service.getAllStocksAndAllDebtToEquity();
+		return ftse100AdditionalService.getAllStocksAndAllDebtToEquity();
 	}
+	// this response is currently only printing out the first company in the list and not the other 99? why?
 
 	@GetMapping("/esg")
 	public ResponseEntity<Double> getAllFtse100CompanyEsgRatings(){
-		return ftse100Service.getAllStocksAndAllEsgRatings();
+		return ftse100AdditionalService.getAllStocksAndAllEsgRatings();
 	}
+	// this response is currently only printing out the first company in the list and not the other 99? why?
 
-
-
-	// @GetMapping(value = "/{sector}", produces = "application/json")
-	// public ResponseEntity <List<Ftse100>> getAllFtse100CompaniesInSector(@PathVariable String sector){
-	// 	return ftse100Service.getCompaniesInSector(sector);
-	// }
+// @GetMapping(value = "/{sector}", produces = "application/json")
+// public ResponseEntity <List<Ftse100>> getAllFtse100CompaniesInSector(@PathVariable String sector){
+// 	return ftse100Service.getCompaniesInSector(sector);
+// }
 
 	
 
