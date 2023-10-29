@@ -38,10 +38,8 @@ public class Ftse100Service implements Ftse100BasicCrud {
 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
 			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
 			for (Ftse100 existingCompany : companies){
-				if (newCompany.getTickerSymbol().toLowerCase().equals(existingCompany.getTickerSymbol().toLowerCase())){
+				if (newCompany.getTickerSymbol().toUpperCase().equals(existingCompany.getTickerSymbol().toUpperCase())){
 					return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(null);
-                    // make sure this is a correct response
-                    // attempt this to see if this ticker symbol has been reported or not
 				}
 				}} catch (IOException e){
 					e.printStackTrace();
@@ -61,7 +59,6 @@ public class Ftse100Service implements Ftse100BasicCrud {
             e.printStackTrace();
         }
         return ResponseEntity.ok(companies);
-        // define formatting to make it more visually appealing
     }
 
     @Override
@@ -71,7 +68,7 @@ public class Ftse100Service implements Ftse100BasicCrud {
         try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
             companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
             for (Ftse100 company : companies){
-                if (company.getTickerSymbol().toLowerCase().equals(tickerSymbol.toLowerCase())){
+                if (company.getTickerSymbol().toUpperCase().equals(tickerSymbol.toUpperCase())){
                     return ResponseEntity.ok(company);
                 }}} catch (IOException e) {
                     e.printStackTrace();
@@ -87,7 +84,7 @@ public class Ftse100Service implements Ftse100BasicCrud {
         try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
             companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
             for (Ftse100 company : companies){
-                if (company.getTickerSymbol().toLowerCase().equals(tickerSymbol.toLowerCase())){
+                if (company.getTickerSymbol().toUpperCase().equals(tickerSymbol.toUpperCase())){
                     int indexOfCompanyInFtse100List = companies.indexOf(company);
                     companies.set(indexOfCompanyInFtse100List, updatedCompany);
                     return ResponseEntity.ok(updatedCompany);
@@ -104,7 +101,7 @@ public class Ftse100Service implements Ftse100BasicCrud {
 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
 			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
 			for (Ftse100 company : companies){
-                    if (company.getTickerSymbol().toLowerCase().equals(tickerSymbol.toLowerCase())){
+                    if (company.getTickerSymbol().toUpperCase().equals(tickerSymbol.toUpperCase())){
 					companies.remove(company);
 					return ResponseEntity.ok(companies);
 				}}} catch (IOException e)
@@ -112,13 +109,60 @@ public class Ftse100Service implements Ftse100BasicCrud {
 				}
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);			
     }
-    // come back to add a proper body
 
+    // public ResponseEntity<String> getStockAndPrice(String tickerSymbol) {
+    //     Gson gson = new Gson();
+			
+	// 	try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
+	// 		companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+	// 		for (Ftse100 company : companies){
+    //             if (company.getTickerSymbol().toUpperCase().equals(tickerSymbol.toUpperCase())){
+    //                ResponseEntity.ok(company.getCompanyName() + " (" + tickerSymbol + ")" + ": " + company.getStockPrice());
+    //             }}} catch (IOException e){
+    //                 e.printStackTrace();
+    //             }
+    //             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+               
+    // }
 
+    //    public ResponseEntity<String> getAllStocksAndAllPrices() {	
+	// 	Gson gson = new Gson();
+			
+	// 	try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
+	// 		companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+	// 		for (Ftse100 company : companies){
+    //             return ResponseEntity.ok(company.getCompanyName() + " (" + company.getTickerSymbol() + ")" + ": " + company.getStockPrice());
+    //          }} catch (IOException e){
+    //             e.printStackTrace();
+    //          }
+    //          return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    //     }
 
+    // public ResponseEntity<List<Ftse100>> getCompaniesInSector(String sector){
+    //        Gson gson = new Gson();
+			
+	// 	try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
+	// 		companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+	// 		for (Ftse100 company : companies){
+    //                 if (company.getSector().toLowerCase().equals(sector.toLowerCase())){
+    //                     return ResponseEntity.ok(companies);
+    //                 }
+    //             }
+    //         } catch (IOException e){
+    //             e.printStackTrace();
+    //         }
+    //         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    // }
 }
+
 		
 			//remember to find appropriate responses for HTTP requests and also appropriate exception handling
+            // exception handling 
+            // error handling approriate bodies and status codes 
+            //format json in my local host port if I can
+            // additiona requests for my end points 
+            //writing back to my json file also when things are created???
+            // rest template also 
         
 
       
