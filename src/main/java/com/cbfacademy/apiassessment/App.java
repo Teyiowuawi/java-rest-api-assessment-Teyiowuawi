@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cbfacademy.ApiRequestException;
 
 
 @SpringBootApplication
@@ -35,7 +34,6 @@ public class App {
 
 	@Autowired
 	private Ftse100AdditionalService ftse100AdditionalService;
-
 
 
 	@GetMapping("/all")
@@ -68,11 +66,11 @@ public class App {
 		return ftse100AdditionalService.getStockAndPrice(tickerSymbol);
 	}
 
-	@GetMapping("/allStockPrices")
+	@GetMapping(value = "/allStockPrices", produces = "application/json")
 	public ResponseEntity<String> getAllFtse100CompanyStockPrices(){
 		return ftse100AdditionalService.getAllStocksAndAllPrices();
 	}
-	// this response is currently only printing out the first company in the list and not the other 99? why?
+
 
 	@GetMapping("/marketCapitalization")
 	public ResponseEntity<BigInteger> getAllFtse100CompanyMarketCapitalization(){

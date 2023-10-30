@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -48,10 +50,19 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
 			
 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
 			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+
+            List<String> allCompaniesAndStockPrices = new ArrayList<>();
+            
+            Collections.sort(companies, Comparator.comparing(Ftse100::getStockPrice));
+
             for (Ftse100 company : companies) {
-                String companyTickerSymbolAndStockPrice = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getStockPrice();
-                return ResponseEntity.ok(companyTickerSymbolAndStockPrice);
-            }} catch (IOException e){
+                String companyNameAndStockPrice = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getStockPrice();
+                allCompaniesAndStockPrices.add(companyNameAndStockPrice);
+            }
+
+            return ResponseEntity.ok(String.join("\n", allCompaniesAndStockPrices));
+
+        } catch (IOException e){
                 e.printStackTrace();
              }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
