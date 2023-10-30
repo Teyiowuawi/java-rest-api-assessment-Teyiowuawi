@@ -26,7 +26,6 @@ public class Ftse100Service implements Ftse100BasicCrud {
 
     private List<Ftse100> companies = new ArrayList<>();
 
-    // then the basic methods can be implemented here 
     // need to create a rest template also within my test file 
     // when writing to json file - additional things must be written into it!
     // could potentially add the commpanies list as a constructor within the service for use by the methods 
@@ -40,6 +39,12 @@ public class Ftse100Service implements Ftse100BasicCrud {
 			for (Ftse100 existingCompany : companies){
 				if (newCompany.getTickerSymbol().toUpperCase().equals(existingCompany.getTickerSymbol().toUpperCase())){
 					return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(null);
+                    //what can I add to the body of my HTTP request? - json instance of the exception perhaps 
+                    // with all of the data and the ID
+                    //Or actually just the ticker symbol - timestamp etc 
+                    // perhaps the type of request too 
+                    // the the message can be the excpetion message
+                
 				}
 				}} catch (IOException e){
 					e.printStackTrace();
@@ -74,6 +79,13 @@ public class Ftse100Service implements Ftse100BasicCrud {
                     e.printStackTrace();
                 }
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+                // map have to go down the route of create a Map Object instead
+                    //what can I add to the body of my HTTP request? - json instance of the exception perhaps 
+                    // with all of the data and the ID
+                    //Or actually just the ticker symbol - timestamp etc 
+                    // perhaps the type of request too 
+                    // the the message can be the excpetion message
+                    // Ticker symbol + tickerSymbol does not exist. Please try again.
     }
 
     @Override
@@ -92,6 +104,12 @@ public class Ftse100Service implements Ftse100BasicCrud {
                     e.printStackTrace();
                 }
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+                //what can I add to the body of my HTTP request? - json instance of the exception perhaps 
+                    // with all of the data and the ID
+                    //Or actually just the ticker symbol - timestamp etc 
+                    // perhaps the type of request too 
+                    // the the message can be the excpetion message
+                    //TICKER SYMBOL, Timestamp, something else and the message: Unable to find Company with Ticker symbol + tickerSymbol. Please try again
     }
 
     @Override
@@ -107,7 +125,13 @@ public class Ftse100Service implements Ftse100BasicCrud {
 				}}} catch (IOException e)
 					{e.printStackTrace();
 				}
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);			
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);		
+                //what can I add to the body of my HTTP request? - json instance of the exception perhaps 
+                    // with all of the data and the ID
+                    //Or actually just the ticker symbol - timestamp etc 
+                    // perhaps the type of request too 
+                    // the the message can be the excpetion message
+                    //TICKER SYMBOL, Timestamp, something else and the message: Unable to find Company with Ticker symbol + tickerSymbol. Please try again	
     }
 }
 //     public ResponseEntity<String> getStockAndPrice(String tickerSymbol) {

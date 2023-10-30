@@ -7,7 +7,6 @@ public class Ftse100 {
     private String tickerSymbol; 
     private String sector;
     private double stockPrice;
-    // change stock price to double
     private BigInteger marketCapitalization;
     private double priceToEquityRatio;
     private double priceToBookRatio;
@@ -18,8 +17,7 @@ public class Ftse100 {
         this.companyName = companyName;
         this.tickerSymbol = tickerSymbol;
         this.sector = sector;
-        this.stockPrice = stockPrice;
-        // update to double in constructor + getters and setters 
+        this.stockPrice = stockPrice; 
         this.marketCapitalization = marketCapitalization;
         this.priceToEquityRatio = priceToEquityRatio;
         this.priceToBookRatio = priceToBookRatio;

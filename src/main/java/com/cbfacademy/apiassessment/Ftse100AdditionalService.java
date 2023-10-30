@@ -32,6 +32,12 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
                     e.printStackTrace();
                 }
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+                //what can I add to the body of my HTTP request? - json instance of the exception perhaps 
+                    // with all of the data and the ID
+                    //Or actually just the ticker symbol - timestamp etc 
+                    // perhaps the type of request too 
+                    // the the message can be the excpetion message
+                    //TICKER SYMBOL, Timestamp, something else and the message: Unable to find Company with Ticker symbol + tickerSymbol. Please try again
                 // Body message; Ticker symbol does not exist. Please ensure you type in the ticker symbol of an existing company 
                
     }
@@ -48,7 +54,9 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
             }} catch (IOException e){
                 e.printStackTrace();
              }
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            // BAD request perhaps? - please ensure Wesite URL has been typed correctly
+            //BAD request or not found for this one? 
         }
         // this response is currently only printing out the first company in the list and not the other 99?
     
@@ -63,7 +71,7 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
             }} catch (IOException e) {
                 e.printStackTrace();
             }
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
         // this response is currently only printing out the first company in the list and not the other 99?
     
@@ -78,7 +86,7 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
             }} catch (IOException e) {
                 e.printStackTrace();
             }
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
         // this response is currently only printing out the first company in the list and not the other 99?
 
@@ -93,7 +101,7 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
             }} catch (IOException e) {
                 e.printStackTrace();
             }
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }  
         // this response is currently only printing out the first company in the list and not the other 99? 
     
@@ -108,7 +116,7 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
             }} catch (IOException e) {
                 e.printStackTrace();
             }
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }  
         // this response is currently only printing out the first company in the list and not the other 99? 
         
@@ -123,20 +131,18 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
             }} catch (IOException e) {
                 e.printStackTrace();
             }
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }  
         // this response is currently only printing out the first company in the list and not the other 99? 
 }
 
-			//remember to find appropriate responses for HTTP requests and also appropriate exception handling
+			//Add a patch request to my methods! - in my interface and implementing class 
             // exception handling 
             // error handling approriate bodies and status codes 
-            //format json in my local host port if I can
-            // additiona requests for my end points 
-            //writing back to my json file also when things are created???
+            // format json in my local host port if I can
+            // additional requests for my end points 
+            // writing back to my json file also when things are created???
             // rest template also 
-            // exception handling - incorrect argument placed inside the file also 
-            // look into exception handling and the different types of exception e.g. null, incorrect argument etc 
-            // look into appropriate HTTP response codes and also type up my bodies 
+            // exception handling - incorrect argument placed inside the file also  
             // organise the structure of my code
 
