@@ -115,7 +115,7 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
             }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
-        
+
 
     @Override
     public ResponseEntity<String> getAllStocksAndAllPriceToBook() {
