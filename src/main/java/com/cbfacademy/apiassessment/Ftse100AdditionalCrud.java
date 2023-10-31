@@ -9,13 +9,13 @@ public interface Ftse100AdditionalCrud {
 
     ResponseEntity<String> getAllStocksAndAllPrices();
 
-    ResponseEntity<BigInteger> getAllStocksAndMarketCapitalization();
+    ResponseEntity<String> getAllStocksAndMarketCapitalization();
 
-    ResponseEntity<Double> getAllStocksAndAllPriceToEquity();
+    ResponseEntity<String> getAllStocksAndAllPriceToEquity();
 
-    ResponseEntity<Double> getAllStocksAndAllPriceToBook();
+    ResponseEntity<String> getAllStocksAndAllPriceToBook();
 
-    ResponseEntity<Double> getAllStocksAndAllDebtToEquity();
+    ResponseEntity<String> getAllStocksAndAllDebtToEquity();
 
-    ResponseEntity<Double> getAllStocksAndAllEsgRatings(); 
+    ResponseEntity<String> getAllStocksAndAllEsgRatings(); 
 }

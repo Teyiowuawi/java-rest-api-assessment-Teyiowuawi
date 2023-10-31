@@ -3,7 +3,6 @@ package com.cbfacademy.apiassessment;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -52,7 +51,7 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
 			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
 
             List<String> allCompaniesAndStockPrices = new ArrayList<>();
-            
+
             Collections.sort(companies, Comparator.comparing(Ftse100::getStockPrice));
 
             for (Ftse100 company : companies) {
@@ -66,20 +65,29 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
                 e.printStackTrace();
              }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-            // BAD request perhaps? - please ensure Wesite URL has been typed correctly
-            //BAD request or not found for this one? 
+            
+            //BAD request (please ensure Wesite URL has been typed correctly) or not found for this one? 
         }
-        // this response is currently only printing out the first company in the list and not the other 99?
+ 
     
     @Override
-    public ResponseEntity<BigInteger> getAllStocksAndMarketCapitalization() {
+    public ResponseEntity<String> getAllStocksAndMarketCapitalization() {
         Gson gson = new Gson();
 			
 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
 			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+            
+            List<String> allCompaniesAndMarketCapitalization = new ArrayList<>();
+
+            Collections.sort(companies, Comparator.comparing(Ftse100::getMarketCapitalization));
+
             for (Ftse100 company : companies) {
-                return ResponseEntity.ok(company.getMarketCapitalization());
-            }} catch (IOException e) {
+                String companyNameAndMarketCap = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getMarketCapitalization();
+                allCompaniesAndMarketCapitalization.add(companyNameAndMarketCap);
+            }
+
+            return ResponseEntity.ok(String.join("\n", allCompaniesAndMarketCapitalization));
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
@@ -87,14 +95,22 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
         // this response is currently only printing out the first company in the list and not the other 99?
     
     @Override
-    public ResponseEntity<Double> getAllStocksAndAllPriceToEquity() {
+    public ResponseEntity<String> getAllStocksAndAllPriceToEquity() {
     Gson gson = new Gson();
 			
 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
 			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+            List<String> allCompaniesAndPriceToEquityRatio = new ArrayList<>();
+
+            Collections.sort(companies, Comparator.comparing(Ftse100::getPriceToEquityRatio));
+
             for (Ftse100 company : companies) {
-                return ResponseEntity.ok(company.getPriceToEquityRatio());
-            }} catch (IOException e) {
+                String companyNameAndPriceToEquityRatio = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getPriceToEquityRatio();
+                allCompaniesAndPriceToEquityRatio.add(companyNameAndPriceToEquityRatio);
+            }
+
+            return ResponseEntity.ok(String.join("\n", allCompaniesAndPriceToEquityRatio));
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
@@ -102,29 +118,44 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
         // this response is currently only printing out the first company in the list and not the other 99?
 
     @Override
-    public ResponseEntity<Double> getAllStocksAndAllPriceToBook() {
+    public ResponseEntity<String> getAllStocksAndAllPriceToBook() {
     Gson gson = new Gson();
 			
 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
 			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+            List<String> allCompaniesAndPriceToBookRatio = new ArrayList<>();
+
+            Collections.sort(companies, Comparator.comparing(Ftse100::getPriceToBookRatio));
+
             for (Ftse100 company : companies) {
-                return ResponseEntity.ok(company.getPriceToBookRatio());
-            }} catch (IOException e) {
+                String companyNameAndPriceToBookRatio = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getPriceToBookRatio();
+                allCompaniesAndPriceToBookRatio.add(companyNameAndPriceToBookRatio);
+            }
+
+            return ResponseEntity.ok(String.join("\n", allCompaniesAndPriceToBookRatio));
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }  
-        // this response is currently only printing out the first company in the list and not the other 99? 
+
     
     @Override
-    public ResponseEntity<Double> getAllStocksAndAllDebtToEquity() {
+    public ResponseEntity<String> getAllStocksAndAllDebtToEquity() {
     Gson gson = new Gson();
 			
 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
 			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+            List<String> allCompaniesAndDebtToEquityRatio = new ArrayList<>();
+
+            Collections.sort(companies, Comparator.comparing(Ftse100::getDebtToEquityRatio));
+
             for (Ftse100 company : companies) {
-                return ResponseEntity.ok(company.getDebtToEquityRatio());
-            }} catch (IOException e) {
+                String companyNameAndDebtToEquityRatio = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getDebtToEquityRatio();
+                allCompaniesAndDebtToEquityRatio.add(companyNameAndDebtToEquityRatio);
+            }
+
+            return ResponseEntity.ok(String.join("\n", allCompaniesAndDebtToEquityRatio));} catch (IOException e) {
                 e.printStackTrace();
             }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
@@ -132,26 +163,32 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
         // this response is currently only printing out the first company in the list and not the other 99? 
         
     @Override
-    public ResponseEntity<Double> getAllStocksAndAllEsgRatings() {
+    public ResponseEntity<String> getAllStocksAndAllEsgRatings() {
     Gson gson = new Gson();
 			
 		try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("ftse100.json"))){
 			companies = gson.fromJson(reader, new TypeToken<List<Ftse100>>() {}.getType());
+            List<String> allCompaniesAndEsgRatings = new ArrayList<>();
+
+            Collections.sort(companies, Comparator.comparing(Ftse100::getEsgRiskRating));
+
             for (Ftse100 company : companies) {
-                return ResponseEntity.ok(company.getEsgRiskRating());
-            }} catch (IOException e) {
+                String companyNameAndEsgRating = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getEsgRiskRating();
+                allCompaniesAndEsgRatings.add(companyNameAndEsgRating);
+            }
+
+            return ResponseEntity.ok(String.join("\n", allCompaniesAndEsgRatings));
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }  
-        // this response is currently only printing out the first company in the list and not the other 99? 
 }
 
 			//Add a patch request to my methods! - in my interface and implementing class 
             // exception handling 
             // error handling approriate bodies and status codes 
             // format json in my local host port if I can
-            // additional requests for my end points 
             // writing back to my json file also when things are created???
             // rest template also 
             // exception handling - incorrect argument placed inside the file also  
