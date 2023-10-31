@@ -55,7 +55,7 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
             Collections.sort(companies, Comparator.comparing(Ftse100::getStockPrice));
 
             for (Ftse100 company : companies) {
-                String companyNameAndStockPrice = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getStockPrice();
+                String companyNameAndStockPrice = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getStockPrice() + " GBX";
                 allCompaniesAndStockPrices.add(companyNameAndStockPrice);
             }
 
@@ -82,7 +82,7 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
             Collections.sort(companies, Comparator.comparing(Ftse100::getMarketCapitalization));
 
             for (Ftse100 company : companies) {
-                String companyNameAndMarketCap = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getMarketCapitalization();
+                String companyNameAndMarketCap = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getMarketCapitalization() + " GBP";
                 allCompaniesAndMarketCapitalization.add(companyNameAndMarketCap);
             }
 
@@ -92,7 +92,7 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
             }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
-        // this response is currently only printing out the first company in the list and not the other 99?
+
     
     @Override
     public ResponseEntity<String> getAllStocksAndAllPriceToEquity() {
@@ -115,7 +115,7 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
             }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
-        // this response is currently only printing out the first company in the list and not the other 99?
+        
 
     @Override
     public ResponseEntity<String> getAllStocksAndAllPriceToBook() {
@@ -151,7 +151,7 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
             Collections.sort(companies, Comparator.comparing(Ftse100::getDebtToEquityRatio));
 
             for (Ftse100 company : companies) {
-                String companyNameAndDebtToEquityRatio = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getDebtToEquityRatio();
+                String companyNameAndDebtToEquityRatio = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getDebtToEquityRatio() + "%";
                 allCompaniesAndDebtToEquityRatio.add(companyNameAndDebtToEquityRatio);
             }
 
@@ -160,7 +160,7 @@ public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
             }
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }  
-        // this response is currently only printing out the first company in the list and not the other 99? 
+
         
     @Override
     public ResponseEntity<String> getAllStocksAndAllEsgRatings() {

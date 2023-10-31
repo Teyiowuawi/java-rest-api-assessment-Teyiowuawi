@@ -1,7 +1,5 @@
 package com.cbfacademy.apiassessment;
 
-
-import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,41 +70,40 @@ public class App {
 	}
 
 
-	@GetMapping("/marketCapitalization")
-	public ResponseEntity<BigInteger> getAllFtse100CompanyMarketCapitalization(){
+	@GetMapping(value = "/marketCapitalization", produces = "application/json")
+	public ResponseEntity<String> getAllFtse100CompanyMarketCapitalization(){
 		return ftse100AdditionalService.getAllStocksAndMarketCapitalization();
 	}
 
-	// this response is currently only printing out the first company in the list and not the other 99? why?
 
-	@GetMapping("/priceToEquity")
-	public ResponseEntity<Double> getAllFtse100CompanyPriceToEquity(){
+	@GetMapping(value ="/priceToEquity" , produces = "application/json")
+	public ResponseEntity<String> getAllFtse100CompanyPriceToEquity(){
 		return ftse100AdditionalService.getAllStocksAndAllPriceToEquity();
 	}
-	// this response is currently only printing out the first company in the list and not the other 99? why?
+	
 
-	@GetMapping("/priceToBook")
-	public ResponseEntity<Double> getAllFtse100CompanyPriceToBook(){
+	@GetMapping(value = "/priceToBook" , produces = "application/json")
+	public ResponseEntity<String> getAllFtse100CompanyPriceToBook(){
 		return ftse100AdditionalService.getAllStocksAndAllPriceToBook();
 	}
-	// this response is currently only printing out the first company in the list and not the other 99? why?
 
-	@GetMapping("/debtToEquity")
-	public ResponseEntity<Double> getAllFtse100CompanyDebtToEquity(){
+
+	@GetMapping(value = "/debtToEquity", produces = "application/json")
+	public ResponseEntity<String> getAllFtse100CompanyDebtToEquity(){
 		return ftse100AdditionalService.getAllStocksAndAllDebtToEquity();
 	}
-	// this response is currently only printing out the first company in the list and not the other 99? why?
 
-	@GetMapping("/esg")
-	public ResponseEntity<Double> getAllFtse100CompanyEsgRatings(){
+
+	@GetMapping(value = "/esg" , produces = "application/json")
+	public ResponseEntity<String> getAllFtse100CompanyEsgRatings(){
 		return ftse100AdditionalService.getAllStocksAndAllEsgRatings();
 	}
-	// this response is currently only printing out the first company in the list and not the other 99? why?
+
 
 // @GetMapping(value = "/{sector}", produces = "application/json")
 // public ResponseEntity <List<Ftse100>> getAllFtse100CompaniesInSector(@PathVariable String sector){
 // 	return ftse100Service.getCompaniesInSector(sector);
-// }
+// } - could pontetially also add this end point - if an individual wants to find out whihc companies are in a certain sector 
 
 	
 

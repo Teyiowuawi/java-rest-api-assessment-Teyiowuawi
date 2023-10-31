@@ -1,7 +1,5 @@
 package com.cbfacademy.apiassessment;
 
-import java.math.BigInteger;
-
 import org.springframework.http.ResponseEntity;
 
 public interface Ftse100AdditionalCrud {
