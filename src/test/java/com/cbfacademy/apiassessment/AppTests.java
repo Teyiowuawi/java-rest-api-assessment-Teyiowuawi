@@ -61,7 +61,7 @@ class AppTests {
 		assertNotNull(responseIOUs);
 		assertTrue(companies.size() <= responseIOUs.length);
 		//remember to add asserts + error and exception handling - an exception should be throw if some of the fields are empty etc
-		// test passes but how do I call my getAllFtse100 companies method and usewhilst still adhering to the rules of TDD (repeatble and isolated) 
+		// test passes but how do I call my getAllFtse100 companies method and usewhilst still adhering to the rules of TDD 
 
 	}
 

@@ -1,8 +1,5 @@
 package com.cbfacademy.apiassessment;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,12 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 @Service
 public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
-  // remember to change all duplication of file reading 
     private List<Ftse100> companies = Ftse100JsonFileReader.readFtse100JsonFile("ftse100.json");
 
     @Override
