@@ -9,10 +9,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+// could implement comparable interface to sort the entire flow of the list of companies 
+// could tell comparable to sort by the multiple attributes 
+// i could define my own sort (how exactly I am comparing)
+// could use this class to compare the entire list 
+// could be done as an extra 
+// could always update if it doesnt make sense too 
+//
 
 @Service
 public class Ftse100AdditionalService implements Ftse100AdditionalCrud {
     private List<Ftse100> companies = Ftse100JsonFileReader.readFtse100JsonFile("ftse100.json");
+    // would use an attribute instead of a hardcoded value to maintain and update code easier 
 
     @Override
     public ResponseEntity<String> getStockAndPrice(String tickerSymbol) {
