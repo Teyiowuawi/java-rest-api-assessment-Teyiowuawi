@@ -10,22 +10,6 @@ import java.util.Properties;
 
 @Service
 public class Ftse100Service implements Ftse100BasicCrud {
-    // Properties prop = new Properties();
-    // prop.load(- filename);
-    // should be able to access any properties using prop.get();
-    // read into how SpringBoot is using application properties 
-    // check Spring framework + how to use java.util.properties 
-
-
-    // move all methods to one interface and have this class implementing all the methods from the interface
-    // can I extend and interface then have on class that implements both 
-    // look into doing this for my code 
-    // think abotu which methods should go in which interface
-    // reoragnise structure
-    // could add json file to app.properties - then read from properties 
-    // import java util properties
-    // create an object of properties 
-    // property.getProperty(jsonfile)
 
     private List<Ftse100> companies = Ftse100JsonFileReader.readFtse100JsonFile("ftse100.json");
 
@@ -37,6 +21,8 @@ public class Ftse100Service implements Ftse100BasicCrud {
 				}}
                 companies.add(newCompany);
                 return ResponseEntity.status(HttpStatus.CREATED).body(newCompany);
+                // writing back to my json file with a method here!
+                // we want that to persist - need my file to be written back tot ht file!
     }       
 
     @Override

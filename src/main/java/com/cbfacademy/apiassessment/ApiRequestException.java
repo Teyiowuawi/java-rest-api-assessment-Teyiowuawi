@@ -1,5 +1,4 @@
-package com.cbfacademy.apiassessment;
-// package com.cbfacademy;
+// package com.cbfacademy.apiassessment;
 
 // public class ApiRequestException extends RuntimeException{
 

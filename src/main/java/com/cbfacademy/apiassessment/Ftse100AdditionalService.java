@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 // could use this class to compare the entire list 
 // could be done as an extra 
 // could always update if it doesnt make sense too 
-//
 
 @Service
 public class Ftse100AdditionalService implements Ftse100AdditionalCrud {

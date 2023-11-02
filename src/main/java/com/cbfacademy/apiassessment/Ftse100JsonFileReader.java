@@ -21,5 +21,5 @@ public class Ftse100JsonFileReader {
         return Collections.emptyList();
         }
     }
-// does this need to be a static method? yes  
+ 
 }
