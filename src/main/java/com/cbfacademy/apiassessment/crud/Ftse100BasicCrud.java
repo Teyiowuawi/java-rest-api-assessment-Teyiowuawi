@@ -1,8 +1,10 @@
-package com.cbfacademy.apiassessment;
+package com.cbfacademy.apiassessment.crud;
 
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+
+import com.cbfacademy.apiassessment.datamodel.Ftse100;
 
 public interface Ftse100BasicCrud {
     

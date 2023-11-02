@@ -1,8 +1,9 @@
-package com.cbfacademy.apiassessment;
+package com.cbfacademy.apiassessment.crud;
 
 import org.springframework.http.ResponseEntity;
 
-public interface Ftse100AdditionalCrud {
+public interface Ftse100AdditionalCrud extends Ftse100BasicCrud {
+    
     ResponseEntity<String> getStockAndPrice(String tickerSymbol);
 
     ResponseEntity<String> getAllStocksAndAllPrices();

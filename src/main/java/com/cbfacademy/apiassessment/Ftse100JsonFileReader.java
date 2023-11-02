@@ -6,6 +6,9 @@ import java.io.Reader;
 import java.util.Collections;
 import java.util.List;
 
+
+import com.cbfacademy.apiassessment.datamodel.Ftse100;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

@@ -10,8 +10,10 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import com.cbfacademy.apiassessment.datamodel.Ftse100;
+
 import java.math.BigInteger;
-import java.net.URL;
+// import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,20 +21,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@SpringBootTest(classes = App.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class AppTests {
+@SpringBootTest(classes = Ftse100Controller.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class ControllerTests {
 
 	@LocalServerPort
 	private int port;
 
-	private URL base;
+	// private URL base;
 
 	@Autowired
 	private TestRestTemplate restTemplate;
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		this.base = new URL("http://localhost:" + port + "/companies");
+		// this.base = new URL("http://localhost:" + port + "/companies");
 	}
 
 	//use before all annotation to run this before each method (once)

@@ -1,4 +1,4 @@
-package com.cbfacademy.apiassessment;
+package com.cbfacademy.apiassessment.datamodel;
 
 import java.math.BigInteger;
 
@@ -34,7 +34,6 @@ public class Ftse100 {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
-
 
 
     public String getTickerSymbol() {
