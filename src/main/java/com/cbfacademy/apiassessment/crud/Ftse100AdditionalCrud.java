@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface Ftse100AdditionalCrud extends Ftse100BasicCrud {
     
-    ResponseEntity<String> getStockAndPrice(String tickerSymbol);
+    ResponseEntity<String> getCompanyStockAndPrice(String tickerSymbol);
 
     ResponseEntity<String> getAllStocksAndAllPrices();
 

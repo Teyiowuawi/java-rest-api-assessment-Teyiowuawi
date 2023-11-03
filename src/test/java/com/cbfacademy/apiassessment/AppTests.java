@@ -10,6 +10,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import com.cbfacademy.apiassessment.controller.Ftse100Controller;
 import com.cbfacademy.apiassessment.datamodel.Ftse100;
 
 import java.math.BigInteger;
