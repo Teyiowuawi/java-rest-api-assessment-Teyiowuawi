@@ -16,7 +16,7 @@ import com.cbfacademy.apiassessment.datamodel.Ftse100;
 @Repository 
 public class Ftse100Respository implements Ftse100AdditionalCrud {
 
-    String jsonfile = "ftse100.json";
+    String jsonfile = "/ftse100.json";
     
     private List<Ftse100> companies = Ftse100JsonFileReader.readFtse100JsonFile(jsonfile);
     
@@ -55,6 +55,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
                     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);   
     }
 // writing back to my json file with a method here!
+// use getters and setters here then return new list of companies 
                 
 
     
@@ -170,7 +171,6 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
             String companyNameAndEsgRating = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getEsgRiskRating();
             allCompaniesAndEsgRatings.add(companyNameAndEsgRating);
             }
-
             return ResponseEntity.ok(String.join("\n", allCompaniesAndEsgRatings));
             } 
             // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
