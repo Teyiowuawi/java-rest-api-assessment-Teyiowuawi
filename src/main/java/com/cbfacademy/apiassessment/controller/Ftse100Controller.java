@@ -72,6 +72,7 @@ public class Ftse100Controller {
 	public ResponseEntity<HashMap<String, Double>> getAllCompaniesAndStockPrices(){
 		return ftse100Service.allCompaniesAndStockPrices();
 	}
+	// algo not printing out values in order
 
 
 	@GetMapping(value = "/marketCapitalization", produces = "application/json")

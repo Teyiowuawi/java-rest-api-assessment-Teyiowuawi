@@ -12,15 +12,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import com.cbfacademy.apiassessment.Ftse100JsonFileReader;
-import com.cbfacademy.apiassessment.bubblesort.BubbleSortAlgo;
 import com.cbfacademy.apiassessment.crud.Ftse100AdditionalCrud;
 import com.cbfacademy.apiassessment.datamodel.Ftse100;
 
 @Repository 
 public class Ftse100Respository implements Ftse100AdditionalCrud {
-
-    @Autowired
-    BubbleSortAlgo bubbleSortAlgo;
 
     String jsonfile = "/ftse100.json";
     

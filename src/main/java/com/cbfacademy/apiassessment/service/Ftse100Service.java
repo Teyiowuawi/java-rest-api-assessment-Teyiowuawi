@@ -71,6 +71,7 @@ public class Ftse100Service {
     public ResponseEntity<HashMap<String, Double>> allCompaniesAndStockPrices(){
         return ftse100Repository.bubbleSortHashMapByStockPrice();
     }
+    // algo not printing out values in order
 }  
 
 
