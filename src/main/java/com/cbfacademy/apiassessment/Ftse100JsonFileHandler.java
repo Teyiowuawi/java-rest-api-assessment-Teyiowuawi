@@ -2,8 +2,13 @@ package com.cbfacademy.apiassessment;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.Reader;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,14 +37,13 @@ public class Ftse100JsonFileHandler{
         }
     }
 
-    public void ftse100WriteToJsonFile(List<Ftse100> companies){
+    public void ftse100WriteToJsonFile(String jsonFile, List<Ftse100> companies){
         Gson gson = new Gson();
-        String json = gson.toJson(companies);
 
-                try (FileWriter writer = new FileWriter(jsonFile)){
-                    writer.write(json);
+                try (Writer writer = new FileWriter(jsonFile)){
+                    gson.toJson(companies, writer);
                 } catch(IOException e) {
-                    System.out.println("File not found. Please ensure this file is in the correct location");
+                    System.out.println("File not found. Please ensure this file is in the correct location and it exists");
                     e.printStackTrace();
                 }
             } 

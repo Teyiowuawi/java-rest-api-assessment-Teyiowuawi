@@ -1,8 +1,5 @@
 package com.cbfacademy.apiassessment.repository;
 
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,15 +12,14 @@ import org.springframework.stereotype.Repository;
 import com.cbfacademy.apiassessment.Ftse100JsonFileHandler;
 import com.cbfacademy.apiassessment.crud.Ftse100AdditionalCrud;
 import com.cbfacademy.apiassessment.datamodel.Ftse100;
-import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
 
 @Repository 
 public class Ftse100Respository implements Ftse100AdditionalCrud {
 
-    private String jsonfile = "/ftse100.json";
-    private Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler(jsonfile);
-    private List<Ftse100> companies = fileHandler.readFtse100JsonFile(jsonfile);
+    private String jsonFile = "/ftse101.json";
+    private String jsonFilePath ="C:\\Users\\admin\\CBFAcademy\\java-rest-api-assessment-Teyiowuawi\\src\\main\\resources\\ftse101.json";
+    private Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler(jsonFile);
+    private List<Ftse100> companies = fileHandler.readFtse100JsonFile(jsonFile);
     
     public ResponseEntity<Ftse100> addFtse100Company(Ftse100 newCompany){
 		for (Ftse100 existingCompany : companies){
@@ -32,7 +28,8 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 				}}
                 companies.add(newCompany);
 
-                fileHandler.ftse100WriteToJsonFile(companies);
+                fileHandler.ftse100WriteToJsonFile(jsonFilePath, companies);
+                // works but formatting is messy 
 
                 return ResponseEntity.status(HttpStatus.CREATED).body(newCompany);           
     }       
@@ -55,26 +52,37 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
     public ResponseEntity<Ftse100> updateFtse100Company(String tickerSymbol, Ftse100 updatedCompany) {
         for (Ftse100 company : companies){
                 if (company.getTickerSymbol().toUpperCase().equals(tickerSymbol.toUpperCase())){
+                    company.setTickerSymbol(updatedCompany.getTickerSymbol());
+                    company.setCompanyName(updatedCompany.getCompanyName());
+                    company.setSector(updatedCompany.getSector());
+                    company.setStockPrice(updatedCompany.getStockPrice());
+                    company.setMarketCapitalization(updatedCompany.getMarketCapitalization());
+                    company.setPriceToEquityRatio(updatedCompany.getPriceToEquityRatio());
+                    company.setPriceToBookRatio(updatedCompany.getPriceToBookRatio());
+                    company.setDebtToEquityRatio(updatedCompany.getDebtToEquityRatio());
+                    company.setEsgRiskRating(updatedCompany.getEsgRiskRating());
+
                     int indexOfCompanyInFtse100List = companies.indexOf(company);
                     companies.set(indexOfCompanyInFtse100List, updatedCompany);
+
+                    fileHandler.ftse100WriteToJsonFile(jsonFilePath, companies);
+
                     return ResponseEntity.ok(updatedCompany);
+
+
                 }}
                     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);   
     }
-// writing back to my json file with a method here!
-// use getters and setters here then return new list of companies 
-                
 
-    
     public ResponseEntity<List<Ftse100>> deleteFtse100Company(String tickerSymbol) {	
 		for (Ftse100 company : companies){
             if (company.getTickerSymbol().toUpperCase().equals(tickerSymbol.toUpperCase())){
 				companies.remove(company);
+                fileHandler.ftse100WriteToJsonFile(jsonFilePath, companies);
 				return ResponseEntity.ok(companies);
 				}}
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);		
     }
-    // writing back to my json file with a method here!
 
     
     public ResponseEntity<String> getCompanyStockAndPrice(String tickerSymbol) {
