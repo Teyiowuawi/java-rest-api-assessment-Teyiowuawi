@@ -1,6 +1,7 @@
 package com.cbfacademy.apiassessment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,27 +9,65 @@ import com.cbfacademy.apiassessment.datamodel.Ftse100;
 
 public class QuickSortAlgoPrice {
     
-   
-    
-//     public QuickSortAlgoPrice(){}
-//     // think about the comparator
-//     // array - hashmap two items name and value of price
-//     // company name and company price
-//     // give sort algo this array
-//     // start and end index (1ist object and last object)
-//     // pivot point - value of the price for the item at the end index
-//     //pivot = array 9  = .getPrice() will be compared to all the other
+    // think about the comparator
+    // array - hashmap two items name and value of price
+    // company name and company price
+    // give sort algo this array
+    // start and end index (1ist object and last object)
+    // pivot point - value of the price for the item at the end index
+    //pivot = array 9  = .getPrice() will be compared to all the other
 
-//     String jsonfile = "/ftse100.json";
+    String jsonfile = "/ftse100.json";
     
-//     private List<Ftse100> companies = Ftse100JsonFileReader.readFtse100JsonFile(jsonfile);
+    private List<Ftse100> companies = Ftse100JsonFileReader.readFtse100JsonFile(jsonfile);
 
-//     HashMap<String, Double> companyStockPrice = new HashMap<String, Double>();
-//         for (Ftse100 company: companies){
-//             companyStockPrice.put(company.getCompanyName(), company.getStockPrice());
-//             }
+    public HashMap<String, Double> convertFromListOfCompanyObjectsToCompanyAndStockPriceHashMap(){
+    HashMap<String, Double> companyStockPrice = new HashMap<String, Double>();
+        for (Ftse100 company: companies){
+            companyStockPrice.put(company.getCompanyName(), company.getStockPrice());
+            }
+            return companyStockPrice;
+        }
     
-//     List<Double> extractedPriceValues = new ArrayList<>(companyStockPrice.values());
+    public void sortCompanyStockPrices(){
+    QuickSortAlgoPrice sortingStockPrice = new QuickSortAlgoPrice();
+    List<Double> extractedPriceValues = new ArrayList<>(convertFromListOfCompanyObjectsToCompanyAndStockPriceHashMap().values());
+    quickSort(extractedPriceValues, 0, extractedPriceValues.size() - 1);
+    }
+
+    // create new hashmap to store values inside!
+
+    public static void quicksort(List<Double> list, int low, int high){
+        
+        if (low < high){
+           int pivotIndex = partition(list, low, high);
+           quickSort(list, low, pivotIndex -1);
+           quickSort(list, pivotIndex + 1, high);
+        }
+    }
+
+    public static int partition(List<Double> list, int low, int high){
+        double pivot = list.get(high);
+        int i = low -1; 
+
+        for (int j = low; j < high; j++){
+            if (list.get(j) < pivot){
+                i++;
+                Collections.swap(list, i,j);
+            }    
+        }
+
+        Collections.swap(list, i + 1, high);
+        return i + 1;
+        }
+
+    // public static void swap(List<Double> extractedPriceValues, int i, int j){
+    //     double temp = extractedPriceValues.get(i);
+    //     extractedPriceValues.set(i, extractedPriceValues.get(j));
+    //     extractedPriceValues.set(j, temp);  
+    // }  
+    
+
     
 
 
@@ -40,21 +79,6 @@ public class QuickSortAlgoPrice {
 //     // then convert back into my data structure 
 
 //     // alternatively sort list of objects and then place these specific valueus into a hashmap
-//     // pseudo cdoe from class exercise 
+    
 
-// //     public void quickSort(arr, beg, end)
-// //   if (beg < end)
-// //     pivotIndex = partition(arr,beg, end)
-// //     quickSort(arr, beg, pivotIndex)
-// //     quickSort(arr, pivotIndex + 1, end)
 
-// // public void partition(arr, beg, end)
-// //   end = pivotIndex
-// //   pIndex = beg - 1
-// //   for i = beg to end-1
-// //   if arr[i] < pivot
-// //     swap arr[i] and arr[pIndex]
-// //     pIndex++
-// //   swap pivot and arr[pIndex+1]
-// // return pIndex + 1
-}
