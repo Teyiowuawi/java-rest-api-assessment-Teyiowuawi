@@ -20,8 +20,8 @@ public class QuickSortAlgoPrice {
     String jsonfile = "/ftse100.json";
     
     private List<Ftse100> companies = Ftse100JsonFileReader.readFtse100JsonFile(jsonfile);
-
-    public HashMap<String, Double> convertFromListOfCompanyObjectsToCompanyAndStockPriceHashMap(){
+    
+    public HashMap<String, Double> convertFtse100ListToCompanyAndStockPriceHashMap(){
     HashMap<String, Double> companyStockPrice = new HashMap<String, Double>();
         for (Ftse100 company: companies){
             companyStockPrice.put(company.getCompanyName(), company.getStockPrice());
@@ -29,43 +29,48 @@ public class QuickSortAlgoPrice {
             return companyStockPrice;
         }
     
-    public void sortCompanyStockPrices(){
-    QuickSortAlgoPrice sortingStockPrice = new QuickSortAlgoPrice();
-    List<Double> extractedPriceValues = new ArrayList<>(convertFromListOfCompanyObjectsToCompanyAndStockPriceHashMap().values());
-    quickSort(extractedPriceValues, 0, extractedPriceValues.size() - 1);
-    }
-
-    // create new hashmap to store values inside!
-
-    public static void quicksort(List<Double> list, int low, int high){
+    // stock prices extracted to list 
+    public List<Double> extractStockPricesToList(){
+        List<Double> extractedPriceValues = new ArrayList<>(convertFtse100ListToCompanyAndStockPriceHashMap().values());
+        return extractedPriceValues;
         
-        if (low < high){
-           int pivotIndex = partition(list, low, high);
-           quickSort(list, low, pivotIndex -1);
-           quickSort(list, pivotIndex + 1, high);
-        }
     }
 
-    public static int partition(List<Double> list, int low, int high){
-        double pivot = list.get(high);
-        int i = low -1; 
+    List<Double> unsortedStockPrices = new ArrayList<>(extractStockPricesToList());
+    // now carry out quicksort method on this list
+    //then create new hashmap to stock these values
+}
 
-        for (int j = low; j < high; j++){
-            if (list.get(j) < pivot){
-                i++;
-                Collections.swap(list, i,j);
-            }    
-        }
 
-        Collections.swap(list, i + 1, high);
-        return i + 1;
-        }
+    // public static void quicksort(List<Double> list, int low, int high){
+        
+    //     if (low < high){
+    //        int pivotIndex = partition(list, low, high);
+    //        quickSort(list, low, pivotIndex -1);
+    //        quickSort(list, pivotIndex + 1, high);
+    //     }
+    // }
 
-    // public static void swap(List<Double> extractedPriceValues, int i, int j){
-    //     double temp = extractedPriceValues.get(i);
-    //     extractedPriceValues.set(i, extractedPriceValues.get(j));
-    //     extractedPriceValues.set(j, temp);  
-    // }  
+    // public static int partition(List<Double> list, int low, int high){
+    //     double pivot = list.get(high);
+    //     int i = low -1; 
+
+    //     for (int j = low; j < high; j++){
+    //         if (list.get(j) < pivot){
+    //             i++;
+    //             Collections.swap(list, i,j);
+    //         }    
+    //     }
+
+    //     Collections.swap(list, i + 1, high);
+    //     return i + 1;
+    //     }
+
+    // // public static void swap(List<Double> extractedPriceValues, int i, int j){
+    // //     double temp = extractedPriceValues.get(i);
+    // //     extractedPriceValues.set(i, extractedPriceValues.get(j));
+    // //     extractedPriceValues.set(j, temp);  
+    // // }  
     
 
     
