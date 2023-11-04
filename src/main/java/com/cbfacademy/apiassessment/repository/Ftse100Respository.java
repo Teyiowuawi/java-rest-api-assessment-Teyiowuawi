@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
-import com.cbfacademy.apiassessment.Ftse100JsonFileReader;
+import com.cbfacademy.apiassessment.Ftse100JsonFileHandler;
 import com.cbfacademy.apiassessment.crud.Ftse100AdditionalCrud;
 import com.cbfacademy.apiassessment.datamodel.Ftse100;
 import com.google.gson.Gson;
@@ -21,29 +21,20 @@ import com.google.gson.JsonIOException;
 @Repository 
 public class Ftse100Respository implements Ftse100AdditionalCrud {
 
-    String jsonfile = "/ftse101.json";
+    private String jsonfile = "/ftse100.json";
+    private Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler(jsonfile);
+    private List<Ftse100> companies = fileHandler.readFtse100JsonFile(jsonfile);
     
-    private List<Ftse100> companies = Ftse100JsonFileReader.readFtse100JsonFile(jsonfile);
-    
-    public ResponseEntity<Ftse100> addFtse100Company(Ftse100 newCompany) {
-        Gson gson = new Gson();
-
+    public ResponseEntity<Ftse100> addFtse100Company(Ftse100 newCompany){
 		for (Ftse100 existingCompany : companies){
 			if (newCompany.getTickerSymbol().toUpperCase().equals(existingCompany.getTickerSymbol().toUpperCase())){
 				return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(null); 
 				}}
                 companies.add(newCompany);
 
-                try {
-                    gson.toJson(newCompany, new FileWriter("/ftse101.json"));
-                } catch (FileNotFoundException e) {
-                    System.out.println("Fle not found. Please ensure this file is within the correct location");
-                }
-                catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return ResponseEntity.status(HttpStatus.CREATED).body(newCompany);
-                // writing back to my json file with a method here           
+                fileHandler.ftse100WriteToJsonFile(companies);
+
+                return ResponseEntity.status(HttpStatus.CREATED).body(newCompany);           
     }       
 
     
