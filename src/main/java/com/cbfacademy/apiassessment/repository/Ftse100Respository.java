@@ -3,6 +3,7 @@ package com.cbfacademy.apiassessment.repository;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import com.cbfacademy.apiassessment.Ftse100JsonFileHandler;
+import com.cbfacademy.apiassessment.bubblesortalgo.BubbleSortAlgo;
 import com.cbfacademy.apiassessment.crud.Ftse100AdditionalCrud;
 import com.cbfacademy.apiassessment.datamodel.Ftse100;
 
@@ -109,7 +111,14 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
             } 
             // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         
+    public ResponseEntity<HashMap<String, Double>> bubbleSortAlgoCompanyAndStockPrice(){
+        HashMap<String, Double> unsortedCompanyAndStockPrices = new HashMap<>();
 
+        for (Ftse100 company : companies){
+            unsortedCompanyAndStockPrices.put(company.getCompanyName(), company.getStockPrice());
+        }
+        return ResponseEntity.ok(BubbleSortAlgo.bubbleSortStockPrices(unsortedCompanyAndStockPrices));
+    }
     
     public ResponseEntity<String> getAllStocksAndMarketCapitalization() {
         List<String> allCompaniesAndMarketCapitalization = new ArrayList<>();
