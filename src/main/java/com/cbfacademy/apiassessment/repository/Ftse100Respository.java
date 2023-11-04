@@ -3,18 +3,24 @@ package com.cbfacademy.apiassessment.repository;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import com.cbfacademy.apiassessment.Ftse100JsonFileReader;
+import com.cbfacademy.apiassessment.bubblesort.BubbleSortAlgo;
 import com.cbfacademy.apiassessment.crud.Ftse100AdditionalCrud;
 import com.cbfacademy.apiassessment.datamodel.Ftse100;
 
 @Repository 
 public class Ftse100Respository implements Ftse100AdditionalCrud {
+
+    @Autowired
+    BubbleSortAlgo bubbleSortAlgo;
 
     String jsonfile = "/ftse100.json";
     
@@ -95,7 +101,50 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
             return ResponseEntity.ok(String.join("\n", allCompaniesAndStockPrices));
             } 
             // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        
+    
+
+
+    // public ResponseEntity<HashMap<String, Double>> getAllFtse100CompaniesAndAllStockPrices(){
+    //         HashMap<String, Double> companyStockPrice = new HashMap<String, Double>();
+    //         for (Ftse100 company: companies){
+    //             companyStockPrice.put(company.getCompanyName(), company.getStockPrice());
+    //         }
+
+    //         return ResponseEntity.ok(bubbleSortHashMapByStockPrice(companyStockPrice));
+    // }
+
+    public ResponseEntity<HashMap<String, Double>> bubbleSortHashMapByStockPrice(){
+        HashMap<String, Double> companyStockPrice = new HashMap<String, Double>();
+            for (Ftse100 company: companies){
+                companyStockPrice.put(company.getCompanyName(), company.getStockPrice());
+            }
+
+        List<HashMap.Entry<String, Double>> stockPricesUnsorted = new ArrayList<>(companyStockPrice.entrySet());
+        boolean swapped; 
+        int prices = stockPricesUnsorted.size(); 
+
+        do{
+            swapped = false; 
+            for (int i = 0; i < prices -1; i++){
+                if (stockPricesUnsorted.get(i).getValue() > stockPricesUnsorted.get(i + 1).getValue()){
+                    HashMap.Entry<String, Double> temp = stockPricesUnsorted.get(i);
+                    stockPricesUnsorted.set(i, stockPricesUnsorted.get(i +1));
+                    stockPricesUnsorted.set(i + 1, temp);
+                    swapped = true;
+                }
+            }
+            prices --;
+        } while (swapped);
+
+        HashMap<String, Double> stockPricesSortedHashMap = new HashMap<>();
+        for (HashMap.Entry<String, Double> stockPrice: stockPricesUnsorted){
+            stockPricesSortedHashMap.put(stockPrice.getKey(), stockPrice.getValue());
+        }
+
+        return ResponseEntity.ok(stockPricesSortedHashMap);
+    }
+    // abtract algo logic to it's own class - currently not working
+    // algo not printing out stock prices in order 
 
     
     public ResponseEntity<String> getAllStocksAndMarketCapitalization() {

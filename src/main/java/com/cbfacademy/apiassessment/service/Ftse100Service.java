@@ -1,6 +1,7 @@
 package com.cbfacademy.apiassessment.service;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,10 @@ public class Ftse100Service {
 
     public ResponseEntity<String> getStocksAndEsg(){
         return ftse100Repository.getAllStocksAndAllEsgRatings();
+    }
+
+    public ResponseEntity<HashMap<String, Double>> allCompaniesAndStockPrices(){
+        return ftse100Repository.bubbleSortHashMapByStockPrice();
     }
 }  
 
