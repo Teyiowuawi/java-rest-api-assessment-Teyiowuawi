@@ -23,7 +23,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
     
     public ResponseEntity<Ftse100> addFtse100Company(Ftse100 newCompany){
 		for (Ftse100 existingCompany : companies){
-			if (newCompany.getTickerSymbol().toUpperCase().equals(existingCompany.getTickerSymbol().toUpperCase())){
+			if (newCompany.getTickerSymbol().equalsIgnoreCase(existingCompany.getTickerSymbol())){
 				return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(null); 
 				}}
                 companies.add(newCompany);
@@ -42,7 +42,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
     
     public ResponseEntity<Ftse100> getFtse100CompanyByTickerSymbol(String tickerSymbol){
         for (Ftse100 company : companies){
-                if (company.getTickerSymbol().toUpperCase().equals(tickerSymbol.toUpperCase())){
+                if (company.getTickerSymbol().equalsIgnoreCase(tickerSymbol)){
                     return ResponseEntity.ok(company);
                 }} 
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -51,7 +51,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
     
     public ResponseEntity<Ftse100> updateFtse100Company(String tickerSymbol, Ftse100 updatedCompany) {
         for (Ftse100 company : companies){
-                if (company.getTickerSymbol().toUpperCase().equals(tickerSymbol.toUpperCase())){
+                if (company.getTickerSymbol().equalsIgnoreCase(tickerSymbol)){
                     company.setTickerSymbol(updatedCompany.getTickerSymbol());
                     company.setCompanyName(updatedCompany.getCompanyName());
                     company.setSector(updatedCompany.getSector());
@@ -68,15 +68,13 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
                     fileHandler.ftse100WriteToJsonFile(jsonFilePath, companies);
 
                     return ResponseEntity.ok(updatedCompany);
-
-
                 }}
                     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);   
     }
 
     public ResponseEntity<List<Ftse100>> deleteFtse100Company(String tickerSymbol) {	
 		for (Ftse100 company : companies){
-            if (company.getTickerSymbol().toUpperCase().equals(tickerSymbol.toUpperCase())){
+            if (company.getTickerSymbol().equalsIgnoreCase(tickerSymbol)){
 				companies.remove(company);
                 fileHandler.ftse100WriteToJsonFile(jsonFilePath, companies);
 				return ResponseEntity.ok(companies);
@@ -87,7 +85,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
     
     public ResponseEntity<String> getCompanyStockAndPrice(String tickerSymbol) {
 			for (Ftse100 company : companies){
-                if (company.getTickerSymbol().toUpperCase().equals(tickerSymbol.toUpperCase())){
+                if (company.getTickerSymbol().equalsIgnoreCase(tickerSymbol)){
                     return ResponseEntity.ok(company.getCompanyName() + " (" + tickerSymbol + ")" + ": " + company.getStockPrice() + " GBX");
                 }
             }
