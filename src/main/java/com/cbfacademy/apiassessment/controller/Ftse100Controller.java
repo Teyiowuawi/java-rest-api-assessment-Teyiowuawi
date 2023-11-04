@@ -1,5 +1,6 @@
 package com.cbfacademy.apiassessment.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,11 @@ public class Ftse100Controller {
 	public ResponseEntity<String> getAllFtse100CompanyStockPrices(){
 		return ftse100Service.getStocksAndPrices();
 	}
+
+	@GetMapping(value = "/stockPrices2", produces = "application/json")
+	public ResponseEntity<HashMap<String, Double>> getCompanyNameAndStockPrice(){
+        return ftse100Service.getCompanyNameAndStockPrice();
+    }
 
 
 	@GetMapping(value = "/marketCapitalization", produces = "application/json")

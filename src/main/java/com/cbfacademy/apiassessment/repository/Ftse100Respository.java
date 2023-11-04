@@ -18,7 +18,7 @@ import com.cbfacademy.apiassessment.datamodel.Ftse100;
 @Repository 
 public class Ftse100Respository implements Ftse100AdditionalCrud {
 
-    private String jsonFile = "/ftse101.json";
+    private String jsonFile = "/ftse100.json";
     private String jsonFilePath ="C:\\Users\\admin\\CBFAcademy\\java-rest-api-assessment-Teyiowuawi\\src\\main\\resources\\ftse101.json";
     private Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler(jsonFile);
     private List<Ftse100> companies = fileHandler.readFtse100JsonFile(jsonFile);
