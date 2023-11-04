@@ -4,34 +4,33 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
-public class BubbleSortAlgo {}
+public class BubbleSortAlgo {
     
-    //     public HashMap<String, Double> bubbleSortHashMapByStockPrice(HashMap<String, Double> unsortedPricesHashMap){
-    //         List<HashMap.Entry<String, Double>> stockPricesUnsorted = new ArrayList<>(unsortedPricesHashMap.entrySet());
-    //         boolean swapped; 
-    //         int prices = stockPricesUnsorted.size(); 
+        public String bubbleSortHashMapByStockPrice(HashMap<String, Double> unsortedPricesHashMap){
+            List<HashMap.Entry<String, Double>> stockPrices = new ArrayList<>(unsortedPricesHashMap.entrySet());
+            
+            String temp;
+            boolean swapped = false; 
+            int prices = stockPrices.size(); 
 
-    //         do{
-    //             swapped = false; 
-    //             for (int i = 0; i < prices -1; i++){
-    //                 if (stockPricesUnsorted.get(i).getValue() > stockPricesUnsorted.get(i + 1).getValue()){
-    //                     HashMap.Entry<String, Double> temp = stockPricesUnsorted.get(i);
-    //                     stockPricesUnsorted.set(i, stockPricesUnsorted.get(i +1));
-    //                     stockPricesUnsorted.set(i + 1, temp);
-    //                     swapped = true;
-    //                 }
-    //             }
-    //             prices --;
-    //         } while (swapped);
+            while(!swapped)
+                swapped = true; 
+                for (int i = 0; i < prices -1; i++){
+                    if (stockPrices.get(i).getValue() > stockPrices.get(i + 1).getValue()){
+                        HashMap.Entry<String, Double> stockPrice = stockPrices.get(i);
+                        stockPrices.set(i, stockPrices.get(i + 1));
+                        stockPrices.set(i + 1, stockPrice);
+                        swapped = false;
+                    }
+                }
+        
+            for (HashMap.Entry<String, Double> stockPrice: stockPrices){
+                return String.join("\n", stockPrices.put(stockPrice.getKey(), stockPrice.getValue());
+            }
 
-    //         HashMap<String, Double> stockPricesSortedHashMap = new HashMap<>();
-    //         for (HashMap.Entry<String, Double> stockPrice: stockPricesUnsorted){
-    //             stockPricesSortedHashMap.put(stockPrice.getKey(), stockPrice.getValue());
-    //         }
-
-    //         return stockPricesSortedHashMap;
-    //     }
-    // }
+            return stockPricesSortedHashMap;
+        }
+    }
 
         
 
