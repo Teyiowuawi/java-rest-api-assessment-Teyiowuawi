@@ -1,9 +1,15 @@
 package com.cbfacademy.apiassessment;
 
 import java.util.HashMap;
+import java.util.List;
+
+import com.cbfacademy.apiassessment.datamodel.Ftse100;
 
 public class QuickSortAlgoPrice {
     
+   
+    // would i instead place my list of companies inside the constructor rather than reading from the kson file again?
+    public QuickSortAlgoPrice(){}
     // think about the comparator
     // array - hashmap two items name and value of price
     // company name and company price
@@ -12,14 +18,17 @@ public class QuickSortAlgoPrice {
     // pivot point - value of the price for the item at the end index
     //pivot = array 9  = .getPrice() will be compared to all the other
 
-    HashMap<String, double> companyStockPrice = new HashMap<>();
+    String jsonfile = "/ftse100.json";
+    
+    private List<Ftse100> companies = Ftse100JsonFileReader.readFtse100JsonFile(jsonfile);
 
-    // move the values for each company into a hashmap 
-    // then call my quicksort algorithm on this hashmap 
-    // get my list of compay objects
-    // loop through 
-    // for every object 
-    // put (company.getCompanyName(), company.getStockPrice())
-    // return this hashmap 
-    // then I can create my quicksort method 
+
+    public HashMap<String, Double> companiesAndStockPrice(){
+        HashMap<String, Double> companyStockPrice = new HashMap<String, Double>();
+        for (Ftse100 company: companies){
+            companyStockPrice.put(company.getCompanyName(), company.getStockPrice());
+            }
+            return companyStockPrice;
+    }
+    // call quicksort on this hashmap 
 }
