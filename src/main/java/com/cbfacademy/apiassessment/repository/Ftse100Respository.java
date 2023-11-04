@@ -1,5 +1,8 @@
 package com.cbfacademy.apiassessment.repository;
 
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,20 +15,33 @@ import org.springframework.stereotype.Repository;
 import com.cbfacademy.apiassessment.Ftse100JsonFileReader;
 import com.cbfacademy.apiassessment.crud.Ftse100AdditionalCrud;
 import com.cbfacademy.apiassessment.datamodel.Ftse100;
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 
 @Repository 
 public class Ftse100Respository implements Ftse100AdditionalCrud {
 
-    String jsonfile = "/ftse100.json";
+    String jsonfile = "/ftse101.json";
     
     private List<Ftse100> companies = Ftse100JsonFileReader.readFtse100JsonFile(jsonfile);
     
     public ResponseEntity<Ftse100> addFtse100Company(Ftse100 newCompany) {
+        Gson gson = new Gson();
+
 		for (Ftse100 existingCompany : companies){
 			if (newCompany.getTickerSymbol().toUpperCase().equals(existingCompany.getTickerSymbol().toUpperCase())){
 				return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(null); 
 				}}
                 companies.add(newCompany);
+
+                try {
+                    gson.toJson(newCompany, new FileWriter("/ftse101.json"));
+                } catch (FileNotFoundException e) {
+                    System.out.println("Fle not found. Please ensure this file is within the correct location");
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
                 return ResponseEntity.status(HttpStatus.CREATED).body(newCompany);
                 // writing back to my json file with a method here           
     }       
