@@ -16,7 +16,6 @@ import com.cbfacademy.apiassessment.crud.Ftse100AdditionalCrud;
 import com.cbfacademy.apiassessment.datamodel.Ftse100;
 import com.cbfacademy.apiassessment.exceptionhandling.CompanyAlreadyExistsException;
 import com.cbfacademy.apiassessment.exceptionhandling.CompanyDoesNotExistException;
-import com.cbfacademy.apiassessment.exceptionhandling.URLDoesNotExistException;
 
 @Repository 
 public class Ftse100Respository implements Ftse100AdditionalCrud {

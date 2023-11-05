@@ -10,5 +10,7 @@ public class CompanyDoesNotExistException extends RuntimeException{
         super(msg);
         this.message = msg;
     }
+    // still printing the stack trace - how could i get ride of it?
+    // or will it always be there and my useful message is the part that comes through
     
 }

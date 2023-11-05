@@ -1,13 +1,13 @@
 package com.cbfacademy.apiassessment.exceptionhandling;
 
-public class URLDoesNotExistException {
+// public class URLDoesNotExistException {
 
-    private String message; 
+//     private String message; 
 
-    public URLDoesNotExistException(){}
+//     public URLDoesNotExistException(){}
 
-    public URLDoesNotExistException(String message){
-        super();
-        this.message = message;
-    }
-}
+//     public URLDoesNotExistException(String message){
+//         super();
+//         this.message = message;
+//     }
+// }
