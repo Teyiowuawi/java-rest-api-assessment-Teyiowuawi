@@ -29,7 +29,7 @@ public class Ftse100Service {
     }
 
     public ResponseEntity<Ftse100> getCompany(String tickerSymbol){
-        return ftse100Repository.getFtse100CompanyByTickerSymbol(tickerSymbol);
+        return ftse100Repository.getFtse100CompanyByTickerSymbol(tickerSymbol); 
     }
 
     public ResponseEntity<Ftse100> updateCompany(String tickerSymbol, Ftse100 updatedCompany){

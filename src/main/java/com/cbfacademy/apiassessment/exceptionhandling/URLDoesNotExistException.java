@@ -10,5 +10,4 @@ public class URLDoesNotExistException {
         super(msg);
         this.message = msg;
     }
-    
 }

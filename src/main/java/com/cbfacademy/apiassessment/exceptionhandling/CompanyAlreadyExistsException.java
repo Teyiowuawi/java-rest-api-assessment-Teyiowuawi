@@ -6,8 +6,8 @@ public class CompanyAlreadyExistsException extends RuntimeException{
 
     public CompanyAlreadyExistsException(){}
 
-    public CompanyAlreadyExistsException(String msg)
-    {   super(msg);
+    public CompanyAlreadyExistsException(String msg){
+        super(msg);
         this.message = msg;
     }
     
