@@ -14,6 +14,8 @@ import com.cbfacademy.apiassessment.Ftse100JsonFileHandler;
 import com.cbfacademy.apiassessment.bubblesortalgo.BubbleSortAlgo;
 import com.cbfacademy.apiassessment.crud.Ftse100AdditionalCrud;
 import com.cbfacademy.apiassessment.datamodel.Ftse100;
+import com.cbfacademy.apiassessment.exceptionhandling.CompanyAlreadyExistsException;
+import com.cbfacademy.apiassessment.exceptionhandling.CompanyDoesNotExistException;
 
 @Repository 
 public class Ftse100Respository implements Ftse100AdditionalCrud {
@@ -26,12 +28,12 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
     public ResponseEntity<Ftse100> addFtse100Company(Ftse100 newCompany){
 		for (Ftse100 existingCompany : companies){
 			if (newCompany.getTickerSymbol().equalsIgnoreCase(existingCompany.getTickerSymbol())){
-				return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(null); 
+                throw new CompanyAlreadyExistsException("FTSE100 company already present with Ticker Symbol: " + existingCompany.getTickerSymbol());
+				//(HttpStatus.ALREADY_REPORTED) + error response
 				}}
                 companies.add(newCompany);
 
                 fileHandler.ftse100WriteToJsonFile(jsonFilePath, companies);
-                // works but formatting is messy 
 
                 return ResponseEntity.status(HttpStatus.CREATED).body(newCompany);           
     }       
@@ -47,7 +49,9 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
                 if (company.getTickerSymbol().equalsIgnoreCase(tickerSymbol)){
                     return ResponseEntity.ok(company);
                 }} 
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        
+        throw new CompanyDoesNotExistException("No FTSE100 company present with Ticker Symbol: " + tickerSymbol);     
+        // httpStatus not found 404 + error response   
     }
 
     
@@ -71,7 +75,8 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 
                     return ResponseEntity.ok(updatedCompany);
                 }}
-                    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);   
+        throw new CompanyDoesNotExistException("No FTSE100 company present with Ticker Symbol: " + tickerSymbol);
+                    // (HttpStatus.NOT_FOUND) + error response
     }
 
     public ResponseEntity<List<Ftse100>> deleteFtse100Company(String tickerSymbol) {	
@@ -81,7 +86,8 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
                 fileHandler.ftse100WriteToJsonFile(jsonFilePath, companies);
 				return ResponseEntity.ok(companies);
 				}}
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);		
+        throw new CompanyDoesNotExistException("No FTSE100 company present with Ticker Symbol: " + tickerSymbol);
+				// (HttpStatus.NOT_FOUND) + error response	
     }
 
     
@@ -89,11 +95,9 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 			for (Ftse100 company : companies){
                 if (company.getTickerSymbol().equalsIgnoreCase(tickerSymbol)){
                     return ResponseEntity.ok(company.getCompanyName() + " (" + tickerSymbol + ")" + ": " + company.getStockPrice() + " GBX");
-                }
-            }
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-                // adding to the body of this request through proper exception handling
-                // Timestamp, status, error, message
+                }}
+                throw new CompanyDoesNotExistException("No FTSE100 company present with Ticker Symbol: " + tickerSymbol);
+                // HTTP.status. not found + error response
     }
 
     
@@ -109,7 +113,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 
             return ResponseEntity.ok(String.join("\n", allCompaniesAndStockPrices));
             } 
-            // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
         
     public ResponseEntity<HashMap<String, Double>> bubbleSortAlgoCompanyAndStockPrice(){
         HashMap<String, Double> unsortedCompanyAndStockPrices = new HashMap<>();
@@ -119,6 +123,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
         }
         return ResponseEntity.ok(BubbleSortAlgo.bubbleSortStockPrices(unsortedCompanyAndStockPrices));
     }
+    
     
     public ResponseEntity<String> getAllStocksAndMarketCapitalization() {
         List<String> allCompaniesAndMarketCapitalization = new ArrayList<>();
@@ -132,7 +137,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 
             return ResponseEntity.ok(String.join("\n", allCompaniesAndMarketCapitalization));
             } 
-            // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
 
     
     
@@ -147,8 +152,8 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
             }
 
             return ResponseEntity.ok(String.join("\n", allCompaniesAndPriceToEquityRatio));
-            } 
-            // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        } 
+            // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
 
 
     
@@ -164,9 +169,8 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 
             return ResponseEntity.ok(String.join("\n", allCompaniesAndPriceToBookRatio));
             } 
-            // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null); 
+            // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
 
-    
     
     public ResponseEntity<String> getAllStocksAndAllDebtToEquity() {
          List<String> allCompaniesAndDebtToEquityRatio = new ArrayList<>();
@@ -180,7 +184,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 
             return ResponseEntity.ok(String.join("\n", allCompaniesAndDebtToEquityRatio));
             }
-            // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null); 
+            // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
 
         
     
@@ -195,7 +199,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
             }
             return ResponseEntity.ok(String.join("\n", allCompaniesAndEsgRatings));
             } 
-            // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
 }  
    
 
