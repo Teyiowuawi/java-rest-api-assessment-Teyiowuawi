@@ -6,8 +6,8 @@ public class URLDoesNotExistException {
 
     public URLDoesNotExistException(){}
 
-    public URLDoesNotExistException(String msg){
-        super(msg);
-        this.message = msg;
+    public URLDoesNotExistException(String message){
+        super();
+        this.message = message;
     }
 }
