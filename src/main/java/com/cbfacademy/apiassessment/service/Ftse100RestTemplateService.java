@@ -2,6 +2,7 @@ package com.cbfacademy.apiassessment.service;
 
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,9 @@ public class Ftse100RestTemplateService {
     private static final String updateCompanyURL = "http://localhost:8080/companies/{tickerSymbol}";
     private static final String deleteCompanyURL = "http://localhost:8080/companies/{tickerSymbol}";
     private static final String getCompanyAndStockPriceURL = "http://localhost:8080/companies/stockPrices/{tickerSymbol}";
+    private static final String getCompaniesAndStockPricesURL = "http://localhost:8080/companies/stockPrices/all";
 
+    // look at the next youtube video to add these links to application propeties instead"
 
     public ResponseEntity<List<Ftse100>> allCompanies(){
         HttpHeaders headers = new HttpHeaders();
@@ -67,12 +70,18 @@ public class Ftse100RestTemplateService {
         restTemplate.delete(deleteCompanyURL, param);
     }
 
-        public Ftse100 getCompanyAndPrice(String tickerSymbol){
-        Map<String, String> param = new HashMap<String, String>();
-        param.put("tickerSymbol", tickerSymbol);
-
-        return restTemplate.getForObject(getCompanyAndStockPriceURL, Ftse100.class, param);
+    public ResponseEntity<String> getCompanyAndPrice(String tickerSymbol){
+        ResponseEntity<String> response = restTemplate.exchange(getCompanyAndStockPriceURL, HttpMethod.GET, null, String.class, tickerSymbol);
+        return response;
     }
+
+    public ResponseEntity<String> getCompaniesAndStockPrices(){
+        ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndStockPricesURL, HttpMethod.GET, null, String.class);
+        return response;
+    }
+
+
+    
 
 
 }

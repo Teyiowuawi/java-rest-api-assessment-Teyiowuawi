@@ -49,9 +49,15 @@ public class Ftse100RestTemplateController {
     }
 
     @GetMapping(value = "/stockPrices/{tickerSymbol}", produces = "application/json")
-    public Ftse100 getCompanyAndStockPrice(@PathVariable String tickerSymbol){
+    public ResponseEntity<String> getCompanyAndStockPrice(@PathVariable String tickerSymbol){
         return ftse100RestTemplateService.getCompanyAndPrice(tickerSymbol);
+
+    }    @GetMapping(value = "/stockPrices/all", produces = "application/json")
+    public ResponseEntity<String> getAllCompaniesAndStockPrices(){
+        return ftse100RestTemplateService.getCompaniesAndStockPrices();
     }
+
+
 
     
 }

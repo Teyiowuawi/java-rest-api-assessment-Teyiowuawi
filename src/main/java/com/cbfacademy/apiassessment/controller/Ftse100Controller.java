@@ -61,12 +61,12 @@ public class Ftse100Controller {
 		return ftse100Service.getStockAndPrice(tickerSymbol);
 	}
 
-	@GetMapping(value = "/stockPrices", produces = "application/json")
+	@GetMapping(value = "/stockPrices/all", produces = "application/json")
 	public ResponseEntity<String> getAllFtse100CompanyStockPrices(){
 		return ftse100Service.getStocksAndPrices();
 	}
 
-	@GetMapping(value = "/stockPrices2", produces = "application/json")
+	@GetMapping(value = "/stockPrices2/all", produces = "application/json")
 	public ResponseEntity<HashMap<String, Double>> getCompanyNameAndStockPrice(){
         return ftse100Service.getCompanyNameAndStockPrice();
     }
