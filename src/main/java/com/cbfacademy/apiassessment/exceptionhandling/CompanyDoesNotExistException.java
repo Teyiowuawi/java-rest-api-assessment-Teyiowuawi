@@ -9,8 +9,7 @@ public class CompanyDoesNotExistException extends RuntimeException{
     public CompanyDoesNotExistException(String msg){
         super(msg);
         this.message = msg;
-    }
-    // still printing the stack trace - how could i get ride of it?
-    // or will it always be there and my useful message is the part that comes through
-    
+    }   
+    // trying to place the status code here to print our what sort of status message it is
+    // but having no luck and not seeing the result in my API tester
 }

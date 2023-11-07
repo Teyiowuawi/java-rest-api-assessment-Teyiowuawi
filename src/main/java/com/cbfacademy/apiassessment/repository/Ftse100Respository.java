@@ -20,17 +20,17 @@ import com.cbfacademy.apiassessment.exceptionhandling.CompanyDoesNotExistExcepti
 @Repository 
 public class Ftse100Respository implements Ftse100AdditionalCrud {
 
-    private String jsonFile = "/ftse100.json";
+    private String jsonFile = "/ftse101.json";
     private String jsonFilePath ="C:\\Users\\admin\\CBFAcademy\\java-rest-api-assessment-Teyiowuawi\\src\\main\\resources\\ftse101.json";
+    
     private Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler(jsonFile);
     private List<Ftse100> companies = fileHandler.readFtse100JsonFile(jsonFile);
     
     public ResponseEntity<Ftse100> addFtse100Company(Ftse100 newCompany){
 		for (Ftse100 existingCompany : companies){
 			if (newCompany.getTickerSymbol().equalsIgnoreCase(existingCompany.getTickerSymbol())){
-                throw new CompanyAlreadyExistsException("FTSE100 company already present with Ticker Symbol: " + existingCompany.getTickerSymbol());
-				//(HttpStatus.ALREADY_REPORTED) + error response
-				}}
+                throw new CompanyAlreadyExistsException("Status code: " + HttpStatus.ALREADY_REPORTED.value() + ", FTSE100 company already present with Ticker Symbol: " + existingCompany.getTickerSymbol());
+				}} 
                 companies.add(newCompany);
 
                 fileHandler.ftse100WriteToJsonFile(jsonFilePath, companies);
@@ -97,7 +97,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
                     return ResponseEntity.ok(company.getCompanyName() + " (" + tickerSymbol + ")" + ": " + company.getStockPrice() + " GBX");
                 }}
             throw new CompanyDoesNotExistException("No FTSE100 company present with Ticker Symbol: " + tickerSymbol);
-            // HTTP.status. not found + error response
+            // HTTP.status. not found 404 + a message 
             }
 
     
@@ -110,7 +110,6 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
             String companyNameAndStockPrice = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getStockPrice() + " GBX";
             allCompaniesAndStockPrices.add(companyNameAndStockPrice);
             }
-
             return ResponseEntity.ok(String.join("\n", allCompaniesAndStockPrices));
         } 
         // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
