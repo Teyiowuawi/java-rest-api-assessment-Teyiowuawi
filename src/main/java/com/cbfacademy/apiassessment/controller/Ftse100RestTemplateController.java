@@ -30,8 +30,7 @@ public class Ftse100RestTemplateController {
     
     @GetMapping("/all")
     public ResponseEntity<List<Ftse100>> getAllCompanies(){
-        return ftse100RestTemplateService.allCompanies();
-        
+        return ftse100RestTemplateService.allCompanies();   
     }
 
     @GetMapping(value = "/{tickerSymbol}", produces = "application/json")
@@ -42,13 +41,16 @@ public class Ftse100RestTemplateController {
     @PutMapping(value = "/{tickerSymbol}", produces = "application/json")
     public void  updateCompanyByTickerSymbol(@PathVariable String tickerSymbol, @RequestBody Ftse100 ftse100){
         ftse100RestTemplateService.updateCompany(tickerSymbol, ftse100);
-       // "message\":\"Content-Type 'text/plain;charset=ISO-8859-1' is not supported.\"
     }
 
     @DeleteMapping(value = "/{tickerSymbol}", produces = "application/json")
     public void deleteCompanyByTickerSymbol(@PathVariable String tickerSymbol){
         ftse100RestTemplateService.deleteCompany(tickerSymbol);
+    }
 
+    @GetMapping(value = "/stockPrices/{tickerSymbol}", produces = "application/json")
+    public Ftse100 getCompanyAndStockPrice(@PathVariable String tickerSymbol){
+        return ftse100RestTemplateService.getCompanyAndPrice(tickerSymbol);
     }
 
     

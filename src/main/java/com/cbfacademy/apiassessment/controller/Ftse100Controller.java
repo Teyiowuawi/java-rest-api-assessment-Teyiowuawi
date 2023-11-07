@@ -56,7 +56,7 @@ public class Ftse100Controller {
 		return ftse100Service.deleteCompany(tickerSymbol);
 	}
 
-	@GetMapping(value = "/{tickerSymbol}/stockPrice", produces = "application/json")
+	@GetMapping(value = "/stockPrices/{tickerSymbol}", produces = "application/json")
 	public ResponseEntity<String> getAFtse100CompanyStockPrice(@PathVariable String tickerSymbol){
 		return ftse100Service.getStockAndPrice(tickerSymbol);
 	}
