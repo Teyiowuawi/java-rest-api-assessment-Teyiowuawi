@@ -27,6 +27,8 @@ public class Ftse100RestTemplateService {
     private static final String getCompanyURL = "http://localhost:8080/companies/{tickerSymbol}";
     private static final String updateCompanyURL = "http://localhost:8080/companies/{tickerSymbol}";
     private static final String deleteCompanyURL = "http://localhost:8080/companies/{tickerSymbol}";
+    private static final String getCompanyAndStockPriceURL = "http://localhost:8080/companies/stockPrices/{tickerSymbol}";
+
 
     public ResponseEntity<List<Ftse100>> allCompanies(){
         HttpHeaders headers = new HttpHeaders();
@@ -45,21 +47,32 @@ public class Ftse100RestTemplateService {
 
     public Ftse100 getCompany(String tickerSymbol){
         Map<String, String> param = new HashMap<String,String>();
-        param.put("tickerSymbol", tickerSymbol);
+        param.put("StockPrice", tickerSymbol);
+
         return restTemplate.getForObject(getCompanyURL, Ftse100.class, param);
     }
 
 
     public void updateCompany(String tickerSymbol, Ftse100 updatedCompany){
-    Map<String, String> params = new HashMap<String, String>();
-    params.put("tickerSymbol", tickerSymbol);
-    restTemplate.put(updateCompanyURL, updatedCompany, params);
-     // not working
-}
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("tickerSymbol", tickerSymbol);
+
+        restTemplate.put(updateCompanyURL, updatedCompany, params);
+    }
 
     public void deleteCompany(String tickerSymbol) {
         Map<String, String> param = new HashMap<String, String>();
         param.put("tickerSymbol", tickerSymbol);
+
         restTemplate.delete(deleteCompanyURL, param);
     }
+
+        public Ftse100 getCompanyAndPrice(String tickerSymbol){
+        Map<String, String> param = new HashMap<String, String>();
+        param.put("tickerSymbol", tickerSymbol);
+
+        return restTemplate.getForObject(getCompanyAndStockPriceURL, Ftse100.class, param);
+    }
+
+
 }
