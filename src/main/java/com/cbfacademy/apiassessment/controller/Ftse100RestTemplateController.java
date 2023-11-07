@@ -42,14 +42,13 @@ public class Ftse100RestTemplateController {
     @PutMapping(value = "/{tickerSymbol}", produces = "application/json")
     public void  updateCompanyByTickerSymbol(@PathVariable String tickerSymbol, @RequestBody Ftse100 ftse100){
         ftse100RestTemplateService.updateCompany(tickerSymbol, ftse100);
-        // java.lang.IllegalArgumentException: Not enough variable values available
-        // to expand 'tickerSymbol'
+       // "message\":\"Content-Type 'text/plain;charset=ISO-8859-1' is not supported.\"
     }
 
     @DeleteMapping(value = "/{tickerSymbol}", produces = "application/json")
     public void deleteCompanyByTickerSymbol(@PathVariable String tickerSymbol){
         ftse100RestTemplateService.deleteCompany(tickerSymbol);
-        // this is the only request that works
+
     }
 
     
