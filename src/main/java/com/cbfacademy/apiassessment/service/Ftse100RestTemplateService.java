@@ -50,8 +50,10 @@ public class Ftse100RestTemplateService {
     }
 
 
-    public void updateCompany(String tickerSymbol, Ftse100 ftse100){
-     restTemplate.put(updateCompanyURL, tickerSymbol, ftse100);
+    public void updateCompany(String tickerSymbol, Ftse100 updatedCompany){
+    Map<String, String> params = new HashMap<String, String>();
+    params.put("tickerSymbol", tickerSymbol);
+    restTemplate.put(updateCompanyURL, updatedCompany, params);
      // not working
 }
 
