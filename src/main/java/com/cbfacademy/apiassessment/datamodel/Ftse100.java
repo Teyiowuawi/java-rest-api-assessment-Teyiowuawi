@@ -13,7 +13,9 @@ public class Ftse100 {
     private double debtToEquityRatio;
     private double esgRiskRating;
 
-  public Ftse100(String companyName, String tickerSymbol, String sector, double stockPrice, BigInteger marketCapitalization, double priceToEquityRatio, double priceToBookRatio, double debtToEquityRatio, double esgRiskRating){
+public Ftse100(){}
+
+public Ftse100(String companyName, String tickerSymbol, String sector, double stockPrice, BigInteger marketCapitalization, double priceToEquityRatio, double priceToBookRatio, double debtToEquityRatio, double esgRiskRating){
         this.companyName = companyName;
         this.tickerSymbol = tickerSymbol;
         this.sector = sector;
