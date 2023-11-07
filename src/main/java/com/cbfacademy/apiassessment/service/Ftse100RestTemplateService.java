@@ -36,35 +36,30 @@ public class Ftse100RestTemplateService {
         
         ResponseEntity<List<Ftse100>> response = restTemplate.exchange(getAllCompaniesURL, HttpMethod.GET, entity, new ParameterizedTypeReference<List<Ftse100>>(){});
         return response; 
-        // getting error message: Type definition error: [simple type, class com.cbfacademy.apiassessment.datamodel.Ftse100]
-        //InvalidDefinitionException: Cannot construct instance of `com.cbfacademy.apiassessment.datamodel.Ftse100` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
-        //  at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 3] (through reference chain: java.util.ArrayList[0])
     }
-
 
     public ResponseEntity<Ftse100> addCompany(Ftse100 ftse100){
-        return restTemplate.postForEntity(addNewCompanyURL, ftse100, Ftse100.class);
-// Another error message
-// HttpMessageConversionException: 
-//Type definition error: [simple type, class com.cbfacademy.apiassessment.datamodel.Ftse100]
+        return restTemplate.postForEntity(addNewCompanyURL, ftse100, Ftse100.class); 
     }
+    
 
     public Ftse100 getCompany(String tickerSymbol){
         Map<String, String> param = new HashMap<String,String>();
         param.put("tickerSymbol", tickerSymbol);
         return restTemplate.getForObject(getCompanyURL, Ftse100.class, param);
+        //working
     }
-    // same conversion excpetion method for rest template 
-    //HttpMessageConversionException: Type definition
-    // error: [simple type, class com.cbfacademy.apiassessment.datamodel.Ftse100]
+
 
     public void updateCompany(Ftse100 ftse100){
      restTemplate.put(updateCompanyURL, ftse100);
+     // not working
 }
 
     public void deleteCompany(String tickerSymbol) {
         Map<String, String> param = new HashMap<String, String>();
         param.put("tickerSymbol", tickerSymbol);
         restTemplate.delete(deleteCompanyURL, param);
+        //working
     }
 }
