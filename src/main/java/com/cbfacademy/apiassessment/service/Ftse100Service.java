@@ -44,7 +44,7 @@ public class Ftse100Service {
         return ftse100Repository.getCompanyStockAndPrice(tickerSymbol);
     }
 
-    public  ResponseEntity<String> getStocksAndPrices(){
+    public  ResponseEntity<List<String>> getStocksAndPrices(){
         return ftse100Repository.getAllStocksAndAllPrices();
     }
 
