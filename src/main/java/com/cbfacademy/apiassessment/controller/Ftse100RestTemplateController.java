@@ -22,16 +22,16 @@ public class Ftse100RestTemplateController {
 
     @Autowired
     private Ftse100RestTemplateService ftse100RestTemplateService;
+
+    @PostMapping("/addCompany")
+    public ResponseEntity<Ftse100> addNewCompany(@RequestBody Ftse100 ftse100){
+        return ftse100RestTemplateService.addCompany(ftse100);
+    }
     
     @GetMapping("/all")
     public ResponseEntity<List<Ftse100>> getAllCompanies(){
         return ftse100RestTemplateService.allCompanies();
         
-    }
-
-   @PostMapping("/addCompany")
-    public ResponseEntity<Ftse100> addNewCompany(@RequestBody Ftse100 ftse100){
-        return ftse100RestTemplateService.addCompany(ftse100);
     }
 
     @GetMapping(value = "/{tickerSymbol}", produces = "application/json")
@@ -40,8 +40,8 @@ public class Ftse100RestTemplateController {
     }
     
     @PutMapping(value = "/{tickerSymbol}", produces = "application/json")
-    public void  updateCompanyByTickerSymbol(@RequestBody Ftse100 ftse100){
-        ftse100RestTemplateService.updateCompany(ftse100);
+    public void  updateCompanyByTickerSymbol(@PathVariable String tickerSymbol, @RequestBody Ftse100 ftse100){
+        ftse100RestTemplateService.updateCompany(tickerSymbol, ftse100);
         // java.lang.IllegalArgumentException: Not enough variable values available
         // to expand 'tickerSymbol'
     }

@@ -47,12 +47,11 @@ public class Ftse100RestTemplateService {
         Map<String, String> param = new HashMap<String,String>();
         param.put("tickerSymbol", tickerSymbol);
         return restTemplate.getForObject(getCompanyURL, Ftse100.class, param);
-        //working
     }
 
 
-    public void updateCompany(Ftse100 ftse100){
-     restTemplate.put(updateCompanyURL, ftse100);
+    public void updateCompany(String tickerSymbol, Ftse100 ftse100){
+     restTemplate.put(updateCompanyURL, tickerSymbol, ftse100);
      // not working
 }
 
@@ -60,6 +59,5 @@ public class Ftse100RestTemplateService {
         Map<String, String> param = new HashMap<String, String>();
         param.put("tickerSymbol", tickerSymbol);
         restTemplate.delete(deleteCompanyURL, param);
-        //working
     }
 }
