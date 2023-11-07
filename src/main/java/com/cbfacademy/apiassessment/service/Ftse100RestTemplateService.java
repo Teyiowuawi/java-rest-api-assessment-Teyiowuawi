@@ -30,7 +30,11 @@ public class Ftse100RestTemplateService {
     private static final String deleteCompanyURL = "http://localhost:8080/companies/{tickerSymbol}";
     private static final String getCompanyAndStockPriceURL = "http://localhost:8080/companies/stockPrices/{tickerSymbol}";
     private static final String getCompaniesAndStockPricesURL = "http://localhost:8080/companies/stockPrices/all";
-
+    private static final String getCompaniesAndMarketCapURL = "http://localhost:8080/companies/marketCapitalization";
+    private static final String getCompaniesAndPriceToEquityURL = "http://localhost:8080/companies/marketCapitalization";
+    private static final String getCompaniesAndPriceToBookURL = "http://localhost:8080/companies/priceToBook";
+    private static final String getCompaniesAndDebtToEquityURL = "http://localhost:8080/companies/debtToEquity";
+    private static final String getCompaniesAndEsgRiskRatingURL = "http://localhost:8080/companies/esg";
     // look at the next youtube video to add these links to application propeties instead"
 
     public ResponseEntity<List<Ftse100>> allCompanies(){
@@ -79,6 +83,35 @@ public class Ftse100RestTemplateService {
         ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndStockPricesURL, HttpMethod.GET, null, String.class);
         return response;
     }
+
+    public ResponseEntity<String> getCompaniesAndMarketCap(){
+        ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndMarketCapURL, HttpMethod.GET, null, String.class);
+        return response;
+    }
+
+    public ResponseEntity<String> getCompaniesAndPriceToEquity(){
+        ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndPriceToEquityURL, HttpMethod.GET, null, String.class);
+        return response;
+    }
+
+    public ResponseEntity<String> getCompaniesAndPriceToBook(){
+        ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndPriceToBookURL, HttpMethod.GET, null, String.class);
+        return response;
+    }
+
+    public ResponseEntity<String> getCompaniesAndDebtToEquity(){
+        ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndDebtToEquityURL, HttpMethod.GET, null, String.class);
+        return response;
+    }
+
+    public ResponseEntity<String> getCompaniesAndEsgRiskRating(){
+        ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndEsgRiskRatingURL, HttpMethod.GET, null, String.class);
+        return response;
+    }
+
+
+
+
 
 
     

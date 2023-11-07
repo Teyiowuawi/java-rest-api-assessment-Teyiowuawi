@@ -52,10 +52,34 @@ public class Ftse100RestTemplateController {
     public ResponseEntity<String> getCompanyAndStockPrice(@PathVariable String tickerSymbol){
         return ftse100RestTemplateService.getCompanyAndPrice(tickerSymbol);
 
-    }    @GetMapping(value = "/stockPrices/all", produces = "application/json")
-    public ResponseEntity<String> getAllCompaniesAndStockPrices(){
-        return ftse100RestTemplateService.getCompaniesAndStockPrices();
+    }    
+    
+    @GetMapping(value = "/marketCapitalization", produces = "application/json")
+    public ResponseEntity<String> getAllCompaniesAndMarketCap(){
+        return ftse100RestTemplateService.getCompaniesAndMarketCap();
     }
+
+    @GetMapping(value = "/priceToEquity", produces = "application/json")
+    public ResponseEntity<String> getAllCompaniesAndPriceToEquity(){
+        return ftse100RestTemplateService.getCompaniesAndPriceToEquity();
+    }
+
+    @GetMapping(value = "/priceToBook", produces = "application/json")
+    public ResponseEntity<String> getAllCompaniesAndPriceToBook(){
+        return ftse100RestTemplateService.getCompaniesAndPriceToBook();
+    }
+
+    @GetMapping(value = "/debtToEquity", produces = "application/json")
+    public ResponseEntity<String> getAllCompaniesAndDebtToEquity(){
+        return ftse100RestTemplateService.getCompaniesAndDebtToEquity();
+    }
+
+    @GetMapping(value = "/esg", produces = "application/json")
+    public ResponseEntity<String> getAllCompaniesAndEsgRiskRating(){
+        return ftse100RestTemplateService.getCompaniesAndEsgRiskRating();
+    }
+
+
 
 
 
