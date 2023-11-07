@@ -1,12 +1,14 @@
 package com.cbfacademy.apiassessment.crud;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 
 public interface Ftse100AdditionalCrud extends Ftse100BasicCrud {
     
     ResponseEntity<String> getCompanyStockAndPrice(String tickerSymbol);
 
-    ResponseEntity<String> getAllStocksAndAllPrices();
+    ResponseEntity<List<String>> getAllStocksAndAllPrices();
 
     ResponseEntity<String> getAllStocksAndMarketCapitalization();
 

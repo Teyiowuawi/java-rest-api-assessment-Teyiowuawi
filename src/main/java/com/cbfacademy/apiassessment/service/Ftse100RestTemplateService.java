@@ -36,6 +36,7 @@ public class Ftse100RestTemplateService {
     private static final String getCompaniesAndDebtToEquityURL = "http://localhost:8080/companies/debtToEquity";
     private static final String getCompaniesAndEsgRiskRatingURL = "http://localhost:8080/companies/esg";
     // look at the next youtube video to add these links to application propeties instead"
+    //exception handling - remember to try and then catch these errors!
 
     public ResponseEntity<List<Ftse100>> allCompanies(){
         HttpHeaders headers = new HttpHeaders();
@@ -108,13 +109,5 @@ public class Ftse100RestTemplateService {
         ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndEsgRiskRatingURL, HttpMethod.GET, null, String.class);
         return response;
     }
-
-
-
-
-
-
-    
-
 
 }

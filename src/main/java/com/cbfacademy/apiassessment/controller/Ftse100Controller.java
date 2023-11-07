@@ -62,7 +62,7 @@ public class Ftse100Controller {
 	}
 
 	@GetMapping(value = "/stockPrices/all", produces = "application/json")
-	public ResponseEntity<String> getAllFtse100CompanyStockPrices(){
+	public ResponseEntity<List<String>> getAllFtse100CompanyStockPrices(){
 		return ftse100Service.getStocksAndPrices();
 	}
 

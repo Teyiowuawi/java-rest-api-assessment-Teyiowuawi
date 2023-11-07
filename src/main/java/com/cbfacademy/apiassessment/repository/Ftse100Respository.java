@@ -101,7 +101,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
             }
 
     
-    public  ResponseEntity<String> getAllStocksAndAllPrices() {	
+    public  ResponseEntity<List<String>> getAllStocksAndAllPrices() {	
         List<String> allCompaniesAndStockPrices = new ArrayList<>();
 
         Collections.sort(companies, Comparator.comparing(Ftse100::getStockPrice));
@@ -110,7 +110,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
             String companyNameAndStockPrice = company.getCompanyName() + " (" + company.getTickerSymbol() + "): " + company.getStockPrice() + " GBX";
             allCompaniesAndStockPrices.add(companyNameAndStockPrice);
             }
-            return ResponseEntity.ok(String.join("\n", allCompaniesAndStockPrices));
+            return ResponseEntity.ok(allCompaniesAndStockPrices);
         } 
         // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
         
