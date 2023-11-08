@@ -44,31 +44,31 @@ public class Ftse100Service {
         return ftse100Repository.getCompanyStockAndPrice(tickerSymbol);
     }
 
-    public  ResponseEntity<List<String>> getStocksAndPrices(){
+    // public ResponseEntity<HashMap<String, Double>> getCompanyNamesAndStockPrices(){
+    //     return ftse100Repository.getAllStocksAndAllPrices();
+    // }
+
+    public ResponseEntity<List<String>> getCompanyNamesAndStockPrices(){
         return ftse100Repository.getAllStocksAndAllPrices();
     }
 
-    public ResponseEntity<HashMap<String, Double>> getCompanyNameAndStockPrice(){
-        return ftse100Repository.bubbleSortAlgoCompanyAndStockPrice();
-    }
-
-    public ResponseEntity<String> getStocksAndMarketCapitalization(){
+    public ResponseEntity<List<String>> getStocksAndMarketCapitalization(){
         return ftse100Repository.getAllStocksAndMarketCapitalization();
     }
 
-    public ResponseEntity<String> getStocksAndPriceToEquity(){
+    public ResponseEntity<List<String>> getStocksAndPriceToEquity(){
         return ftse100Repository.getAllStocksAndAllPriceToEquity();
     }
 
-    public ResponseEntity<String> getStocksAndPriceToBook(){
+    public ResponseEntity<List<String>> getStocksAndPriceToBook(){
         return ftse100Repository.getAllStocksAndAllPriceToBook();
     }
 
-    public ResponseEntity<String> getStocksAndDebtToEquity(){
+    public ResponseEntity<List<String>> getStocksAndDebtToEquity(){
         return ftse100Repository.getAllStocksAndAllDebtToEquity();
     }
 
-    public ResponseEntity<String> getStocksAndEsg(){
+    public ResponseEntity<List<String>> getStocksAndEsg(){
         return ftse100Repository.getAllStocksAndAllEsgRatings();
     }
 }  

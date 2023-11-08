@@ -57,47 +57,48 @@ public class Ftse100Controller {
 	}
 
 	@GetMapping(value = "/stockPrices/{tickerSymbol}", produces = "application/json")
-	public ResponseEntity<String> getAFtse100CompanyStockPrice(@PathVariable String tickerSymbol){
+	public ResponseEntity<String> getFtse100CompanyAndStockPrice(@PathVariable String tickerSymbol){
 		return ftse100Service.getStockAndPrice(tickerSymbol);
 	}
 
-	@GetMapping(value = "/stockPrices/all", produces = "application/json")
-	public ResponseEntity<List<String>> getAllFtse100CompanyStockPrices(){
-		return ftse100Service.getStocksAndPrices();
-	}
 
-	@GetMapping(value = "/stockPrices2/all", produces = "application/json")
-	public ResponseEntity<HashMap<String, Double>> getCompanyNameAndStockPrice(){
-        return ftse100Service.getCompanyNameAndStockPrice();
+	// @GetMapping(value = "/stockPrices/all", produces = "application/json")
+	// public ResponseEntity<HashMap<String, Double>> getAllCompaniesAndStockPrices(){
+    //     return ftse100Service.getCompanyNamesAndStockPrices();
+    // }
+
+		@GetMapping(value = "/stockPrices/all", produces = "application/json")
+	public ResponseEntity<List<String>> getAllCompaniesAndStockPrices(){
+        return ftse100Service.getCompanyNamesAndStockPrices();
     }
 
 
 	@GetMapping(value = "/marketCapitalization", produces = "application/json")
-	public ResponseEntity<String> getAllFtse100CompanyMarketCapitalization(){
+	public ResponseEntity<List<String>> getAllFtse100CompanyMarketCapitalization(){
 		return ftse100Service.getStocksAndMarketCapitalization();
 	}
 
 
 	@GetMapping(value ="/priceToEquity" , produces = "application/json")
-	public ResponseEntity<String> getAllFtse100CompanyPriceToEquity(){
+	public ResponseEntity<List<String>> getAllFtse100CompanyPriceToEquity(){
 		return ftse100Service.getStocksAndPriceToEquity();
 	}
 	
 
 	@GetMapping(value = "/priceToBook" , produces = "application/json")
-	public ResponseEntity<String> getAllFtse100CompanyPriceToBook(){
+	public ResponseEntity<List<String>> getAllFtse100CompanyPriceToBook(){
 		return ftse100Service.getStocksAndPriceToBook();
 	}
 
 
 	@GetMapping(value = "/debtToEquity", produces = "application/json")
-	public ResponseEntity<String> getAllFtse100CompanyDebtToEquity(){
+	public ResponseEntity<List<String>> getAllFtse100CompanyDebtToEquity(){
 		return ftse100Service.getStocksAndDebtToEquity();
 	}
 
 
 	@GetMapping(value = "/esg" , produces = "application/json")
-	public ResponseEntity<String> getAllFtse100CompanyEsgRatings(){
+	public ResponseEntity<List<String>> getAllFtse100CompanyEsgRatings(){
 		return ftse100Service.getStocksAndEsg();
 	}
 }
