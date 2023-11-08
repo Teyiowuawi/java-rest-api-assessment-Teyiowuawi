@@ -8,15 +8,13 @@ public interface Ftse100AdditionalCrud extends Ftse100BasicCrud {
     
     ResponseEntity<String> getCompanyStockAndPrice(String tickerSymbol);
 
-    ResponseEntity<List<String>> getAllStocksAndAllPrices();
+    ResponseEntity<List<String>> getAllStocksAndMarketCapitalization();
 
-    ResponseEntity<String> getAllStocksAndMarketCapitalization();
+    ResponseEntity<List<String>> getAllStocksAndAllPriceToEquity();
 
-    ResponseEntity<String> getAllStocksAndAllPriceToEquity();
+    ResponseEntity<List<String>> getAllStocksAndAllPriceToBook();
 
-    ResponseEntity<String> getAllStocksAndAllPriceToBook();
+    ResponseEntity<List<String>> getAllStocksAndAllDebtToEquity();
 
-    ResponseEntity<String> getAllStocksAndAllDebtToEquity();
-
-    ResponseEntity<String> getAllStocksAndAllEsgRatings(); 
+    ResponseEntity<List<String>> getAllStocksAndAllEsgRatings(); 
 }
