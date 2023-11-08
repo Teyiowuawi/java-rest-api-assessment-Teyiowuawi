@@ -2,7 +2,6 @@ package com.cbfacademy.apiassessment.service;
 
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,33 +79,34 @@ public class Ftse100RestTemplateService {
         return response;
     }
 
-    public ResponseEntity<String> getCompaniesAndStockPrices(){
-        ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndStockPricesURL, HttpMethod.GET, null, String.class);
+    public ResponseEntity<List<String>> getCompaniesAndPrices(){
+        ResponseEntity<List<String>> response = restTemplate.exchange(getCompaniesAndStockPricesURL, HttpMethod.GET, null, new ParameterizedTypeReference<List<String>>(){});
         return response;
     }
 
-    public ResponseEntity<String> getCompaniesAndMarketCap(){
-        ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndMarketCapURL, HttpMethod.GET, null, String.class);
+
+    public ResponseEntity<List<String>> getCompaniesAndMarketCap(){
+        ResponseEntity<List<String>> response = restTemplate.exchange(getCompaniesAndMarketCapURL, HttpMethod.GET, null, new ParameterizedTypeReference<List<String>>(){});
         return response;
     }
 
-    public ResponseEntity<String> getCompaniesAndPriceToEquity(){
-        ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndPriceToEquityURL, HttpMethod.GET, null, String.class);
+    public ResponseEntity<List<String>> getCompaniesAndPriceToEquity(){
+        ResponseEntity<List<String>> response = restTemplate.exchange(getCompaniesAndPriceToEquityURL, HttpMethod.GET, null, new ParameterizedTypeReference<List<String>>(){});
         return response;
     }
 
-    public ResponseEntity<String> getCompaniesAndPriceToBook(){
-        ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndPriceToBookURL, HttpMethod.GET, null, String.class);
+    public ResponseEntity<List<String>>getCompaniesAndPriceToBook(){
+        ResponseEntity<List<String>> response = restTemplate.exchange(getCompaniesAndPriceToBookURL, HttpMethod.GET, null, new ParameterizedTypeReference<List<String>>(){});
         return response;
     }
 
-    public ResponseEntity<String> getCompaniesAndDebtToEquity(){
-        ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndDebtToEquityURL, HttpMethod.GET, null, String.class);
+    public ResponseEntity<List<String>> getCompaniesAndDebtToEquity(){
+        ResponseEntity<List<String>> response = restTemplate.exchange(getCompaniesAndDebtToEquityURL, HttpMethod.GET, null, new ParameterizedTypeReference<List<String>>(){});
         return response;
     }
 
-    public ResponseEntity<String> getCompaniesAndEsgRiskRating(){
-        ResponseEntity<String> response = restTemplate.exchange(getCompaniesAndEsgRiskRatingURL, HttpMethod.GET, null, String.class);
+    public ResponseEntity<List<String>>getCompaniesAndEsgRiskRating(){
+        ResponseEntity<List<String>> response = restTemplate.exchange(getCompaniesAndEsgRiskRatingURL, HttpMethod.GET, null, new ParameterizedTypeReference<List<String>>(){});
         return response;
     }
 

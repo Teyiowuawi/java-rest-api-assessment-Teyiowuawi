@@ -3,7 +3,6 @@ package com.cbfacademy.apiassessment.exceptionhandling;
 public class CompanyAlreadyExistsException extends RuntimeException{
    
     private String message; 
-    
 
     public CompanyAlreadyExistsException(){}
 
