@@ -17,13 +17,12 @@ public String handleCompanyDoesNotExistException(CompanyDoesNotExistException e)
 }
 }
 
-// @ExceptionHandler(CompanyAlreadyExistsException.class)
-// @ResponseStatus(HttpStatus.NOT_FOUND)
-// public String handleCompanyAlreadyExistsException(CompanyAlreadyExistsException e){
-//     return new ErrorResponse(
-//         HttpStatus.ALREADY_REPORTED.value(), e.getMessage());
-// }
-    // still printing the stack trace - how could i get ride of it?
-    // or will it always be there and my useful message is the part that comes through
+@ExceptionHandler(CompanyAlreadyExistsException.class)
+@ResponseStatus(HttpStatus.ALREADY_REPORTED)
+public String handleCompanyAlreadyExistsException(CompanyAlreadyExistsException e){
+    return HttpStatus.ALREADY_REPORTED.value() + e.getMessage();
+}
+}
+
 
 
