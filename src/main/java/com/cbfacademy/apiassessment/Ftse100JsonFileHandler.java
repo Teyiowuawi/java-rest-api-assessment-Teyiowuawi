@@ -39,30 +39,34 @@ public class Ftse100JsonFileHandler{
         }
     }
 
-    // public void ftse100WriteToJsonFile(List<Ftse100>companies){
+    public void ftse100WriteToJsonFile(List<Ftse100>companies){
 
-    //     try {
+        try {
         
-    //         OutputStream outputStream  = new FileOutputStream(new File(Ftse100JsonFileHandler.class.getResource(file).getFile()));
-    //         Writer writer = new OutputStreamWriter(outputStream);
-    //         Gson gson = new Gson();
-    //         writer.write(gson.toJson(companies));
-    //         writer.close();
-    //             } catch(IOException e) {
-    //                 System.out.println("File not found. Please ensure this file is in the correct location and it exists");
-    //                 e.printStackTrace();
-    //             }
-    //         } 
-
-    public void ftse100WriteToJsonFile(String file, List<Ftse100> companies){
-        Gson gson = new Gson();
-
-                try (Writer writer = new FileWriter(file)){
-                    gson.toJson(companies, writer);
+            OutputStream outputStream  = new FileOutputStream(new File(Ftse100JsonFileHandler.class.getResource(file).getFile()));
+            Writer writer = new OutputStreamWriter(outputStream);
+            Gson gson = new Gson();
+            writer.write(gson.toJson(companies));
+            writer.close();
                 } catch(IOException e) {
                     System.out.println("File not found. Please ensure this file is in the correct location and it exists");
                     e.printStackTrace();
                 }
             } 
+
+            // currently store in resources folder 
+            // is that the reason why i can edit it? because it is read only? 
+            // create temporary file to write to and then overwrite it?
+
+    // public void ftse100WriteToJsonFile(String file, List<Ftse100> companies){
+    //     Gson gson = new Gson();
+
+    //             try (Writer writer = new FileWriter(file)){
+    //                 gson.toJson(companies, writer);
+    //             } catch(IOException e) {
+    //                 System.out.println("File not found. Please ensure this file is in the correct location and it exists");
+    //                 e.printStackTrace();
+    //             }
+    //         } 
  
 }
