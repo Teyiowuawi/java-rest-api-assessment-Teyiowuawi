@@ -24,10 +24,6 @@ import com.cbfacademy.apiassessment.service.Ftse100Service;
 @RequestMapping("companies")
 public class Ftse100Controller {
 
-	  	public static void main(String[] args) {
-		SpringApplication.run(Ftse100Controller.class, args);
-	}
-
 	@Autowired
 	Ftse100Service ftse100Service;
 
@@ -61,13 +57,7 @@ public class Ftse100Controller {
 		return ftse100Service.getStockAndPrice(tickerSymbol);
 	}
 
-
-	// @GetMapping(value = "/stockPrices/all", produces = "application/json")
-	// public ResponseEntity<HashMap<String, Double>> getAllCompaniesAndStockPrices(){
-    //     return ftse100Service.getCompanyNamesAndStockPrices();
-    // }
-
-		@GetMapping(value = "/stockPrices/all", produces = "application/json")
+	@GetMapping(value = "/stockPrices/all", produces = "application/json")
 	public ResponseEntity<List<String>> getAllCompaniesAndStockPrices(){
         return ftse100Service.getCompanyNamesAndStockPrices();
     }

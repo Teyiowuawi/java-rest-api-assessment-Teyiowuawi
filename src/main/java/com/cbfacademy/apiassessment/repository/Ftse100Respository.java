@@ -28,7 +28,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
     public ResponseEntity<Ftse100> addFtse100Company(Ftse100 newCompany){
 		for (Ftse100 existingCompany : companies){
 			if (newCompany.getTickerSymbol().equalsIgnoreCase(existingCompany.getTickerSymbol())){
-                throw new CompanyAlreadyExistsException("FTSE100 company already present with Ticker Symbol: " + existingCompany.getTickerSymbol());
+                throw new CompanyAlreadyExistsException("Status " + HttpStatus.ALREADY_REPORTED.value() + " FTSE100 company already present with Ticker Symbol: " + existingCompany.getTickerSymbol());
 				}} 
                 companies.add(newCompany);
 
@@ -49,7 +49,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
                     return ResponseEntity.ok(company);
                 }} 
         
-        throw new CompanyDoesNotExistException("No FTSE100 company present with Ticker Symbol: " + tickerSymbol);     
+        throw new CompanyDoesNotExistException("Status " + HttpStatus.NOT_FOUND.value() + " no FTSE100 company present with Ticker Symbol: " + tickerSymbol);     
         // httpStatus not found 404 + error response   
     }
 
@@ -74,7 +74,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 
                     return ResponseEntity.ok(updatedCompany);
                 }}
-        throw new CompanyDoesNotExistException("No FTSE100 company present with Ticker Symbol: " + tickerSymbol);
+        throw new CompanyDoesNotExistException("Status " + HttpStatus.NOT_FOUND.value() + " no FTSE100 company present with Ticker Symbol: " + tickerSymbol);
                     // (HttpStatus.NOT_FOUND) + error response
     }
 
@@ -85,7 +85,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
                 fileHandler.ftse100WriteToJsonFile(jsonFile, companies);
 				return ResponseEntity.ok(companies);
 				}}
-        throw new CompanyDoesNotExistException("No FTSE100 company present with Ticker Symbol: " + tickerSymbol);
+        throw new CompanyDoesNotExistException("Status " + HttpStatus.NOT_FOUND.value() + " no FTSE100 company present with Ticker Symbol: " + tickerSymbol);
 				// (HttpStatus.NOT_FOUND) + error response	
     }
 
@@ -96,25 +96,16 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
                     String companyTickerSymbolAndStockPrice = company.getCompanyName() + " (" + tickerSymbol + ")" + ": " + company.getStockPrice();
                     return ResponseEntity.ok(companyTickerSymbolAndStockPrice);
                 }}
-            throw new CompanyDoesNotExistException("No FTSE100 company present with Ticker Symbol: " + tickerSymbol);
+            throw new CompanyDoesNotExistException("Status " + HttpStatus.NOT_FOUND.value() + " no FTSE100 company present with Ticker Symbol: " + tickerSymbol);
             // HTTP.status. not found 404 + a message 
             }
-        
-    // public ResponseEntity<HashMap<String, Double>> getAllStocksAndAllPrices(){
-    //     HashMap<String, Double> unsortedCompanyAndStockPrices = new HashMap<>();
 
-    //     for (Ftse100 company : companies){
-    //         unsortedCompanyAndStockPrices.put(company.getCompanyName(), company.getStockPrice());
-    //     }
-    //         return ResponseEntity.ok(BubbleSortAlgo.bubbleSortStockPrices(unsortedCompanyAndStockPrices));
-    //     }
-    // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
-    // should I inherit it from AdditionalCrud or just create a new method and use the method from from my algo?
     
     public ResponseEntity<List<String>> getAllStocksAndAllPrices(){
         return ResponseEntity.ok(BubbleSortAlgo.bubbleSortStockPrices(companies));
     }
     
+
     public ResponseEntity<List<String>> getAllStocksAndMarketCapitalization() {
         List<String> allCompaniesAndMarketCapitalization = new ArrayList<>();
 
