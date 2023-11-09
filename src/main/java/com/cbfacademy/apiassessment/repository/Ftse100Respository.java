@@ -28,7 +28,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
     public ResponseEntity<Ftse100> addFtse100Company(Ftse100 newCompany){
 		for (Ftse100 existingCompany : companies){
 			if (newCompany.getTickerSymbol().equalsIgnoreCase(existingCompany.getTickerSymbol())){
-                throw new CompanyAlreadyExistsException("Status " + HttpStatus.ALREADY_REPORTED.value() + " FTSE100 company already present with Ticker Symbol: " + existingCompany.getTickerSymbol());
+                throw new CompanyAlreadyExistsException("Status " + HttpStatus.FORBIDDEN.value() + " FTSE100 company already present with Ticker Symbol: " + existingCompany.getTickerSymbol());
 				}} 
                 companies.add(newCompany);
 
@@ -49,8 +49,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
                     return ResponseEntity.ok(company);
                 }} 
         
-        throw new CompanyDoesNotExistException("Status " + HttpStatus.NOT_FOUND.value() + " no FTSE100 company present with Ticker Symbol: " + tickerSymbol);     
-        // httpStatus not found 404 + error response   
+        throw new CompanyDoesNotExistException("Status " + HttpStatus.NOT_FOUND.value() + " no FTSE100 company present with Ticker Symbol: " + tickerSymbol);       
     }
 
     
@@ -75,7 +74,6 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
                     return ResponseEntity.ok(updatedCompany);
                 }}
         throw new CompanyDoesNotExistException("Status " + HttpStatus.NOT_FOUND.value() + " no FTSE100 company present with Ticker Symbol: " + tickerSymbol);
-                    // (HttpStatus.NOT_FOUND) + error response
     }
 
     public ResponseEntity<List<Ftse100>> deleteFtse100Company(String tickerSymbol) {	
@@ -86,7 +84,6 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 				return ResponseEntity.ok(companies);
 				}}
         throw new CompanyDoesNotExistException("Status " + HttpStatus.NOT_FOUND.value() + " no FTSE100 company present with Ticker Symbol: " + tickerSymbol);
-				// (HttpStatus.NOT_FOUND) + error response	
     }
 
     
@@ -97,7 +94,6 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
                     return ResponseEntity.ok(companyTickerSymbolAndStockPrice);
                 }}
             throw new CompanyDoesNotExistException("Status " + HttpStatus.NOT_FOUND.value() + " no FTSE100 company present with Ticker Symbol: " + tickerSymbol);
-            // HTTP.status. not found 404 + a message 
             }
 
     
