@@ -15,12 +15,13 @@ public class Ftse100RExceptionHandler {
 public String handleCompanyDoesNotExistException(CompanyDoesNotExistException e){
     return e.getMessage();
 }
-}
 
+
+@ResponseBody
 @ExceptionHandler(CompanyAlreadyExistsException.class)
 @ResponseStatus(HttpStatus.ALREADY_REPORTED)
 public String handleCompanyAlreadyExistsException(CompanyAlreadyExistsException e){
-    return HttpStatus.ALREADY_REPORTED.value() + e.getMessage();
+    return e.getMessage();
 }
 }
 
