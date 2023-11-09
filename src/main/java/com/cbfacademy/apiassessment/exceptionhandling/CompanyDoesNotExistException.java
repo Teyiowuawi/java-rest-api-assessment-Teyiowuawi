@@ -9,5 +9,5 @@ public class CompanyDoesNotExistException extends RuntimeException{
     public CompanyDoesNotExistException(String msg){
         super(msg);
         this.message = msg;
-    }   
+    }
 }
