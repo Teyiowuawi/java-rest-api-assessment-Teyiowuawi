@@ -1,9 +1,13 @@
 package com.cbfacademy.apiassessment;
 
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
@@ -36,9 +40,13 @@ public class Ftse100JsonFileHandler{
         }
     }
 
-    public void ftse100WriteToJsonFile(String file, List<Ftse100>companies){
+    public void ftse100WriteToJsonFile(List<Ftse100>companies){
+        
+
         try {
-            BufferedWriter writer = Files.newBufferedWriter(Paths.get(file));
+        
+            OutputStream outputStream  = new FileOutputStream(new File(Ftse100JsonFileHandler.class.getResource(file).getFile()));
+            Writer writer = new OutputStreamWriter(outputStream);
             Gson gson = new Gson();
             writer.write(gson.toJson(companies));
             writer.close();

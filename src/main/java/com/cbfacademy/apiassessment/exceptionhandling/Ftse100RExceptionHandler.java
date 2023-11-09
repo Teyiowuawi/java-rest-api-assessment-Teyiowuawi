@@ -19,7 +19,7 @@ public String handleCompanyDoesNotExistException(CompanyDoesNotExistException e)
 
 @ResponseBody
 @ExceptionHandler(CompanyAlreadyExistsException.class)
-@ResponseStatus(HttpStatus.ALREADY_REPORTED)
+@ResponseStatus(HttpStatus.FORBIDDEN)
 public String handleCompanyAlreadyExistsException(CompanyAlreadyExistsException e){
     return e.getMessage();
 }

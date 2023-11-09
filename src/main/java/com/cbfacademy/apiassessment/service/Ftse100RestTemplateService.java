@@ -13,9 +13,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
-
 import com.cbfacademy.apiassessment.datamodel.Ftse100;
 import com.cbfacademy.apiassessment.exceptionhandling.CompanyAlreadyExistsException;
 
@@ -52,11 +50,10 @@ public class Ftse100RestTemplateService {
     public ResponseEntity<Ftse100> addCompany(Ftse100 ftse100){
         try{
             return restTemplate.postForEntity(addNewCompanyURL, ftse100, Ftse100.class);
-        } catch (HttpClientErrorException e){
+        } catch (CompanyAlreadyExistsException e){
             throw new CompanyAlreadyExistsException(e.getMessage());
          }
     }
-    
 
     public Ftse100 getCompany(String tickerSymbol){
         Map<String, String> param = new HashMap<String,String>();

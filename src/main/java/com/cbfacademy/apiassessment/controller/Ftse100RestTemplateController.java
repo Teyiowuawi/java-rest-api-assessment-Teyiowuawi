@@ -23,7 +23,7 @@ public class Ftse100RestTemplateController {
     @Autowired
     private Ftse100RestTemplateService ftse100RestTemplateService;
 
-    @PostMapping("/addCompany")
+    @PostMapping("/all")
     public ResponseEntity<Ftse100> addNewCompany(@RequestBody Ftse100 ftse100){
         return ftse100RestTemplateService.addCompany(ftse100);
     }
