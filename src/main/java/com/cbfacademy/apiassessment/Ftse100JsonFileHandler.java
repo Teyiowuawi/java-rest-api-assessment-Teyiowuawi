@@ -1,17 +1,16 @@
 package com.cbfacademy.apiassessment;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.Writer;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 
@@ -55,15 +54,15 @@ public class Ftse100JsonFileHandler{
     //             }
     //         } 
 
-    // public void ftse100WriteToJsonFile(String file, List<Ftse100> companies){
-    //     // Gson gson = new Gson();
+    public void ftse100WriteToJsonFile(String file, List<Ftse100> companies){
+        Gson gson = new Gson();
 
-    //     //         try (Writer writer = new FileWriter(file)){
-    //     //             gson.toJson(companies, writer);
-    //     //         } catch(IOException e) {
-    //     //             System.out.println("File not found. Please ensure this file is in the correct location and it exists");
-    //     //             e.printStackTrace();
-    //     //         }
-    //         } 
+                try (Writer writer = new FileWriter(file)){
+                    gson.toJson(companies, writer);
+                } catch(IOException e) {
+                    System.out.println("File not found. Please ensure this file is in the correct location and it exists");
+                    e.printStackTrace();
+                }
+            } 
  
 }
