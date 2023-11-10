@@ -43,10 +43,6 @@ public class Ftse100Service {
         return ftse100Repository.getCompanyStockAndPrice(tickerSymbol);
     }
 
-    // public ResponseEntity<HashMap<String, Double>> getCompanyNamesAndStockPrices(){
-    //     return ftse100Repository.getAllStocksAndAllPrices();
-    // }
-
     public ResponseEntity<List<String>> getCompanyNamesAndStockPrices(){
         return ftse100Repository.getAllStocksAndAllPrices();
     }
