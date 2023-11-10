@@ -61,8 +61,6 @@ public class Ftse100RestTemplateService {
     private String getCompaniesAndEsgRiskRatingURL;
     
      RestTemplate restTemplate = new RestTemplate();
-    
-    //exception handling - remember to try and then catch these errors!
 
     public ResponseEntity<List<Ftse100>> allCompanies(){
         HttpHeaders headers = new HttpHeaders();
