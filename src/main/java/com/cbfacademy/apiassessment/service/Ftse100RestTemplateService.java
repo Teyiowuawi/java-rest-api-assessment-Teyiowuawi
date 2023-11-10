@@ -96,8 +96,6 @@ public class Ftse100RestTemplateService {
 
         restTemplate.put(baseUrl + updateCompanyURL, updatedCompany, params);
     }
-    //update should show the new object in the response body
-    // creating a customised response body in springboot
 
     public void deleteCompany(String tickerSymbol) {
         Map<String, String> param = new HashMap<String, String>();
