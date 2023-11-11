@@ -12,6 +12,7 @@ import java.util.List;
 import com.cbfacademy.apiassessment.datamodel.Ftse100;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 public class Ftse100JsonFileHandler{
@@ -36,10 +37,11 @@ public class Ftse100JsonFileHandler{
 
 
     public void ftse100WriteToJsonFile(String file, List<Ftse100> companies){
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
                 try (Writer writer = new FileWriter(file)){
                     gson.toJson(companies, writer);
+                    writer.close();
                 } catch(IOException e) {
                     System.out.println("File not found. Please ensure this file is in the correct location and it exists");
                     e.printStackTrace();
