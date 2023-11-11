@@ -43,7 +43,7 @@ public class Ftse100JsonFileHandler{
 
         try {
         
-            OutputStream outputStream  = new FileOutputStream(new File(Ftse100JsonFileHandler.class.getResource(file).getFile()));
+            OutputStream outputStream  = new FileOutputStream(new File(Ftse100JsonFileHandler.class.getResource("/ftse101.json").getFile()));
             Writer writer = new OutputStreamWriter(outputStream);
             Gson gson = new Gson();
             writer.write(gson.toJson(companies));
