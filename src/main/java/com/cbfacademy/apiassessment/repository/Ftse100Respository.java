@@ -18,10 +18,8 @@ import com.cbfacademy.apiassessment.exceptionhandling.CompanyDoesNotExistExcepti
 
 @Repository 
 public class Ftse100Respository implements Ftse100AdditionalCrud {
-    // private String jsonFile = "main/src/resources/ftse101.json";
 
-    private String jsonFile = "/ftse100.json";
-    
+    private String jsonFile = "src/main/resources/ftse101.json";
     
     private Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler(jsonFile);
     private List<Ftse100> companies = fileHandler.readFtse100JsonFile(jsonFile);
@@ -32,7 +30,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
                 throw new CompanyAlreadyExistsException("Status " + HttpStatus.FORBIDDEN.value() + ": " + "FTSE100 company already present with Ticker Symbol: " + existingCompany.getTickerSymbol());
 				}} 
                 companies.add(newCompany);
-                fileHandler.ftse100WriteToJsonFile(companies);
+                fileHandler.ftse100WriteToJsonFile(jsonFile, companies);
                 return ResponseEntity.status(HttpStatus.CREATED).body(newCompany);           
     }       
 
@@ -67,7 +65,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 
                     int indexOfCompanyInFtse100List = companies.indexOf(company);
                     companies.set(indexOfCompanyInFtse100List, updatedCompany);
-                    fileHandler.ftse100WriteToJsonFile(companies);
+                    fileHandler.ftse100WriteToJsonFile(jsonFile, companies);
                     return ResponseEntity.ok(updatedCompany);
                 }}
         throw new CompanyDoesNotExistException("Status " + HttpStatus.NOT_FOUND.value() + ": "  + " no FTSE100 company present with Ticker Symbol: " + tickerSymbol);
@@ -77,7 +75,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 		for (Ftse100 company : companies){
             if (company.getTickerSymbol().equalsIgnoreCase(tickerSymbol)){
 				companies.remove(company);
-                fileHandler.ftse100WriteToJsonFile(companies);
+                fileHandler.ftse100WriteToJsonFile(jsonFile, companies);
 				return ResponseEntity.ok(companies);
 				}}
         throw new CompanyDoesNotExistException("Status " + HttpStatus.NOT_FOUND.value() + ": "  + " no FTSE100 company present with Ticker Symbol: " + tickerSymbol);
