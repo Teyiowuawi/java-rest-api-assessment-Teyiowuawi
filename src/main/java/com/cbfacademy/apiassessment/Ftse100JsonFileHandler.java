@@ -23,7 +23,7 @@ public class Ftse100JsonFileHandler{
     }
     
 
-    public List<Ftse100> readFtse100JsonFile(String file){
+    public static List<Ftse100> readFtse100JsonFile(String file){
         Gson gson = new Gson();
 			
 		try (BufferedReader reader = new BufferedReader(new FileReader(file))){
@@ -36,7 +36,7 @@ public class Ftse100JsonFileHandler{
     }
 
 
-    public void ftse100WriteToJsonFile(String file, List<Ftse100> companies){
+    public static void ftse100WriteToJsonFile(String file, List<Ftse100> companies){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
                 try (Writer writer = new FileWriter(file)){

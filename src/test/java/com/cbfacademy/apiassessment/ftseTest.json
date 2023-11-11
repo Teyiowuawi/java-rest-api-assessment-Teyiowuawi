@@ -1,0 +1,101 @@
+[
+    {
+      "companyName": "Endeavour Plc",
+      "tickerSymbol": "EDV",
+      "sector": "Precious Metals and Mining",
+      "stockPrice": 1678.0,
+      "marketCapitalization": 4333000000,
+      "priceToEquityRatio": -17.22,
+      "priceToBookRatio": 1.52,
+      "debtToEquityRatio": 27.23,
+      "esgRiskRating": 23.09
+    },
+    {
+      "companyName": "ConvaTec Group Plc",
+      "tickerSymbol": "CTEC",
+      "sector": "Medical Equipment and Services",
+      "stockPrice": 201.08,
+      "marketCapitalization": 4554000000,
+      "priceToEquityRatio": 67.67,
+      "priceToBookRatio": 3.11,
+      "debtToEquityRatio": 90.12,
+      "esgRiskRating": 16.6
+    },
+    {
+      "companyName": "BAE Systems Plc",
+      "tickerSymbol": "BA",
+      "sector": "Aerospace and Defense",
+      "stockPrice": 1086.0,
+      "marketCapitalization": 32770000000,
+      "priceToEquityRatio": 16.85,
+      "priceToBookRatio": 3.04,
+      "debtToEquityRatio": 61.08,
+      "esgRiskRating": 31.6
+    },
+    {
+      "companyName": "Unite Group Plc",
+      "tickerSymbol": "UTG",
+      "sector": "Real Estate",
+      "stockPrice": 854.5,
+      "marketCapitalization": 3984000000,
+      "priceToEquityRatio": 26.5,
+      "priceToBookRatio": 0.99,
+      "debtToEquityRatio": 35.73,
+      "esgRiskRating": 15.5
+    },
+    {
+      "companyName": "Hargreaves Lansdown Plc",
+      "tickerSymbol": "HL",
+      "sector": "Investment Banking and Brokerage Services",
+      "stockPrice": 703.8,
+      "marketCapitalization": 3709000000,
+      "priceToEquityRatio": 10.29,
+      "priceToBookRatio": 4.68,
+      "debtToEquityRatio": 1.72,
+      "esgRiskRating": 19.6
+    },
+    {
+      "companyName": "Fresnillo Plc",
+      "tickerSymbol": "FRES",
+      "sector": "Precious Metals and Mining",
+      "stockPrice": 533.8,
+      "marketCapitalization": 4100000000,
+      "priceToEquityRatio": 22.06,
+      "priceToBookRatio": 1.36,
+      "debtToEquityRatio": 33.58,
+      "esgRiskRating": 30.2
+    },
+    {
+      "companyName": "Mondi Plc",
+      "tickerSymbol": "MNDI",
+      "sector": "General Insutrials",
+      "stockPrice": 1304.0,
+      "marketCapitalization": 6317000000,
+      "priceToEquityRatio": 9.09,
+      "priceToBookRatio": 1.25,
+      "debtToEquityRatio": 33.83,
+      "esgRiskRating": 13.3
+    },
+    {
+      "companyName": "United Utilities Group Plc",
+      "tickerSymbol": "UU",
+      "sector": "Gas, Water and Multi-utilities",
+      "stockPrice": 1056.5,
+      "marketCapitalization": 6989000000,
+      "priceToEquityRatio": 34.17,
+      "priceToBookRatio": 2.79,
+      "debtToEquityRatio": 336.25,
+      "esgRiskRating": 11.5
+    },
+    {
+      "companyName": "Gsk Plc",
+      "tickerSymbol": "GSK",
+      "sector": "Pharmaceuticals and Biotechnology",
+      "stockPrice": 1438.8,
+      "marketCapitalization": 61552000000,
+      "priceToEquityRatio": 11.51,
+      "priceToBookRatio": 4.72,
+      "debtToEquityRatio": 176.61,
+      "esgRiskRating": 16.7
+    }
+]
