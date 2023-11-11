@@ -12,7 +12,7 @@
 	<artifactId>api-assessment</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api-assessment</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Ftse100 API With Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
