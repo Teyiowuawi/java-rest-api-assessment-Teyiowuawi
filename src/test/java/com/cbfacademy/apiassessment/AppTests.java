@@ -53,11 +53,9 @@ class AppTests {
 	@Description("Reading from json file and returning list of objects")
 	public void readFromJsonArray() throws IOException {
 
-		final String jsonTestFile = "src/test/resources/ftseTest.json";
+		final String jsonTestFile = "src/test/resources/ftseTest.json"; 
 
-		// if file doesn't exist throw IO exception 
-
-		Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler(jsonTestFile);
+		Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler();
 		List<Ftse100> actualCompaniesList = fileHandler.readFtse100JsonFile(jsonTestFile);
 
 		assertNotNull(actualCompaniesList);
@@ -80,18 +78,17 @@ class AppTests {
 			}
 		};
 
-		Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler(jsonTestFile);
+		Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler();
 		fileHandler.ftse100WriteToJsonFile(jsonTestFile, expectedCompanies);
 
 		List<Ftse100> actualCompanies = fileHandler.readFtse100JsonFile(jsonTestFile);
-
+		
 		assertTrue(new File(jsonTestFile).exists());
 		assertEquals(expectedCompanies, actualCompanies);
-		
-		}
+
+	}
+	
 		// getting a return of null for this test 
-				// if !(jsonTestFile.exists()){
-			// if file doesnt exist throw exception here 
 
 	@Test 
 	@Description("Returns a list of company names, ticker symbols and stock prices")
