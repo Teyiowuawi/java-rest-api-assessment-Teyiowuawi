@@ -1,13 +1,11 @@
 package com.cbfacademy.apiassessment.datamodel;
 
-import java.math.BigInteger;
-
 public class Ftse100 {
     private String companyName;
     private String tickerSymbol; 
     private String sector;
     private double stockPrice;
-    private BigInteger marketCapitalization;
+    private long marketCapitalization;
     private double priceToEquityRatio;
     private double priceToBookRatio;
     private double debtToEquityRatio;
@@ -15,7 +13,7 @@ public class Ftse100 {
 
 public Ftse100(){}
 
-public Ftse100(String companyName, String tickerSymbol, String sector, double stockPrice, BigInteger marketCapitalization, double priceToEquityRatio, double priceToBookRatio, double debtToEquityRatio, double esgRiskRating){
+public Ftse100(String companyName, String tickerSymbol, String sector, double stockPrice, long marketCapitalization, double priceToEquityRatio, double priceToBookRatio, double debtToEquityRatio, double esgRiskRating){
         this.companyName = companyName;
         this.tickerSymbol = tickerSymbol;
         this.sector = sector;
@@ -70,12 +68,12 @@ public Ftse100(String companyName, String tickerSymbol, String sector, double st
     }
 
 
-    public BigInteger getMarketCapitalization() {
+    public long getMarketCapitalization() {
         return marketCapitalization;
     }
 
 
-    public void setMarketCapitalization(BigInteger marketCapitalization) {
+    public void setMarketCapitalization(long marketCapitalization) {
         this.marketCapitalization = marketCapitalization;
     }
 
