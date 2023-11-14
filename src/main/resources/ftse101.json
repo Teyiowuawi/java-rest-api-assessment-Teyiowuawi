@@ -1,6 +1,6 @@
 [
   {
-    "companyName": "Endeavour Plc",
+    "companyName": "Endeavour Mining Plc",
     "tickerSymbol": "EDV",
     "sector": "Precious Metals and Mining",
     "stockPrice": 1678.0,
@@ -1098,5 +1098,16 @@
     "priceToBookRatio": -6.45,
     "debtToEquityRatio": 162.17,
     "esgRiskRating": 19.2
+  },
+  {
+    "companyName": "string",
+    "tickerSymbol": "string",
+    "sector": "string",
+    "stockPrice": 0.0,
+    "marketCapitalization": 0,
+    "priceToEquityRatio": 0.0,
+    "priceToBookRatio": 0.0,
+    "debtToEquityRatio": 0.0,
+    "esgRiskRating": 0.0
   }
 ]
