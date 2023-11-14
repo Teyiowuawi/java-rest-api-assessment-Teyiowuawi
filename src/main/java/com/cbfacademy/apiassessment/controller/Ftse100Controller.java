@@ -19,6 +19,7 @@ import com.cbfacademy.apiassessment.service.Ftse100Service;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -33,6 +34,7 @@ public class Ftse100Controller {
 	Ftse100Service ftse100Service;
 
 	@Operation(summary = "Get all companies in the FTSE100")
+	@ApiResponse(responseCode =  "200", description = "FTSE100 companies found")
 	@GetMapping("/all")
 	public ResponseEntity<List<Ftse100>> getAllCompanies(){
 		return ftse100Service.getCompanies();
@@ -40,7 +42,7 @@ public class Ftse100Controller {
 
 	@Operation(summary = "Get a FTSE100 company by it's Ticker Symbol")
 	@ApiResponses(value = {
-		@ApiResponse(responseCode =  "200", description = "FTSE100 company found", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Ftse100.class)) }), 
+		@ApiResponse(responseCode =  "200", description = "FTSE100 company found", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Ftse100.class))}), 
 		@ApiResponse(responseCode = "404", description = "FTSE100 company not found", content = @Content) })
 	@GetMapping(value = "/{tickerSymbol}", produces = "application/json")
 	public ResponseEntity<Ftse100> getFtse100CompanyByTickerSymbol(@Parameter(description = "Ticker symbol of company to be searched") @PathVariable String tickerSymbol){
@@ -62,7 +64,7 @@ public class Ftse100Controller {
 		@ApiResponse(responseCode =  "200", description = "FTSE100 company updated", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Ftse100.class)) }), 
 		@ApiResponse(responseCode = "404", description = "FTSE100 company not found", content = @Content) })
 	@PutMapping("/{tickerSymbol}")
-	public ResponseEntity<Ftse100> updateFtse100CompanyDetails(@Parameter(description = "Ticker symbol of company to be updated") @PathVariable String tickerSymbol, @RequestBody Ftse100 ftse100){
+	public ResponseEntity<Ftse100> updateFtse100CompanyDetails(@Parameter(description = "Ticker symbol of company to be updated and updated changes to company schemaS") @PathVariable String tickerSymbol, @RequestBody Ftse100 ftse100){
 		return ftse100Service.updateCompany(tickerSymbol, ftse100);
 	}
 
@@ -75,42 +77,52 @@ public class Ftse100Controller {
 		return ftse100Service.deleteCompany(tickerSymbol);
 	}
 
-	@Operation(summary = "Get all companies and their stock prices in ascending order")
+	@Operation(summary = "Get a company and it's stock price")
+	@ApiResponses(value = {
+		@ApiResponse(responseCode =  "200", description = "FTSE100 company found", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }), 
+		@ApiResponse(responseCode = "404", description = "FTSE100 company not found", content = @Content) })
 	@GetMapping(value = "/stockPrices/{tickerSymbol}", produces = "application/json")
-	public ResponseEntity<String> getFtse100CompanyAndStockPrice(@PathVariable String tickerSymbol){
+	public ResponseEntity<String> getFtse100CompanyAndStockPrice(@Parameter(description = "Tickersymbol for company stock price to be searched") @PathVariable String tickerSymbol){
 		return ftse100Service.getStockAndPrice(tickerSymbol);
 	}
 
+	@Operation(summary = "Get all companies and their stock prices in ascending order")
+	@ApiResponse(responseCode =  "200", description = "Stock prices in ascending order found")
 	@GetMapping(value = "/stockPrices/all", produces = "application/json")
 	public ResponseEntity<List<String>> getAllCompaniesAndStockPrices(){
         return ftse100Service.getCompanyNamesAndStockPrices();
     }
 
-
+	@Operation(summary = "Get all companies and their Market capitalization in ascending order")
+		@ApiResponse(responseCode =  "200", description = "Market capitalization in ascending order found")
 	@GetMapping(value = "/marketCapitalization", produces = "application/json")
 	public ResponseEntity<List<String>> getAllFtse100CompanyMarketCapitalization(){
 		return ftse100Service.getStocksAndMarketCapitalization();
 	}
 
-
+	@Operation(summary = "Get all companies and their price to equity ratio in ascending order")
+		@ApiResponse(responseCode =  "200", description = "Price to equity in ascending order found")
 	@GetMapping(value ="/priceToEquity" , produces = "application/json")
 	public ResponseEntity<List<String>> getAllFtse100CompanyPriceToEquity(){
 		return ftse100Service.getStocksAndPriceToEquity();
 	}
 	
-
+	@Operation(summary = "Get all companies and their price to book ratio in ascending order")
+		@ApiResponse(responseCode =  "200", description = "Price to book in ascending order found")
 	@GetMapping(value = "/priceToBook" , produces = "application/json")
 	public ResponseEntity<List<String>> getAllFtse100CompanyPriceToBook(){
 		return ftse100Service.getStocksAndPriceToBook();
 	}
 
-
+	@Operation(summary = "Get all companies and their debt to equity ratio in ascending order")
+		@ApiResponse(responseCode =  "200", description = "Debt to equity in ascending order found")
 	@GetMapping(value = "/debtToEquity", produces = "application/json")
 	public ResponseEntity<List<String>> getAllFtse100CompanyDebtToEquity(){
 		return ftse100Service.getStocksAndDebtToEquity();
 	}
 
-
+	@Operation(summary = "Get all companies and their ESG rating in ascending order")
+		@ApiResponse(responseCode =  "200", description = "ESG in ascending order found")
 	@GetMapping(value = "/esg" , produces = "application/json")
 	public ResponseEntity<List<String>> getAllFtse100CompanyEsgRatings(){
 		return ftse100Service.getStocksAndEsg();
