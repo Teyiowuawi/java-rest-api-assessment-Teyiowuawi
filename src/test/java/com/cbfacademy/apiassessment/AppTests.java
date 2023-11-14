@@ -79,10 +79,10 @@ class AppTests {
 
 			List<Ftse100> expectedCompanies = new ArrayList<>(){
 			{
-				add (new Ftse100("Endeavour Plc", "EDV", "Precious Metals and Mining", 1678.0, new BigInteger("4333000000"), -17.22, 1.52, 27.23, 23.09));
-				add (new Ftse100("ConvaTec Group Plc", "CTEC", "Medical Equipment and Services", 201.08, new BigInteger("4554000000"), 67.67, 3.11, 90.12, 16.6));
-				add (new Ftse100("BAE Systems Plc", "BA", "Aerospace and Defense", 1086.0, new BigInteger("32770000000"), 16.85, 3.04, 61.08, 31.6));
-				add (new Ftse100("Unite Group Plc", "UTG", "Real Estate", 854.5, new BigInteger("3984000000"), 26.5, 0.99, 35.73, 15.5));
+				add (new Ftse100("Endeavour Plc", "EDV", "Precious Metals and Mining", 1678.0, 4333000000, -17.22, 1.52, 27.23, 23.09));
+				add (new Ftse100("ConvaTec Group Plc", "CTEC", "Medical Equipment and Services", 201.08, 4554000000, 67.67, 3.11, 90.12, 16.6));
+				add (new Ftse100("BAE Systems Plc", "BA", "Aerospace and Defense", 1086.0, 32770000000, 16.85, 3.04, 61.08, 31.6));
+				add (new Ftse100("Unite Group Plc", "UTG", "Real Estate", 854.5, 3984000000, 26.5, 0.99, 35.73, 15.5));
 			}
 		};
 
@@ -106,10 +106,10 @@ class AppTests {
 		List<Ftse100> companies = new ArrayList<>(){
 
 			{
-				add (new Ftse100("Endeavour Plc", "EDV", "Precious Metals and Mining", 1678.0, new BigInteger("4333000000"), -17.22, 1.52, 27.23, 23.09));
-				add (new Ftse100("ConvaTec Group Plc", "CTEC", "Medical Equipment and Services", 201.08, new BigInteger("4554000000"), 67.67, 3.11, 90.12, 16.6));
-				add (new Ftse100("BAE Systems Plc", "BA", "Aerospace and Defense", 1086.0, new BigInteger("32770000000"), 16.85, 3.04, 61.08, 31.6));
-				add (new Ftse100("Unite Group Plc", "UTG", "Real Estate", 854.5, new BigInteger("39840000000"), 26.5, 0.99, 35.73, 15.5));
+				add (new Ftse100("Endeavour Plc", "EDV", "Precious Metals and Mining", 1678.0, 4333000000, -17.22, 1.52, 27.23, 23.09));
+				add (new Ftse100("ConvaTec Group Plc", "CTEC", "Medical Equipment and Services", 201.08, 4554000000, 67.67, 3.11, 90.12, 16.6));
+				add (new Ftse100("BAE Systems Plc", "BA", "Aerospace and Defense", 1086.0, 32770000000, 16.85, 3.04, 61.08, 31.6));
+				add (new Ftse100("Unite Group Plc", "UTG", "Real Estate", 854.5, 39840000000, 26.5, 0.99, 35.73, 15.5));
 			}
 		};
 
