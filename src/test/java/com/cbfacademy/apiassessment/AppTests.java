@@ -82,7 +82,7 @@ class AppTests {
 		fileHandler.ftse100WriteToJsonFile(jsonTestFile, expectedCompanies);
 
 		List<Ftse100> actualCompanies = fileHandler.readFtse100JsonFile(jsonTestFile);
-		
+
 		assertTrue(new File(jsonTestFile).exists());
 		assertEquals(expectedCompanies, actualCompanies);
 
@@ -118,21 +118,8 @@ class AppTests {
 
 }
 
-// 	// TESTS I WANT TO WRITE 
-// writing from a file 
-// rest template also 
-// exception handling in file reading 
+//TESTS
+// writing from a file - currently returning null instead of the list 
 
-	// @Test
-	// @DisplayName("get specific FTSE 100 company")
-
-// 	// @Test
-// 	// @DisplayName("add a company to the FTSE 100")
-
-// 	// @Test
-// 	// @DisplayName("remove a company from the FTSE 100")
-
-// 	// @Test
-// 	// @DisplayName("update information of a FTSE 100 company")
 
 
