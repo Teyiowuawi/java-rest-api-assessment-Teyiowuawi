@@ -21,7 +21,7 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 
     private String jsonFile = "src/main/resources/ftse101.json";
     
-    private Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler(jsonFile);
+    Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler();
     private List<Ftse100> companies = fileHandler.readFtse100JsonFile(jsonFile);
     
     public ResponseEntity<Ftse100> addFtse100Company(Ftse100 newCompany){
@@ -109,7 +109,6 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 
             return ResponseEntity.ok(allCompaniesAndMarketCapitalization);
         } 
-        // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
 
     
     
@@ -125,7 +124,6 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 
             return ResponseEntity.ok(allCompaniesAndPriceToEquityRatio);
         } 
-            // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
 
 
     
@@ -141,7 +139,6 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 
             return ResponseEntity.ok(allCompaniesAndPriceToBookRatio);
         } 
-            // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
 
     
     public ResponseEntity<List<String>> getAllStocksAndAllDebtToEquity() {
@@ -156,7 +153,6 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
 
             return ResponseEntity.ok(allCompaniesAndDebtToEquityRatio);
         }
-            // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
 
         
     
@@ -171,7 +167,6 @@ public class Ftse100Respository implements Ftse100AdditionalCrud {
             }
             return ResponseEntity.ok(allCompaniesAndEsgRatings);
         } 
-            // (HttpStatus.BAD_REQUEST) + URL doesnt exist + please ensure the URL is types in correctly
 }  
    
 
