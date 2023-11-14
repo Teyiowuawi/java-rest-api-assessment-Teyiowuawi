@@ -1,10 +1,25 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/iDPpP-d0)
-# **Java API Assessment**
+# **FTSE100 API**
 
-## **Introduction**
-Dive into the world of API development using Java and SpringBoot. We're handing over a skeleton codebase; your challenge is to shape a top-notch API from it.
+## Description/ introduction
+Dive into this FTSE100 API created using SpringBoot 
 
-You can build any API of your choosing, but it must include the following:
+- **README**: Not just an afterthought. Fill it with the essence of your API, setup instructions, and other salient details.
+
+Documentatatin
+OpenAi for Spring Boot applications 
+Integration with Swagger UI 
+When running the application, documentation can be viewed at:
+[[Ftse100 API Documentation](http://localhost:8080/swagger-ui-ftse100.html)]
+
+
+Display where all of the data is being retrieved from in application. 
+documentation
+
+When the application is run, API documentation for all possible end points can be found here: 
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)]
+
+
+ must include the following:
 
 1. At least one algorithm
 1. Unit test at least one class
@@ -23,43 +38,15 @@ By the end of this assessment, you should be able to:
 1. **Code Integration**: Seamlessly combine your creations with the provided skeleton codebase.
 1. **Exception Management**: Efficiently handle exceptions, ensuring your API remains sturdy and dependable.
 
-Onward with this assessment, you're set for a deep dive into API development with Java and SpringBoot.
-
-## **Design & Requirements**
-
-### **Design Considerations:**
-- **API Flow**: Map out your API's progression, from endpoints to their functionalities.
-
-### **Requirements List:**
-- **Core**: Make use of Java and SpringBoot.
-- **End Points**: Ensure they are detailed and fully operational.
-- **Error Handling**: Your API should handle mishaps gracefully and return informative feedback.
-
-### **Learning Outcomes:**
-- Acknowledge the pivotal role of a focused design in APIs.
-- See firsthand how a detailed requirements list can pave the way for successful development.
-
-## **Repository Management**
-
-- **Consistent Commits**: Commit often, capturing your progress and thought process.
-- **README**: Not just an afterthought. Fill it with the essence of your API, setup instructions, and other salient details.
 
 ### **Learning Outcomes:**
 - Hone your skills in effective version control.
 - Recognise the value of a well-curated repository.
 
-## **Code Quality & Structure**
 
-- **Best Practices**: Stick to Java and SpringBoot best practices and conventions.
-- **Modularity**: Your code should be modular, reusable, and easily comprehensible.
 
-#### **Learning Outcomes:**
-- Craft clean, efficient, and maintainable code.
-- Harness Java and SpringBoot to the fullest.
 
----
-
-## Getting Started
+## Getting Started for this API 
 
 - [Prerequisites](#prerequisites)
 
@@ -178,28 +165,10 @@ You should see console output similar to the following (press `Ctrl + C` to exit
 
 Open your browser and navigate to `http://localhost:8080`.
 
-## **Deliverables**
+Detail all of the end points here 
+Detail the errors that can occur as well as the responses that would be displayed by an invalid end point 
 
-Ensure that your work is merged to the `main` branch of your GitHub repository by the specified deadline (original or extended). Your solution will assessed based on its state *at that point*; any later commits will **not** be taken into account.
 
-## FAQs
 
-- Q: How can I process JSON in Java?
-    
-    A: There are a number of open-source packages that you can use to manipulate JSON. We recommend [Gson](https://github.com/google/gson), but you can also investigate alternatives like [json-simple](https://github.com/cliftonlabs/json-simple) or [Jackson](https://github.com/FasterXML/jackson-databind/).
 
-- Q: Can I use another IDE I'm more familiar with instead of VS Code, like IntelliJ or Eclipse?
-
-    A: You can if you wish, but only VS Code is formally supported by CBF Academy staff, so you do so at your own risk.
-
-## Top Tips
-
-- :camera_flash: Commit frequently and use meaningful commit messages. A granular, well-labelled history becomes an increasingly valuable asset over time.
-- :cactus: Use feature branches. Build the habit of isolating your changes for specific tasks and merging them into your default branch when complete.
-- :vertical_traffic_light: Use consistent naming conventions. Choose easily understandable names and naming patterns for your classes, functions and variables.
-- :triangular_ruler: Keep your code tidy. Using the built-in formatting of VS Code or other IDEs makes your code easier to read and mistakes easier to spot.
-- :books: Read the docs. Whether via Intellisense in your IDE, or browsing online documentation, build a clear understanding of the libraries your code leverages.
-- :calendar: Don't wait until the last minute. Plan your work early and make the most of the time available to complete the assessment and avoid pre-deadline palpitations.
-- :sos: Ask. :clap: For. :clap: Help! :clap: Your mentors, instructors and assistants are literally here to support you, so *make use of them* - don't sit and struggle in silence.
-
-Best of luck! Remember, it's not just about the destination; it's the journey. Happy coding! 🚀
+Happy requesting! 🚀
