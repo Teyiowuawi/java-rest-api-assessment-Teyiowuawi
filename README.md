@@ -259,8 +259,5 @@ When making requests to this API, you may come across some errors, never fear, y
 #### Company does not exist
 
 #### Company already exists 
-  
 
-Happy requesting! 🚀
-
-Includes releases/this version I'm currently working with 
+### **Happy requesting!** 🚀
