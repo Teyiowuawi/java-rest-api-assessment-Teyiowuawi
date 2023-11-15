@@ -4,66 +4,14 @@
 Dive into this FTSE100 API created using SpringBoot. 
 
 Investing in stocks and shares is an effective way to make your money work for you and build wealth without you physically being present. 
-The FTSE100 is made up of the top 100 companies in the UK by market capitalization and is generally a good place to start for investors however, popularity should not be the main motivator for investing in a stock.
+The FTSE100 is made up of the top 100 companies in the UK by market capitalization and is generally a good place to start when investing however, popularity should not be the main motivator for investing in a stock.
 
-When deciding which company to invest in, financial performance is crucial and this is where this FTSE100 API comes in handy. 
+The aim of this API is to help you to make an informed decision on which companies to invest in based on important valuation metrics. It uses a json file to store and retrieve data on financial metrics of all the companies in the FTSE100. 
 
-The aim of this API is to help you to make an informed decision on which companies to invest in based on important valuation metrics. 
-
-... insert data model here maybe?
-Using this API, you will be able to... 
-
-Observing the financal performance of a company 
-
-
-What this API is about. 
-What this API can help you do 
-Use simple terms at all times!!
-
-- **README**: Not just an afterthought. Fill it with the essence of your API, setup instructions, and other salient details.
-
-Documentatation
-OpenAi for Spring Boot applications 
-Integration with Swagger UI 
-When running the application, documentation can be viewed at:
-[[Ftse100 API Documentation](http://localhost:8080/swagger-ui-ftse100.html)]
-
-Data model: 
+Data model here??
 - Importance for each metric in terms of stock performance! What does this signify? 
 
-
-Display where all of the data is being retrieved from in application. 
-documentation
-
-When the application is run, API documentation for all possible end points can be found here: 
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)]
-
-
- must include the following:
-
-1. At least one algorithm
-1. Unit test at least one class
-1. Store the data in a JSON file 
-1. Exception handling 
-1. Evidence of inheritance
-1. Good use of HTTP Protocols - methods, request and response, have full CRUD operations supported 
-1. Documentation
-
-
-By the end of this assessment, you should be able to:
-
-1. **Design and Architect APIs**: Get to grips with the nitty-gritty of curating a top-quality API, focusing on data flow and endpoint interactions.
-1. **Implement Best Practices**: Showcase your adherence to Java & SpringBoot coding standards, error handling, and optimal project structure.
-1. **Code Integration**: Seamlessly combine your creations with the provided skeleton codebase.
-1. **Exception Management**: Efficiently handle exceptions, ensuring your API remains sturdy and dependable.
-
-
-
-## Getting Started for this API 
-
-- [Prerequisites](#prerequisites)
-
-- [Setup](#setup)
+## Getting Started 
 
 ### Prerequisites
 
@@ -77,13 +25,11 @@ Before you begin, make sure you have the following installed:
    1. [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
    2. [Spring Boot Extension Pack](https://marketplace.visualstudio.com/items?itemName=vmware.vscode-boot-dev-pack)
 
-Also make sure you have accounts for the following:
 
-1. [GitHub](https://github.com/signup)
+### Setup 
 
-### Setup
-
-#### 1. Clone the Repository
+Steps to setup 
+#### 1. Clone the Repository - remeember to add Windows and Apple commands 
 
 ```sh
 git clone [REPO_URL]
@@ -176,12 +122,30 @@ You should see console output similar to the following (press `Ctrl + C` to exit
 2023-10-03T17:17:34.911+01:00  INFO 35536 --- [  restartedMain] com.cbfacademy.apiassessment.App         : Started App in 0.643 seconds (process running for 0.786)
 ```
 
-Open your browser and navigate to `http://localhost:8080`.
+1. Navigate to your desired directory through the command line on your IDE
+2. Clone this repository in your desired directory 
+3. Download dependencies using the... command 
+4. Run the app using maven (mvn spring-boot:run)
+You will see this 
+5. Mention that it'll be run on tomcat 
+6. That's it! The application can be accessed at a base URL of http://localhost:8080 with various end points appended to the base URL
+7. After running the application, all documentation and operational end points can be viewed at:
+[[Ftse100 API Documentation](http://localhost:8080/swagger-ui-ftse100.html)] 
+8. End points can be accessed and used through the API platform Postman 
+- see if i can get a screenshot 
+9. 
+Base URL + appended end points 
+
+Include basic CRUD end points here:
+C
+R
+U
+D
+
+Additional informational end points 
 
 Detail all of the end points here 
 Detail the errors that can occur as well as the responses that would be displayed by an invalid end point 
-
-
-
+Error handling 
 
 Happy requesting! 🚀
