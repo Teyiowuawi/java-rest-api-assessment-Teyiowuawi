@@ -133,19 +133,16 @@ You will see this
 [[Ftse100 API Documentation](http://localhost:8080/swagger-ui-ftse100.html)] 
 8. End points can be accessed and used through the API platform Postman 
 - see if i can get a screenshot 
-9. 
-Base URL + appended end points 
-
+10. Display examples here:
 Include basic CRUD end points here:
 C
 R
 U
 D
 
-Additional informational end points 
+Additional end points can be seen at swagger website 
 
-Detail all of the end points here 
-Detail the errors that can occur as well as the responses that would be displayed by an invalid end point 
-Error handling 
+Error Handling 
+Detail the errors that can occur as well as the responses that would be displayed by an invalid end point  
 
 Happy requesting! 🚀
