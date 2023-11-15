@@ -32,7 +32,7 @@ public class Ftse100JsonFileHandler{
 
     public void ftse100WriteToJsonFile(String file, List<Ftse100> companies){
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
+    
                 try (Writer writer = new FileWriter(file)){
                     gson.toJson(companies, writer);
                 } catch(IOException e) {
@@ -40,5 +40,4 @@ public class Ftse100JsonFileHandler{
                     e.printStackTrace();
                 }
             } 
- 
 }

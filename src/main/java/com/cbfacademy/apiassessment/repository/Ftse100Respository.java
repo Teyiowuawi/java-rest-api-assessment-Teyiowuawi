@@ -19,7 +19,7 @@ import com.cbfacademy.apiassessment.exceptionhandling.CompanyDoesNotExistExcepti
 @Repository 
 public class Ftse100Respository implements Ftse100AdditionalCrud {
 
-    private String jsonFile = "src/main/resources/ftse101.json";
+    private String jsonFile = "src/test/resources/ftse101.json";
     
     Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler();
     private List<Ftse100> companies = fileHandler.readFtse100JsonFile(jsonFile);
