@@ -1,69 +1,31 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/iDPpP-d0)
-# **Java API Assessment**
+# **FTSE100 API**💵
+Dive into this FTSE100 API created using SpringBoot!
 
-## **Introduction**
-Dive into the world of API development using Java and SpringBoot. We're handing over a skeleton codebase; your challenge is to shape a top-notch API from it.
+## Description
 
-You can build any API of your choosing, but it must include the following:
+Investing in stocks and shares is an effective way to make your money work for you without you physically being present. 
+The FTSE100 is made up of the top 100 companies in the UK by market capitalization (total market value of all of a companies outstanding shares) and it is generally a good place to start when investing however, [popularity](https://www.cnbc.com/2019/01/04/good-companies-often-make-bad-investments-new-study-shows.html) should not be the main motivator for investing in a stock.
 
-1. At least one algorithm
-1. Unit test at least one class
-1. Store the data in a JSON file 
-1. Exception handling 
-1. Evidence of inheritance
-1. Good use of HTTP Protocols - methods, request and response, have full CRUD operations supported 
-1. Documentation
+The aim of this API is to help users make an informed decision on which companies to invest in based on important valuation metrics. It uses a json file to store and retrieve data on financial metrics of all the companies in the FTSE100. 
 
-### **Learning Outcomes:**
+## Data Model 
 
-By the end of this assessment, you should be able to:
+```java 
+public class Ftse100 {
+    private String companyName;
+    private String tickerSymbol; 
+    private String sector;
+    private double stockPrice;
+    private long marketCapitalization;
+    private double priceToEquityRatio;
+    private double priceToBookRatio;
+    private double debtToEquityRatio;
+    private double esgRiskRating;
+}
+```
+EXPLAIN EACH METRIC  + WHY IMPORTANT
 
-1. **Design and Architect APIs**: Get to grips with the nitty-gritty of curating a top-quality API, focusing on data flow and endpoint interactions.
-1. **Implement Best Practices**: Showcase your adherence to Java & SpringBoot coding standards, error handling, and optimal project structure.
-1. **Code Integration**: Seamlessly combine your creations with the provided skeleton codebase.
-1. **Exception Management**: Efficiently handle exceptions, ensuring your API remains sturdy and dependable.
-
-Onward with this assessment, you're set for a deep dive into API development with Java and SpringBoot.
-
-## **Design & Requirements**
-
-### **Design Considerations:**
-- **API Flow**: Map out your API's progression, from endpoints to their functionalities.
-
-### **Requirements List:**
-- **Core**: Make use of Java and SpringBoot.
-- **End Points**: Ensure they are detailed and fully operational.
-- **Error Handling**: Your API should handle mishaps gracefully and return informative feedback.
-
-### **Learning Outcomes:**
-- Acknowledge the pivotal role of a focused design in APIs.
-- See firsthand how a detailed requirements list can pave the way for successful development.
-
-## **Repository Management**
-
-- **Consistent Commits**: Commit often, capturing your progress and thought process.
-- **README**: Not just an afterthought. Fill it with the essence of your API, setup instructions, and other salient details.
-
-### **Learning Outcomes:**
-- Hone your skills in effective version control.
-- Recognise the value of a well-curated repository.
-
-## **Code Quality & Structure**
-
-- **Best Practices**: Stick to Java and SpringBoot best practices and conventions.
-- **Modularity**: Your code should be modular, reusable, and easily comprehensible.
-
-#### **Learning Outcomes:**
-- Craft clean, efficient, and maintainable code.
-- Harness Java and SpringBoot to the fullest.
-
----
-
-## Getting Started
-
-- [Prerequisites](#prerequisites)
-
-- [Setup](#setup)
+## Getting Started 
 
 ### Prerequisites
 
@@ -74,27 +36,28 @@ Before you begin, make sure you have the following installed:
 2. [Git](https://git-scm.com/downloads)
 
 3. [Visual Studio Code](https://code.visualstudio.com/Download)
-   1. [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
-   2. [Spring Boot Extension Pack](https://marketplace.visualstudio.com/items?itemName=vmware.vscode-boot-dev-pack)
+   - [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+   - [Spring Boot Extension Pack](https://marketplace.visualstudio.com/items?itemName=vmware.vscode-boot-dev-pack)
+4. [API Platform Postman](https://www.postman.com/downloads/) 
 
-Also make sure you have accounts for the following:
 
-1. [GitHub](https://github.com/signup)
+### Steps to Setup
 
-### Setup
-
-#### 1. Clone the Repository
+#### 1. Open the terminal on VS Code, navigate to your desired repository and clone the Repository
 
 ```sh
+cd [DIRECTORY_NAME]
 git clone [REPO_URL]
 cd [REPO_NAME]
 ```
 
-Replace [REPO_URL] with the link to your GitHub repository and [REPO_NAME] with the repository's name.
+- Replace [DIRECTORY_NAME] with the name of your directory
+- Replace [REPO_URL] with the link to this GitHub repository 
+- Replace [REPO_NAME] with the repository's name.
 
 #### 2. Install Dependencies
 
-Open a terminal at the root of the repo directory and run the following command to install the dependencies:
+At the root of the repo directory and run the following command to install the dependencies:
 
 ```sh
 ./mvnw clean dependency:resolve
@@ -130,7 +93,12 @@ You should see console output similar to the following:
 
 #### 3. Running the Application
 
-To start the API in VS Code, press `F5` or tap the 'Play' icon for the `api-assessment` app in the Spring Boot Dashboard.
+To start the API in VS Code, press `F5` or tap the *Run* option located above the main method in the *App.java* file: 
+```java 
+	  	public static void main(String[] args) {
+		SpringApplication.run(App.class, args);
+	}
+```
 
 Alternatively, to start the API from the terminal, run the following command:
 
@@ -176,30 +144,26 @@ You should see console output similar to the following (press `Ctrl + C` to exit
 2023-10-03T17:17:34.911+01:00  INFO 35536 --- [  restartedMain] com.cbfacademy.apiassessment.App         : Started App in 0.643 seconds (process running for 0.786)
 ```
 
-Open your browser and navigate to `http://localhost:8080`.
+4. The application can now be accessed at a base URL of [http://localhost:8080/endPoints]() with [/endPoints]() replaced by relevant end points to this application
+5. Whilst the application is running, all documentation and operational end points can be seen at:
+[Ftse100 API Documentation](http://localhost:8080/swagger-ui-ftse100.html)
 
-## **Deliverables**
 
-Ensure that your work is merged to the `main` branch of your GitHub repository by the specified deadline (original or extended). Your solution will assessed based on its state *at that point*; any later commits will **not** be taken into account.
+## End Points
+All application end points can be accessed and used through the API platform Postman 
+![Postman]()
 
-## FAQs
+UI -make a new request 
+Create collection/folder specific to this API 
 
-- Q: How can I process JSON in Java?
-    
-    A: There are a number of open-source packages that you can use to manipulate JSON. We recommend [Gson](https://github.com/google/gson), but you can also investigate alternatives like [json-simple](https://github.com/cliftonlabs/json-simple) or [Jackson](https://github.com/FasterXML/jackson-databind/).
+Goals for today
+Complete read me  
+- Postman screenshots + anootations
+- End point examples using postman as user CRUD
+- Error handling + relevant - write responses in json + the status codes
+- remember to mention changes will be reflected in the json file 
+- Send a version to Michael by 3pm today - after call with Nadia   
 
-- Q: Can I use another IDE I'm more familiar with instead of VS Code, like IntelliJ or Eclipse?
+Happy requesting! 🚀
 
-    A: You can if you wish, but only VS Code is formally supported by CBF Academy staff, so you do so at your own risk.
-
-## Top Tips
-
-- :camera_flash: Commit frequently and use meaningful commit messages. A granular, well-labelled history becomes an increasingly valuable asset over time.
-- :cactus: Use feature branches. Build the habit of isolating your changes for specific tasks and merging them into your default branch when complete.
-- :vertical_traffic_light: Use consistent naming conventions. Choose easily understandable names and naming patterns for your classes, functions and variables.
-- :triangular_ruler: Keep your code tidy. Using the built-in formatting of VS Code or other IDEs makes your code easier to read and mistakes easier to spot.
-- :books: Read the docs. Whether via Intellisense in your IDE, or browsing online documentation, build a clear understanding of the libraries your code leverages.
-- :calendar: Don't wait until the last minute. Plan your work early and make the most of the time available to complete the assessment and avoid pre-deadline palpitations.
-- :sos: Ask. :clap: For. :clap: Help! :clap: Your mentors, instructors and assistants are literally here to support you, so *make use of them* - don't sit and struggle in silence.
-
-Best of luck! Remember, it's not just about the destination; it's the journey. Happy coding! 🚀
+Includes releases/this version I'm currently working with 
