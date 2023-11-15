@@ -1,15 +1,35 @@
 # **FTSE100 API**
 
 ## Description/ introduction
-Dive into this FTSE100 API created using SpringBoot 
+Dive into this FTSE100 API created using SpringBoot. 
+
+Investing in stocks and shares is an effective way to make your money work for you and build wealth without you physically being present. 
+The FTSE100 is made up of the top 100 companies in the UK by market capitalization and is generally a good place to start for investors however, popularity should not be the main motivator for investing in a stock.
+
+When deciding which company to invest in, financial performance is crucial and this is where this FTSE100 API comes in handy. 
+
+The aim of this API is to help you to make an informed decision on which companies to invest in based on important valuation metrics. 
+
+... insert data model here maybe?
+Using this API, you will be able to... 
+
+Observing the financal performance of a company 
+
+
+What this API is about. 
+What this API can help you do 
+Use simple terms at all times!!
 
 - **README**: Not just an afterthought. Fill it with the essence of your API, setup instructions, and other salient details.
 
-Documentatatin
+Documentatation
 OpenAi for Spring Boot applications 
 Integration with Swagger UI 
 When running the application, documentation can be viewed at:
 [[Ftse100 API Documentation](http://localhost:8080/swagger-ui-ftse100.html)]
+
+Data model: 
+- Importance for each metric in terms of stock performance! What does this signify? 
 
 
 Display where all of the data is being retrieved from in application. 
@@ -29,7 +49,6 @@ When the application is run, API documentation for all possible end points can b
 1. Good use of HTTP Protocols - methods, request and response, have full CRUD operations supported 
 1. Documentation
 
-### **Learning Outcomes:**
 
 By the end of this assessment, you should be able to:
 
@@ -37,12 +56,6 @@ By the end of this assessment, you should be able to:
 1. **Implement Best Practices**: Showcase your adherence to Java & SpringBoot coding standards, error handling, and optimal project structure.
 1. **Code Integration**: Seamlessly combine your creations with the provided skeleton codebase.
 1. **Exception Management**: Efficiently handle exceptions, ensuring your API remains sturdy and dependable.
-
-
-### **Learning Outcomes:**
-- Hone your skills in effective version control.
-- Recognise the value of a well-curated repository.
-
 
 
 
