@@ -1,10 +1,12 @@
 # **FTSE100 API**💵
+#### Version: 1.0.1
+
 Dive into this FTSE100 API created using SpringBoot!
 
 ## Description
 
 Investing in stocks and shares is an effective way to make your money work for you without you physically being present. 
-The FTSE100 is made up of the top 100 companies in the UK by market capitalization (total market value of all of a companies outstanding shares) and it is generally a good place to start when investing however, [popularity](https://www.cnbc.com/2019/01/04/good-companies-often-make-bad-investments-new-study-shows.html) should not be the main motivator for investing in a stock.
+The FTSE100 (Financial Times Stock Exchange) is made up of the top 100 companies in the UK by market capitalization (total market value of all of a companies outstanding shares) and it is generally a good place to start when investing however, [popularity](https://www.cnbc.com/2019/01/04/good-companies-often-make-bad-investments-new-study-shows.html) should not be the main motivator for investing in a stock.
 
 The aim of this API is to help users make an informed decision on which companies to invest in based on important valuation metrics. It uses a json file to store and retrieve data on financial metrics of all the companies in the FTSE100. 
 
@@ -23,7 +25,16 @@ public class Ftse100 {
     private double esgRiskRating;
 }
 ```
-EXPLAIN EACH METRIC  + WHY IMPORTANT
+- company name: Name of company in FTSE100
+- ticker symbol: combination of letters used to uniquely identify publicly traded companies and the securities they issue
+- sector: area of the economy in which a business operates
+- stock price: the current value of a stock to buyers and sellers 
+- market capitalization: total market value of all of a companies outstanding shares
+- price to equity ratio: current share price relative to earnings per share 
+- price to book ratio: market valuation of a company relative to its book value in order to identify a stock's potential value
+- debt to equity ratio: how much debt a company is using to finance it's assets relative to the value of shareholder equity
+- ESG risk rating: company's exposure to long-term environmental, social, and governance risks and how well a company is managing those risks. 
+
 
 ## Getting Started 
 
@@ -145,25 +156,110 @@ You should see console output similar to the following (press `Ctrl + C` to exit
 ```
 
 4. The application can now be accessed at a base URL of [http://localhost:8080/endPoints]() with [/endPoints]() replaced by relevant end points to this application
-5. Whilst the application is running, all documentation and operational end points can be seen at:
+
+## Documentation 
+Whilst the application is running, all documentation and operational end points can be seen at:
 [Ftse100 API Documentation](http://localhost:8080/swagger-ui-ftse100.html)
 
 
 ## End Points
 All application end points can be accessed and used through the API platform Postman 
-![Postman]()
+<br> 
 
-UI -make a new request 
-Create collection/folder specific to this API 
+#### Add new request
+![Postman add new request](image.png)
 
-Goals for today
-Complete read me  
-- Postman screenshots + anootations
-- End point examples using postman as user CRUD
-- Error handling + relevant - write responses in json + the status codes
-- remember to mention changes will be reflected in the json file 
-- Send a version to Michael by 3pm today - after call with Nadia   
+#### Select request type and enter URL for the end point 
+![Postman different request drop down](image-1.png)
 
-Happy requesting! 🚀
+## Example CRUD requests
+#### GET  
 
-Includes releases/this version I'm currently working with 
+![GET reqeust](image-2.png) 
+
+Response Body:
+
+```json
+{
+    "companyName": "ConvaTec Group Plc",
+    "tickerSymbol": "CTEC",
+    "sector": "Medical Equipment and Services",
+    "stockPrice": 201.08,
+    "marketCapitalization": 4554000000,
+    "priceToEquityRatio": 67.67,
+    "priceToBookRatio": 3.11,
+    "debtToEquityRatio": 90.12,
+    "esgRiskRating": 16.6
+}
+```
+HTTP Response Status: 200 OK
+
+### POST 
+![POST request](image-3.png)
+
+Response Body: 
+```json 
+{
+    "companyName": "New Group Plc",
+    "tickerSymbol": "NGP",
+    "sector": "Services",
+    "stockPrice": 201.08,
+    "marketCapitalization": 1111000000,
+    "priceToEquityRatio": 11.11,
+    "priceToBookRatio": 1.11,
+    "debtToEquityRatio": 11.11,
+    "esgRiskRating": 11.1
+}
+```
+HTTP Response Status: 201 Created
+
+### UPDATE:
+![UPDATE request](image-4.png)
+
+Response Body:
+
+```json 
+{
+    "companyName": "New Group Plc",
+    "tickerSymbol": "NGP",
+    "sector": "Services",
+    "stockPrice": 275.08,
+    "marketCapitalization": 1111300000,
+    "priceToEquityRatio": 11.18,
+    "priceToBookRatio": 1.12,
+    "debtToEquityRatio": 11.14,
+    "esgRiskRating": 9.1
+}
+```
+HTTP Response Status: 200 OK
+
+
+### DELETE
+![DELETE Request](image-5.png)
+
+
+Response Body:
+```json
+Json array of companies objects without the company you just deleted
+[{
+    "companyName": "String",
+    "tickerSymbol": "String",
+    "sector": "String",
+    "stockPrice": 0,
+    "marketCapitalization": 0,
+    "priceToEquityRatio": 0,
+    "priceToBookRatio": 0,
+    "debtToEquityRatio": 0,
+    "esgRiskRating": 0
+}]
+```
+HTTP Response Status: 200 OK
+
+## Error Handling 
+When making requests to this API, you may come across some errors, never fear, you will be guided as to why this might be the case 
+
+#### Company does not exist
+
+#### Company already exists 
+
+### **Happy requesting!** 🚀
