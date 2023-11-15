@@ -23,7 +23,7 @@ public class Ftse100 {
     private double esgRiskRating;
 }
 ```
-EXPLAIN EACH METRIC IN THE SIMPLEST WAY POSSIBLE!
+EXPLAIN EACH METRIC  + WHY IMPORTANT
 
 ## Getting Started 
 
@@ -146,7 +146,7 @@ You should see console output similar to the following (press `Ctrl + C` to exit
 
 4. The application can now be accessed at a base URL of [http://localhost:8080/endPoints]() with [/endPoints]() replaced by relevant end points to this application
 5. Whilst the application is running, all documentation and operational end points can be seen at:
-[Ftse100 API Documentation](http://localhost:8080/swagger-ui-ftse100.html) - could include a cheeky sc here too 
+[Ftse100 API Documentation](http://localhost:8080/swagger-ui-ftse100.html)
 
 
 ## End Points
@@ -156,16 +156,13 @@ All application end points can be accessed and used through the API platform Pos
 UI -make a new request 
 Create collection/folder specific to this API 
 
-Display examples here:
-Include basic CRUD end points here:
-Creating a new company
-Retrieving a company and it's relevant data in the FTSE100
-Updating the details 
-Deleting a company from the FTSE100 because it no longer exists 
-
-
-Error Handling 
-Detail the errors that can occur as well as the responses that would be displayed by an invalid end point  
+Goals for today
+Complete read me  
+- Postman screenshots + anootations
+- End point examples using postman as user CRUD
+- Error handling + relevant - write responses in json + the status codes
+- remember to mention changes will be reflected in the json file 
+- Send a version to Michael by 3pm today - after call with Nadia   
 
 Happy requesting! 🚀
 
