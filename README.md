@@ -1,15 +1,29 @@
-# **FTSE100 API**
+# **FTSE100 API**💵
+Dive into this FTSE100 API created using SpringBoot!
 
-## Description/ introduction
-Dive into this FTSE100 API created using SpringBoot. 
+## Description
 
-Investing in stocks and shares is an effective way to make your money work for you and build wealth without you physically being present. 
-The FTSE100 is made up of the top 100 companies in the UK by market capitalization and is generally a good place to start when investing however, popularity should not be the main motivator for investing in a stock.
+Investing in stocks and shares is an effective way to make your money work for you without you physically being present. 
+The FTSE100 is made up of the top 100 companies in the UK by market capitalization (total market value of all of a companies outstanding shares) and it is generally a good place to start when investing however, [popularity](https://www.cnbc.com/2019/01/04/good-companies-often-make-bad-investments-new-study-shows.html) should not be the main motivator for investing in a stock.
 
-The aim of this API is to help you to make an informed decision on which companies to invest in based on important valuation metrics. It uses a json file to store and retrieve data on financial metrics of all the companies in the FTSE100. 
+The aim of this API is to help users make an informed decision on which companies to invest in based on important valuation metrics. It uses a json file to store and retrieve data on financial metrics of all the companies in the FTSE100. 
 
-Data model here??
-- Importance for each metric in terms of stock performance! What does this signify? 
+## Data Model 
+
+```java 
+public class Ftse100 {
+    private String companyName;
+    private String tickerSymbol; 
+    private String sector;
+    private double stockPrice;
+    private long marketCapitalization;
+    private double priceToEquityRatio;
+    private double priceToBookRatio;
+    private double debtToEquityRatio;
+    private double esgRiskRating;
+}
+```
+EXPLAIN EACH METRIC IN THE SIMPLEST WAY POSSIBLE!
 
 ## Getting Started 
 
@@ -22,25 +36,28 @@ Before you begin, make sure you have the following installed:
 2. [Git](https://git-scm.com/downloads)
 
 3. [Visual Studio Code](https://code.visualstudio.com/Download)
-   1. [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
-   2. [Spring Boot Extension Pack](https://marketplace.visualstudio.com/items?itemName=vmware.vscode-boot-dev-pack)
+   - [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+   - [Spring Boot Extension Pack](https://marketplace.visualstudio.com/items?itemName=vmware.vscode-boot-dev-pack)
+4. [API Platform Postman](https://www.postman.com/downloads/) 
 
 
-### Setup 
+### Steps to Setup
 
-Steps to setup 
-#### 1. Clone the Repository - remeember to add Windows and Apple commands 
+#### 1. Open the terminal on VS Code, navigate to your desired repository and clone the Repository
 
 ```sh
+cd [DIRECTORY_NAME]
 git clone [REPO_URL]
 cd [REPO_NAME]
 ```
 
-Replace [REPO_URL] with the link to your GitHub repository and [REPO_NAME] with the repository's name.
+- Replace [DIRECTORY_NAME] with the name of your directory
+- Replace [REPO_URL] with the link to this GitHub repository 
+- Replace [REPO_NAME] with the repository's name.
 
 #### 2. Install Dependencies
 
-Open a terminal at the root of the repo directory and run the following command to install the dependencies:
+At the root of the repo directory and run the following command to install the dependencies:
 
 ```sh
 ./mvnw clean dependency:resolve
@@ -76,7 +93,12 @@ You should see console output similar to the following:
 
 #### 3. Running the Application
 
-To start the API in VS Code, press `F5` or tap the 'Play' icon for the `api-assessment` app in the Spring Boot Dashboard.
+To start the API in VS Code, press `F5` or tap the *Run* option located above the main method in the *App.java* file: 
+```java 
+	  	public static void main(String[] args) {
+		SpringApplication.run(App.class, args);
+	}
+```
 
 Alternatively, to start the API from the terminal, run the following command:
 
@@ -122,27 +144,29 @@ You should see console output similar to the following (press `Ctrl + C` to exit
 2023-10-03T17:17:34.911+01:00  INFO 35536 --- [  restartedMain] com.cbfacademy.apiassessment.App         : Started App in 0.643 seconds (process running for 0.786)
 ```
 
-1. Navigate to your desired directory through the command line on your IDE
-2. Clone this repository in your desired directory 
-3. Download dependencies using the... command 
-4. Run the app using maven (mvn spring-boot:run)
-You will see this 
-5. Mention that it'll be run on tomcat 
-6. That's it! The application can be accessed at a base URL of http://localhost:8080 with various end points appended to the base URL
-7. After running the application, all documentation and operational end points can be viewed at:
-[[Ftse100 API Documentation](http://localhost:8080/swagger-ui-ftse100.html)] 
-8. End points can be accessed and used through the API platform Postman 
-- see if i can get a screenshot 
-10. Display examples here:
-Include basic CRUD end points here:
-C
-R
-U
-D
+4. The application can now be accessed at a base URL of [http://localhost:8080/endPoints]() with [/endPoints]() replaced by relevant end points to this application
+5. Whilst the application is running, all documentation and operational end points can be seen at:
+[Ftse100 API Documentation](http://localhost:8080/swagger-ui-ftse100.html) - could include a cheeky sc here too 
 
-Additional end points can be seen at swagger website 
+
+## End Points
+All application end points can be accessed and used through the API platform Postman 
+![Postman]()
+
+UI -make a new request 
+Create collection/folder specific to this API 
+
+Display examples here:
+Include basic CRUD end points here:
+Creating a new company
+Retrieving a company and it's relevant data in the FTSE100
+Updating the details 
+Deleting a company from the FTSE100 because it no longer exists 
+
 
 Error Handling 
 Detail the errors that can occur as well as the responses that would be displayed by an invalid end point  
 
 Happy requesting! 🚀
+
+Includes releases/this version I'm currently working with 
