@@ -9,6 +9,8 @@ public class CompanyAlreadyExistsException extends RuntimeException{
     public CompanyAlreadyExistsException(String msg){
         super(msg);
         this.message = msg;
+        // remove the messaeg aspect 
+        // add the status code
     }
 }
 
