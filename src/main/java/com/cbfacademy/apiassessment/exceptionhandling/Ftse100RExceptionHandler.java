@@ -13,8 +13,9 @@ public class Ftse100RExceptionHandler {
 @ResponseBody
 @ExceptionHandler(CompanyDoesNotExistException.class)
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public ResponseEntity<String> handleCompanyDoesNotExistException(CompanyDoesNotExistException e){
-    return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+public ResponseEntity<ErrorResponse> handleCompanyDoesNotExistException(CompanyDoesNotExistException e){
+    ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
+    return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
 }
 
 
