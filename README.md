@@ -170,7 +170,7 @@ All application end points can be accessed and used through the API platform Pos
 #### Select request type and enter URL for the end point 
 ![Postman different request drop down](image-1.png)
 
-## Example CRUD requests
+## Example HTTP requests
 #### GET  
 
 ![GET reqeust](image-2.png)
