@@ -1,6 +1,4 @@
 # **FTSE100 API**💵
-#### Version: 0.0.1
-
 Dive into this FTSE100 API created using SpringBoot!
 
 ## Description
@@ -175,7 +173,7 @@ All application end points can be accessed and used through the API platform Pos
 ## Example CRUD requests
 #### GET  
 
-![GET reqeust](image-2.png) 
+![GET reqeust](image-2.png)
 
 Response Body:
 
@@ -199,17 +197,17 @@ HTTP Response Status: 200 OK
 
 Response Body: 
 ```json 
-{
-    "companyName": "New Group Plc",
-    "tickerSymbol": "NGP",
-    "sector": "Services",
-    "stockPrice": 201.08,
-    "marketCapitalization": 1111000000,
-    "priceToEquityRatio": 11.11,
-    "priceToBookRatio": 1.11,
-    "debtToEquityRatio": 11.11,
-    "esgRiskRating": 11.1
-}
+    {
+        "companyName": "New Group Plc",
+        "tickerSymbol": "NGP",
+        "sector": "Precious Metals and Mining",
+        "stockPrice": 1678.0,
+        "marketCapitalization": 4333000000,
+        "priceToEquityRatio": -17.22,
+        "priceToBookRatio": 1.52,
+        "debtToEquityRatio": 27.23,
+        "esgRiskRating": 23.09
+    }
 ```
 HTTP Response Status: 201 Created
 
@@ -219,17 +217,17 @@ HTTP Response Status: 201 Created
 Response Body:
 
 ```json 
-{
-    "companyName": "New Group Plc",
-    "tickerSymbol": "NGP",
-    "sector": "Services",
-    "stockPrice": 275.08,
-    "marketCapitalization": 1111300000,
-    "priceToEquityRatio": 11.18,
-    "priceToBookRatio": 1.12,
-    "debtToEquityRatio": 11.14,
-    "esgRiskRating": 9.1
-}
+    {
+        "companyName": "New Group Plc",
+        "tickerSymbol": "NGP",
+        "sector": "Precious Metals and Mining",
+        "stockPrice": 1111.0,
+        "marketCapitalization": 1111000000,
+        "priceToEquityRatio": -11.11,
+        "priceToBookRatio": 1.511,
+        "debtToEquityRatio": 11.11,
+        "esgRiskRating": 10.11
+    }
 ```
 HTTP Response Status: 200 OK
 
@@ -256,10 +254,42 @@ Json array of companies objects without the company you just deleted
 HTTP Response Status: 200 OK
 
 ## Error Handling 
-When making requests to this API, you may come across some errors, never fear, you will be guided as to why this might be the case 
+When making requests to this API, you may come across some error responses due to an incorrect end point. Never fear, you will be guided as to why this might be the case. 
 
 #### Company does not exist
 
+| HTTP Request  | End point  |
+| ------------- | ------------- |
+| GET   | /{tickerSymbol}  |
+| GET   | stockPrices/{tickerSymbol}  |
+| PUT |  /{tickerSymbol}  |
+| DELETE |  /{tickerSymbol}  |
+
+For the end points listed above, if a ticker symbol is entered for a company that doesn't exist, you will encounter an error. Here is an example with the error response below:
+
+![Company doesnt exist exception](image-6.png)
+
+```json 
+{
+"errorCode": 404,
+"message": "No FTSE100 company present with Ticker Symbol: NGP"
+}
+```
+
 #### Company already exists 
 
+| HTTP Request  | End point  |
+| ------------- | -----------|
+| POST   | /all |
+
+For the end point listed above, if a ticker symbol is entered for a company that already exists, you will encounter an error. Here is an example with the error response below:
+
+![Company already exists](image-7.png)
+
+```json 
+{
+"errorCode": 403,
+"message": "FTSE100 company already present with Ticker Symbol: EDV"
+}
+```
 ### **Happy requesting!** 🚀
