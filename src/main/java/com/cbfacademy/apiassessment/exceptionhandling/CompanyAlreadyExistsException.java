@@ -1,14 +1,14 @@
 package com.cbfacademy.apiassessment.exceptionhandling;
 
-public class CompanyAlreadyExistsException extends RuntimeException{
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
+public class CompanyAlreadyExistsException extends ResponseStatusException{
    
     private String message; 
 
-    public CompanyAlreadyExistsException(){}
-
-    public CompanyAlreadyExistsException(String msg){
-        super(msg);
-        this.message = msg;
+    public CompanyAlreadyExistsException(HttpStatus status, String message){
+        super();
         // remove the messaeg aspect 
         // add the status code
     }
