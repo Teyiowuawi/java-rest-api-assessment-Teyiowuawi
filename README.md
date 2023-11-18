@@ -153,11 +153,14 @@ You should see console output similar to the following (press `Ctrl + C` to exit
 2023-10-03T17:17:34.911+01:00  INFO 35536 --- [  restartedMain] com.cbfacademy.apiassessment.App         : Started App in 0.643 seconds (process running for 0.786)
 ```
 
-4. The application can now be accessed at a base URL of [http://localhost:8080/endPoints]() with [/endPoints]() replaced by relevant end points to this application
+4. The application can now be accessed at a base URL of [http://localhost:8080]() with the relevant end points appended to this URL
 
 ## Documentation 
 Whilst the application is running, all documentation and operational end points can be seen at:
 [Ftse100 API Documentation](http://localhost:8080/swagger-ui-ftse100.html)
+<br>
+
+**NOTE**: The ftse-100-rest-template-controller is a syncronous client to perform HTTP requests. Feel free to use either to make requests to this API. 
 
 
 ## End Points
