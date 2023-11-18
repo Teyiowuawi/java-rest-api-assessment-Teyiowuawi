@@ -1,13 +1,12 @@
 package com.cbfacademy.apiassessment.exceptionhandling;
 
-public class CompanyDoesNotExistException extends RuntimeException{
-   
-    private String message; 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
-    public CompanyDoesNotExistException(){}
+public class CompanyDoesNotExistException extends ResponseStatusException{
 
-    public CompanyDoesNotExistException(String msg){
-        super(msg);
-        this.message = msg;
+    public CompanyDoesNotExistException(HttpStatus status, String message){
+        super(status, message);
+
     }
 }
