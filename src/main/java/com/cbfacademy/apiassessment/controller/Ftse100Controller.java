@@ -63,7 +63,7 @@ public class Ftse100Controller {
 		@ApiResponse(responseCode =  "200", description = "FTSE100 company updated", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Ftse100.class)) }), 
 		@ApiResponse(responseCode = "404", description = "FTSE100 company not found", content = @Content) })
 	@PutMapping("/{tickerSymbol}")
-	public ResponseEntity<Ftse100> updateFtse100CompanyDetails(@Parameter(description = "Ticker symbol of company to be updated and updated changes to company schemaS") @PathVariable String tickerSymbol, @RequestBody Ftse100 ftse100){
+	public ResponseEntity<Ftse100> updateFtse100CompanyDetails(@Parameter(description = "Ticker symbol of company to be updated as well as updated changes") @PathVariable String tickerSymbol, @RequestBody Ftse100 ftse100){
 		return ftse100Service.updateCompany(tickerSymbol, ftse100);
 	}
 
@@ -81,12 +81,12 @@ public class Ftse100Controller {
 		@ApiResponse(responseCode =  "200", description = "FTSE100 company found", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = String.class)) }), 
 		@ApiResponse(responseCode = "404", description = "FTSE100 company not found", content = @Content) })
 	@GetMapping(value = "/stockPrices/{tickerSymbol}", produces = "application/json")
-	public ResponseEntity<String> getFtse100CompanyAndStockPrice(@Parameter(description = "Tickersymbol for company stock price to be searched") @PathVariable String tickerSymbol){
+	public ResponseEntity<String> getFtse100CompanyAndStockPrice(@Parameter(description = "Ticker symbol of company stock price to be searched") @PathVariable String tickerSymbol){
 		return ftse100Service.getStockAndPrice(tickerSymbol);
 	}
 
 	@Operation(summary = "Get all companies and their stock prices in ascending order")
-	@ApiResponse(responseCode =  "200", description = "Stock prices in ascending order found")
+		@ApiResponse(responseCode =  "200", description = "Stock prices in ascending order found")
 	@GetMapping(value = "/stockPrices/all", produces = "application/json")
 	public ResponseEntity<List<String>> getAllCompaniesAndStockPrices(){
         return ftse100Service.getCompanyNamesAndStockPrices();
