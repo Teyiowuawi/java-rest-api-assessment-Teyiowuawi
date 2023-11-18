@@ -18,6 +18,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import com.cbfacademy.apiassessment.datamodel.Ftse100;
 import com.cbfacademy.apiassessment.exceptionhandling.CompanyAlreadyExistsException;
+import com.cbfacademy.apiassessment.exceptionhandling.CompanyDoesNotExistException;
 
 @Service
 public class Ftse100RestTemplateService {
@@ -76,36 +77,45 @@ public class Ftse100RestTemplateService {
     public ResponseEntity<Ftse100> addCompany(Ftse100 ftse100)throws CompanyAlreadyExistsException{
         try{
             return restTemplate.postForEntity(baseUrl + addNewCompanyURL, ftse100, Ftse100.class);
-        } catch (HttpClientErrorException e){
-            throw new CompanyAlreadyExistsException("FTSE100 company already present with Ticker Symbol: " + ftse100.getTickerSymbol());
-         }
+            } catch (HttpClientErrorException e){
+                throw new CompanyAlreadyExistsException("FTSE100 company already present with Ticker Symbol: " + ftse100.getTickerSymbol());
+            }
     }
 
     public Ftse100 getCompany(String tickerSymbol){
-        Map<String, String> param = new HashMap<String,String>();
-        param.put("tickerSymbol", tickerSymbol);
-
-        return restTemplate.getForObject( baseUrl + getCompanyURL, Ftse100.class, param);
+        try{
+            Map<String, String> param = new HashMap<String,String>();
+            param.put("tickerSymbol", tickerSymbol);
+            return restTemplate.getForObject( baseUrl + getCompanyURL, Ftse100.class, param);
+            } catch (HttpClientErrorException e){
+                throw new CompanyDoesNotExistException("No FTSE100 company present with Ticker Symbol: " + tickerSymbol);
+            }
     }
 
-
     public void updateCompany(String tickerSymbol, Ftse100 updatedCompany){
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("tickerSymbol", tickerSymbol);
-
-        restTemplate.put(baseUrl + updateCompanyURL, updatedCompany, params);
+        try{Map<String, String> params = new HashMap<String, String>();
+            params.put("tickerSymbol", tickerSymbol);
+            restTemplate.put(baseUrl + updateCompanyURL, updatedCompany, params);
+                } catch (HttpClientErrorException e){
+                    throw new CompanyDoesNotExistException("No FTSE100 company present with Ticker Symbol: " + tickerSymbol);
+                    }
     }
 
     public void deleteCompany(String tickerSymbol) {
-        Map<String, String> param = new HashMap<String, String>();
-        param.put("tickerSymbol", tickerSymbol);
-
-        restTemplate.delete(baseUrl + deleteCompanyURL, param);
+       try{Map<String, String> param = new HashMap<String, String>();
+            param.put("tickerSymbol", tickerSymbol);
+            restTemplate.delete(baseUrl + deleteCompanyURL, param);
+            } catch (HttpClientErrorException e){
+                throw new CompanyDoesNotExistException("No FTSE100 company present with Ticker Symbol: " + tickerSymbol);
+                }
     }
 
     public ResponseEntity<String> getCompanyAndPrice(String tickerSymbol){
-        ResponseEntity<String> response = restTemplate.exchange(baseUrl + "stockPrices/" + getCompanyAndStockPriceURL, HttpMethod.GET, null, String.class, tickerSymbol);
-        return response;
+        try{ResponseEntity<String> response = restTemplate.exchange(baseUrl + "stockPrices/" + getCompanyAndStockPriceURL, HttpMethod.GET, null, String.class, tickerSymbol);
+            return response;
+            } catch (HttpClientErrorException e){
+                throw new CompanyDoesNotExistException("No FTSE100 company present with Ticker Symbol: " + tickerSymbol);
+                }
     }
 
     public ResponseEntity<List<String>> getCompaniesAndPrices(){
