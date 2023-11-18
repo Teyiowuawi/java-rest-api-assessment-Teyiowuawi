@@ -84,10 +84,5 @@ public class Ftse100RestTemplateController {
     public ResponseEntity<List<String>> getAllCompaniesAndEsgRiskRating(){
         return ftse100RestTemplateService.getCompaniesAndEsgRiskRating();
     }
-
-
-
-
-
-    
+  
 }
