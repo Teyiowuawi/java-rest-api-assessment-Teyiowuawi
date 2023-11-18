@@ -2,24 +2,24 @@ package com.cbfacademy.apiassessment.exceptionhandling;
 
 public class ErrorResponse {
 
-    private int statusCode;
+    private int errorCode;
     private String message; 
 
     public ErrorResponse(int statusCode, String message){
-        this.statusCode = statusCode;
+        this.errorCode = statusCode;
         this.message = message;
     }
 
-    public int getStatusCode() {
-        return statusCode;
+    public int getErrorCode() {
+        return errorCode;
     }
 
     public String getMessage() {
         return message;
     }
 
-        public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
+        public void setErrorCode(int statusCode) {
+        this.errorCode = statusCode;
     }
 
     public void setMessage(String message) {
