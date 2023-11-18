@@ -254,10 +254,43 @@ Json array of companies objects without the company you just deleted
 HTTP Response Status: 200 OK
 
 ## Error Handling 
-When making requests to this API, you may come across some errors, never fear, you will be guided as to why this might be the case 
+When making requests to this API, you may come across some error responses due to an incorrect end point. Never fear, you will be guided as to why this might be the case. 
 
 #### Company does not exist
 
+| HTTP Request  | End point  |
+| ------------- | ------------- |
+| GET   | /{tickerSymbol}  |
+| GET   | stockPrices/{tickerSymbol}  |
+| PUT |  /{tickerSymbol}  |
+| DELETE |  /{tickerSymbol}  |
+
+For the end points listed above, if a ticker symbol is entered for a company that doesn't exist, you will encounter an error. Here is an example with the error response below:
+
+![Company doesnt exist exception](image-6.png)
+
+```json 
+{
+"errorCode": 404,
+"message": "No FTSE100 company present with Ticker Symbol: NGP"
+}
+```
+
 #### Company already exists 
+
+| HTTP Request  | End point  |
+| ------------- | -----------|
+| POST   | /all |
+
+For the end point listed above, if a ticker symbol is entered for a company that already exists, you will encounter an error. Here is an example with the error response below:
+
+![Company already exists](image-7.png)
+
+```json 
+{
+"errorCode": 403,
+"message": "FTSE100 company already present with Ticker Symbol: EDV"
+}
+```
 
 ### **Happy requesting!** 🚀
