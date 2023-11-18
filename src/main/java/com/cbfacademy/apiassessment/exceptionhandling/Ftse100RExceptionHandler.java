@@ -21,8 +21,8 @@ public ResponseEntity<ErrorResponse> handleCompanyDoesNotExistException(CompanyD
 
 @ResponseBody
 @ExceptionHandler(CompanyAlreadyExistsException.class)
-@ResponseStatus(HttpStatus.NOT_FOUND)
-public ResponseEntity<ErrorResponse> handleCompanyAlreadyExistsException(CompanyDoesNotExistException e){
+@ResponseStatus(HttpStatus.FORBIDDEN)
+public ResponseEntity<ErrorResponse> handleCompanyAlreadyExistsException(CompanyAlreadyExistsException e){
     ErrorResponse errorResponse = new ErrorResponse(HttpStatus.FORBIDDEN.value(), e.getMessage());
     return new ResponseEntity<>(errorResponse, HttpStatus.FORBIDDEN);
 }
