@@ -2,7 +2,6 @@
 package com.cbfacademy.apiassessment;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.context.annotation.Description;
 import com.cbfacademy.apiassessment.bubblesortalgo.BubbleSortAlgo;
@@ -18,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@SpringBootTest(classes = App.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class AppTests {
 
 	@Test
@@ -38,12 +36,13 @@ class AppTests {
 	@Description("Writing to json file and comparing output")
 	public void writeToJsonFile() throws IOException {
 		final String jsonTestFile = "src/test/resources/ftseTest.json";
-		List<Ftse100> expectedCompanies = new ArrayList<>();
+
+		Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler();
+		List<Ftse100> expectedCompanies = fileHandler.readFtse100JsonFile(jsonTestFile);
 				
 		Ftse100 newCompanyThree = new Ftse100("Unite Group Plc", "UTG", "Real Estate", 854.5, 3984000000L, 26.5, 0.99, 35.73, 15.5);
 		expectedCompanies.add(newCompanyThree);
 				
-		Ftse100JsonFileHandler fileHandler = new Ftse100JsonFileHandler();
 		fileHandler.ftse100WriteToJsonFile(jsonTestFile, expectedCompanies);
 	
 		List<Ftse100> actualCompanies = fileHandler.readFtse100JsonFile(jsonTestFile);

@@ -1,0 +1,24 @@
+[
+  {
+    "companyName": "Endeavour Mining Plc",
+    "tickerSymbol": "EDV",
+    "sector": "Precious Metals and Mining",
+    "stockPrice": 1659.0,
+    "marketCapitalization": 4333000000,
+    "priceToEquityRatio": -17.22,
+    "priceToBookRatio": 1.52,
+    "debtToEquityRatio": 27.23,
+    "esgRiskRating": 23.09
+  },
+  {
+    "companyName": "ConvaTec Group Plc",
+    "tickerSymbol": "CTEC",
+    "sector": "Medical Equipment and Services",
+    "stockPrice": 201.08,
+    "marketCapitalization": 4554000000,
+    "priceToEquityRatio": 67.67,
+    "priceToBookRatio": 3.11,
+    "debtToEquityRatio": 90.12,
+    "esgRiskRating": 16.6
+  }
+]
