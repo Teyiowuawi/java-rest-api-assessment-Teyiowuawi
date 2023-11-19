@@ -174,7 +174,7 @@ All application end points can be accessed and used through the API platform Pos
 ![Postman different request drop down](image-1.png)
 
 ## Example HTTP requests
-#### GET a company by it's ticker symbol
+### GET a company by it's ticker symbol
 
 ![GET reqeust](image-2.png)
 
