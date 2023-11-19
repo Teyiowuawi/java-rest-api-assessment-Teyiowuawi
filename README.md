@@ -295,4 +295,4 @@ For the end point listed above, if a ticker symbol is entered for a company that
 "message": "FTSE100 company already present with Ticker Symbol: EDV"
 }
 ```
-### **Happy requesting!** 🚀🚀
+### **Happy requesting!** 🚀
