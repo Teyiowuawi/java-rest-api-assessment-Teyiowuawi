@@ -160,7 +160,7 @@ Whilst the application is running, all documentation and operational end points 
 [Ftse100 API Documentation](http://localhost:8080/swagger-ui-ftse100.html)
 <br>
 
-**NOTE**: The ftse-100-rest-template-controller is a syncronous client to perform HTTP requests. Feel free to use either to make requests to this API. 
+**NOTE**: The ftse-100-rest-template-controller is a syncronous client to perform HTTP requests. Feel free to use either sets of end points to make requests to this API. 
 
 
 ## End Points
@@ -174,7 +174,7 @@ All application end points can be accessed and used through the API platform Pos
 ![Postman different request drop down](image-1.png)
 
 ## Example HTTP requests
-#### GET  
+#### GET a company by it's ticker symbol
 
 ![GET reqeust](image-2.png)
 
@@ -195,7 +195,7 @@ Response Body:
 ```
 HTTP Response Status: 200 OK
 
-### POST 
+### POST a new company to the list of companies
 ![POST request](image-3.png)
 
 Response Body: 
@@ -214,7 +214,7 @@ Response Body:
 ```
 HTTP Response Status: 201 Created
 
-### UPDATE:
+### UPDATE a companies finanacial metrics
 ![UPDATE request](image-4.png)
 
 Response Body:
@@ -235,7 +235,7 @@ Response Body:
 HTTP Response Status: 200 OK
 
 
-### DELETE
+### DELETE a company from the list of companies
 ![DELETE Request](image-5.png)
 
 
